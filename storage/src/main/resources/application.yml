@@ -1,0 +1,17 @@
+spring:
+    output:
+      ansi:
+        enabled: always
+mybatis:
+  config-location: classpath:mybatis_config.xml
+logging:
+    level:
+#        root: debug
+    file:
+storage:
+  config:
+    host: localhost
+    port: 8007
+    dir_format: yyyyMMdd
+    file_storage_id: 1
+    base_dir: /home/lee/Downloads/file

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>cn.com.kxcomm.storage</groupId>
+    <artifactId>client</artifactId>
+    <packaging>pom</packaging>
+    <version>002.00.00</version>
+    <name>client</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.7</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.com.kxcomm.storage</groupId>
+            <artifactId>share</artifactId>
+            <version>002.00.00</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.com.kxcomm</groupId>
+            <artifactId>Md5Util</artifactId>
+            <version>001.00.00</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>kxcomm</id>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <url>http://mavendev.kxcomm.com:8081/nexus/content/groups/kxcomm/</url>
+        </repository>
+    </repositories>
+</project>
