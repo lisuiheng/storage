@@ -5,6 +5,8 @@ import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest2;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest3;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadResponse3;
+import cn.com.kxcomm.storage.domain.storage.share.bean.storage.ListFileRequest;
+import cn.com.kxcomm.storage.domain.storage.share.bean.storage.ListFileResponse;
 import cn.com.kxcomm.storage.domain.storage.share.bean.storage.SpaceRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadRequest1;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadRequest2;
@@ -15,6 +17,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.attribute.FileTime;
 
 import static org.junit.Assert.*;
 
@@ -54,4 +57,10 @@ public class StorageTest {
         assertNull(response.getThrowable());
     }
 
+    @Test
+    public void listFile() {
+        ListFileRequest request = new ListFileRequest("20170509", headCorpId, loginOperId, sysCode);
+        ListFileResponse response = (ListFileResponse)Api.send(request);
+        assertNull(response.getThrowable());
+    }
 }

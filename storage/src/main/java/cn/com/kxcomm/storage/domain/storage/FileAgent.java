@@ -1,20 +1,29 @@
 package cn.com.kxcomm.storage.domain.storage;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.util.DigestUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Component
 public class FileAgent {
     private SimpleDateFormat dirFormat;
     private SimpleDateFormat fileNameFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
     private Random random = new Random();
+
+    private final Logger log = LoggerFactory.getLogger(FileAgent.class);
 
     private final StorageConfig storageConfig;
 
@@ -88,5 +97,10 @@ public class FileAgent {
         }
         return Files.readAllBytes(filePath);
     }
+
+    public String md5(byte[] data) {
+        return DigestUtils.md5DigestAsHex(data);
+    }
+
 
 }

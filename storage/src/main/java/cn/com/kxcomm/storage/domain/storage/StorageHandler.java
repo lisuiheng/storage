@@ -6,6 +6,7 @@ import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest2;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest3;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadResponse2;
+import cn.com.kxcomm.storage.domain.storage.share.bean.storage.ListFileRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.storage.SpaceRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadRequest2;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadResponse2;
@@ -38,14 +39,13 @@ public class StorageHandler extends ChannelInboundHandlerAdapter {
                 Response response = null;
                 try {
                     if(msg instanceof UploadRequest2) {
-                        UploadRequest2 uploadRequest2 = (UploadRequest2) msg;
-                        response = api.upload(uploadRequest2);
+                        response = api.upload((UploadRequest2) msg);
                     } else if(msg instanceof DownloadRequest3) {
-                        DownloadRequest3 downloadRequest3 = (DownloadRequest3) msg;
-                        response = api.download(downloadRequest3);
+                        response = api.download((DownloadRequest3) msg);
                     } else if(msg instanceof SpaceRequest) {
-                        SpaceRequest spaceRequest = (SpaceRequest) msg;
-                        response = api.space(spaceRequest);
+                        response = api.space((SpaceRequest)msg);
+                    } else if(msg instanceof ListFileRequest) {
+                        api.listFile((ListFileRequest) msg);
                     }
                     else {
                         //TODO test

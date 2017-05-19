@@ -17,6 +17,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Stream;
 
@@ -148,7 +149,6 @@ public class StorageTest {
 
                 @Override
                 public FileVisitResult visitFileFailed(Path file, IOException exc) {
-
                     System.out.println("skipped: " + file + " (" + exc + ")");
                     // Skip folders that can't be traversed
                     return FileVisitResult.CONTINUE;
@@ -170,7 +170,20 @@ public class StorageTest {
     }
 
     @Test
-    public void getLastModifyTime() throws IOException {
-        FileTime lastModifiedTime = Files.getLastModifiedTime(Paths.get("/home/lee/Downloads/hello"));
+    public void getLastModifyTime() throws IOException, InterruptedException {
+//        FileTime lastModifiedTime = Files.getLastModifiedTime(Paths.get("/home/lee/Downloads/hello"));
+        FileTime before = FileTime.from(System.currentTimeMillis(), TimeUnit.MILLISECONDS);
+        Thread.sleep(200L);
+        FileTime last = FileTime.from(System.currentTimeMillis(), TimeUnit.MILLISECONDS);
+        int i = last.compareTo(before);
+        log.info("compare {}", i);
+    }
+
+    @Test
+    public void filename() {
+        Path dir = Paths.get("/home/lee/Downloads");
+        Path file = Paths.get("/home/lee/Downloads/hello/hello.txt");
+        String substring = file.toString().substring(dir.toString().length() + 1, file.toString().length());
+        log.info(substring);
     }
 }
