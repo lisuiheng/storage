@@ -9,7 +9,9 @@ import lombok.ToString;
 
 import java.io.Serializable;
 import java.nio.file.attribute.FileTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -26,7 +28,7 @@ public class ListFileResponse extends Response {
         super(throwable, request);
     }
 
-    public synchronized void append(String name, long size, String md5, FileTime lastModifiedTime) {
+    public synchronized void append(String name, long size, String md5, long lastModifiedTime) {
         append(new File(name, size, md5, lastModifiedTime));
     }
 
@@ -42,6 +44,6 @@ public class ListFileResponse extends Response {
         private String relativeName;
         private long size;
         private String md5;
-        private FileTime lastModifiedTime;
+        private long lastModifiedTime;
     }
 }

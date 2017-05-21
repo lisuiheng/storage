@@ -59,7 +59,7 @@ public class StorageTest {
 
     @Test
     public void listFile() {
-        ListFileRequest request = new ListFileRequest("20170509", headCorpId, loginOperId, sysCode);
+        ListFileRequest request = new ListFileRequest("", headCorpId, loginOperId, sysCode);
         ListFileResponse response = (ListFileResponse)Api.send(request);
         assertNull(response.getThrowable());
     }

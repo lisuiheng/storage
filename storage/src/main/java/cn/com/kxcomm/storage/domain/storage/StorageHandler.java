@@ -36,26 +36,25 @@ public class StorageHandler extends ChannelInboundHandlerAdapter {
         if(msg instanceof Request) {
             Request request = (Request) msg;
             CompletableFuture.supplyAsync(() -> {
-                Response response = null;
+                Response response = new Response(new RuntimeException(String.format("no handle request:(%s) method exit ", request.toString())), request);
                 try {
-                    if(msg instanceof UploadRequest2) {
-                        response = api.upload((UploadRequest2) msg);
-                    } else if(msg instanceof DownloadRequest3) {
-                        response = api.download((DownloadRequest3) msg);
-                    } else if(msg instanceof SpaceRequest) {
-                        response = api.space((SpaceRequest)msg);
-                    } else if(msg instanceof ListFileRequest) {
-                        api.listFile((ListFileRequest) msg);
-                    }
-                    else {
-                        //TODO test
-                        response = new Response(request);
+                    if(request instanceof UploadRequest2) {
+                        response = api.upload((UploadRequest2) request);
+                    } else if(request instanceof DownloadRequest3) {
+                        response = api.download((DownloadRequest3) request);
+                    } else if(request instanceof SpaceRequest) {
+                        response = api.space((SpaceRequest)request);
+                    } else if(request instanceof ListFileRequest) {
+                        response = api.listFile((ListFileRequest) request);
                     }
                 } catch (Throwable t) {
                     throw new RuntimeException(t);
                 }
                 return response;
-            }).thenAcceptAsync(ctx::writeAndFlush).exceptionally(t -> {
+            }).thenAcceptAsync(resp -> {
+                ctx.writeAndFlush(resp);
+                log.debug("writeAndFlush response {}", resp);
+            }).exceptionally(t -> {
                 log.error("Unexpected error {}", t);
                 ctx.writeAndFlush(new DownloadResponse2(t, request));
                 return null;

@@ -13,9 +13,9 @@ import java.nio.file.attribute.FileTime;
 @ToString
 public class ListFileRequest extends Request implements Serializable {
     private String relativePath;
-    private FileTime lastModifiedTime;
+    private long lastModifiedTime;
 
-    public ListFileRequest(String relativePath, FileTime lastModifiedTime, long headCorpId, long loginOperId, String sysCode) {
+    public ListFileRequest(String relativePath, long lastModifiedTime, long headCorpId, long loginOperId, String sysCode) {
         super(headCorpId, loginOperId, sysCode);
         this.relativePath = relativePath;
         this.lastModifiedTime = lastModifiedTime;
@@ -24,6 +24,6 @@ public class ListFileRequest extends Request implements Serializable {
     public ListFileRequest(String relativePath, long headCorpId, long loginOperId, String sysCode) {
         super(headCorpId, loginOperId, sysCode);
         this.relativePath = relativePath;
-        this.lastModifiedTime = FileTime.fromMillis(0L);
+        this.lastModifiedTime = 0;
     }
 }

@@ -62,7 +62,7 @@ public class Api {
 
     public ListFileResponse listFile(ListFileRequest request) {
         String relativePath = request.getRelativePath();
-        FileTime formTime = request.getLastModifiedTime();
+        FileTime formTime = FileTime.fromMillis(request.getLastModifiedTime());
 
         final ListFileResponse response = new ListFileResponse(request);
         Path path = storageConfig.getPath().resolve(relativePath);
@@ -81,7 +81,7 @@ public class Api {
 
                         byte[] data = Files.readAllBytes(file);
                         String md5 = fileAgent.md5(data);
-                        response.append(relativeName, data.length, md5, lastModifiedTime);
+                        response.append(relativeName, data.length, md5, lastModifiedTime.toMillis());
                     }
                     return FileVisitResult.CONTINUE;
                 }
