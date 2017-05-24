@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 别名定义 -->
+    <typeAliases>
+        <typeAlias type="cn.com.kxcomm.storage.domain.service.addr.model.FileAddrModel" alias="FileAddrModel"/>
+        <typeAlias type="cn.com.kxcomm.storage.domain.service.file.model.FileModel" alias="FileModel"/>
+        <typeAlias type="cn.com.kxcomm.storage.domain.service.server.model.FileServerModel" alias="FileServerModel"/>
+        <typeAlias type="cn.com.kxcomm.storage.domain.service.storage.model.FileStoragePrositionModel" alias="FileStoragePrositionModel"/>
+        <typeAlias type="cn.com.kxcomm.storage.domain.service.view.model.FileViewModel" alias="FileViewModel"/>
+    </typeAliases>
+
+    <mappers>
+        <mapper resource="cn/com/kxcomm/storage/domain/service/addr/dao/FileAddrDao.xml"/>
+        <mapper resource="cn/com/kxcomm/storage/domain/service/file/dao/FileDao.xml"/>
+        <mapper resource="cn/com/kxcomm/storage/domain/service/server/dao/FileServerDao.xml"/>
+        <mapper resource="cn/com/kxcomm/storage/domain/service/storage/dao/FileStoragePrositionDao.xml"/>
+        <mapper resource="cn/com/kxcomm/storage/domain/service/view/dao/FileViewDao.xml"/>
+    </mappers>
+</configuration>

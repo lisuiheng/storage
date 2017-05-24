@@ -12,6 +12,7 @@ import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import io.netty.handler.stream.ChunkedWriteHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -34,7 +35,8 @@ public class StorageServer {
                             ChannelPipeline p = ch.pipeline();
                             p.addLast(
                                     new ObjectEncoder(),
-                                    new ObjectDecoder(ClassResolvers.cacheDisabled(null)),
+                                    new ObjectDecoder(1048576 * 100 ,ClassResolvers.cacheDisabled(null)),
+//                                    new ChunkedWriteHandler(),
                                     storageHandler
                             );
                         }

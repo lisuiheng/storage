@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.kxcomm.storage.domain.service.storage.dao.FileStoragePrositionDao">
+	<resultMap id="base_result_map"
+		type="FileStoragePrositionModel">
+	      <id column="storage_prosition_id" property="id" jdbcType="BIGINT" />
+			<result column="head_corp_id" property="headCorpId" jdbcType="BIGINT" />
+			<result column="server_id" property="serverId" jdbcType="BIGINT" />
+			<result column="storage_prosition_name" property="name" jdbcType="VARCHAR" />
+			<result column="storage_prosition_type" property="type" jdbcType="INTEGER" />
+			<result column="storage_prosition_port" property="port" jdbcType="INTEGER" />
+			<result column="storage_prosition_addr_type" property="addrType" jdbcType="INTEGER" />
+			<result column="storage_prosition_addr_url" property="addrUrl" jdbcType="VARCHAR" />
+			<result column="storage_prosition_total" property="total" jdbcType="BIGINT" />
+			<result column="storage_prosition_available" property="available" jdbcType="BIGINT" />
+			<result column="storage_prosition_used" property="used" jdbcType="BIGINT" />
+			<result column="storage_prosition_file_count" property="fileCount" jdbcType="BIGINT" />
+			<result column="storage_prosition_file_count_uplimit" property="fileCountUplimit" jdbcType="BIGINT" />
+			<result column="storage_prosition_file_uplimit" property="fileUplimit" jdbcType="BIGINT" />
+			<result column="storage_prosition_download_count" property="downloadCount" jdbcType="BIGINT" />
+			<result column="storage_prosition_download_size" property="downloadSize" jdbcType="BIGINT" />
+			<result column="create_oper" property="createOper" jdbcType="BIGINT" />
+			<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+			<result column="last_modify_oper" property="lastModifyOper" jdbcType="BIGINT" />
+			<result column="last_modify_time" property="lastModifyTime" jdbcType="TIMESTAMP" />
+			<result column="storage_prosition_state" property="state" jdbcType="INTEGER" />
+			<result column="show_order" property="showOrder" jdbcType="BIGINT" />
+			<result column="memo" property="memo" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 所有数据库的列名 -->
+	<sql id="base_column_list">
+		*
+	</sql>
+
+	<sql id="table_name">FILE_STORAGE_PROSITION_LIST</sql>
+
+	<!-- 查询内容sql片段 -->
+	<sql id="selector">
+		SELECT
+		<if test="fields!=null">
+			${fields} 
+		</if>
+		<if test="fields==null">
+			<include refid="base_column_list"></include>
+		</if>
+		FROM
+		<include refid="table_name"></include>
+	</sql>
+
+	<!-- 查询片段 -->
+	<sql id="query_where">
+		<where>
+			<if test="id != null">
+				AND storage_prosition_id = #{id}
+			</if>
+			<if test="headCorpId != null">
+				AND head_corp_id = #{headCorpId,jdbcType=BIGINT}
+			</if>
+			<if test="serverId != null">
+				AND server_id = #{serverId,jdbcType=BIGINT}
+			</if>
+			<if test="name != null">
+				AND storage_prosition_name = #{name,jdbcType=VARCHAR}
+			</if>
+			<if test="type != null">
+				AND storage_prosition_type = #{type,jdbcType=INTEGER}
+			</if>
+			<if test="port != null">
+				AND storage_prosition_port = #{port,jdbcType=INTEGER}
+			</if>
+			<if test="addrType != null">
+				AND storage_prosition_addr_type = #{addrType,jdbcType=INTEGER}
+			</if>
+			<if test="addrUrl != null">
+				AND storage_prosition_addr_url = #{addrUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="total != null">
+				AND storage_prosition_total = #{total,jdbcType=BIGINT}
+			</if>
+			<if test="available != null">
+			     <if test="!isLessThanAvailable">
+					AND storage_prosition_available = #{available,jdbcType=BIGINT}
+                 </if>
+                 <if test="isLessThanAvailable">
+					AND storage_prosition_available &gt; #{available,jdbcType=BIGINT}
+                 </if>
+			</if>
+			<if test="used != null">
+				AND storage_prosition_used = #{used,jdbcType=BIGINT}
+			</if>
+			<if test="fileCount != null">
+				AND storage_prosition_file_count = #{fileCount,jdbcType=BIGINT}
+			</if>
+			<if test="fileCountUplimit != null">
+			    <if test="!isLessThanFileCountUplimit">
+					AND storage_prosition_file_count_uplimit = #{fileCountUplimit,jdbcType=BIGINT}
+                 </if>
+                 <if test="isLessThanFileCountUplimit">
+					AND storage_prosition_file_count_uplimit &gt; storage_prosition_file_count
+                 </if>
+			</if>
+			<if test="fileUplimit != null">
+				AND storage_prosition_file_uplimit = #{fileUplimit,jdbcType=BIGINT}
+			</if>
+			<if test="downloadCount != null">
+				AND storage_prosition_download_count = #{downloadCount,jdbcType=BIGINT}
+			</if>
+			<if test="downloadSize != null">
+				AND storage_prosition_download_size = #{downloadSize,jdbcType=BIGINT}
+			</if>
+			<if test="createOper != null">
+				AND create_oper = #{createOper,jdbcType=BIGINT}
+			</if>
+			<if test="createTime != null">
+				AND create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifyOper != null">
+				AND last_modify_oper = #{lastModifyOper,jdbcType=BIGINT}
+			</if>
+			<if test="lastModifyTime != null">
+				AND last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="state != null">
+				AND storage_prosition_state = #{state,jdbcType=INTEGER}
+			</if>
+			<if test="state == null">
+				AND storage_prosition_state NOT IN (0)
+			</if>
+			<if test="showOrder != null">
+				AND show_order = #{showOrder,jdbcType=BIGINT}
+			</if>
+			<if test="memo != null">
+				AND memo = #{memo,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</sql>
+
+	<!-- 分页sql片段 -->
+	<sql id="list_limit">
+		<if test="startRow != null">
+			LIMIT #{startRow},#{pageSize}
+		</if>
+	</sql>
+
+	<!-- 排序sql片段 -->
+	<sql id="list_order">
+		<if test="orderFields != null and orderFields.size >0">
+			ORDER BY
+			<foreach collection="orderFields" separator="," item="orderField">
+				${orderField.fieldName} ${orderField.order}
+			</foreach>
+		</if>
+		<if test="orderFields == null or orderFields.size == 0">
+			ORDER BY show_order ASC,create_time DESC
+		</if>
+	</sql>
+
+	<!-- 添加 -->
+	<insert id="add" parameterType="FileStoragePrositionModel">
+		INSERT INTO
+		<include refid="table_name" />
+		(
+		storage_prosition_id
+			,head_corp_id
+			,server_id
+			,storage_prosition_name
+			,storage_prosition_type
+			,storage_prosition_port
+			,storage_prosition_addr_type
+			,storage_prosition_addr_url
+			,storage_prosition_total
+			,storage_prosition_available
+			,storage_prosition_used
+			,storage_prosition_file_count
+			,storage_prosition_file_count_uplimit
+			,storage_prosition_file_uplimit
+			,storage_prosition_download_count
+			,storage_prosition_download_size
+			,create_oper
+			,create_time
+			,last_modify_oper
+			,last_modify_time
+			,storage_prosition_state
+			,show_order
+			,memo
+		)
+		VALUES (
+		#{id,jdbcType=BIGINT}
+			,#{headCorpId,jdbcType=BIGINT}
+			,#{serverId,jdbcType=BIGINT}
+			,#{name,jdbcType=VARCHAR}
+			,#{type,jdbcType=INTEGER}
+			,#{port,jdbcType=INTEGER}
+			,#{addrType,jdbcType=INTEGER}
+			,#{addrUrl,jdbcType=VARCHAR}
+			,#{total,jdbcType=BIGINT}
+			,#{available,jdbcType=BIGINT}
+			,#{used,jdbcType=BIGINT}
+			,#{fileCount,jdbcType=BIGINT}
+			,#{fileCountUplimit,jdbcType=BIGINT}
+			,#{fileUplimit,jdbcType=BIGINT}
+			,#{downloadCount,jdbcType=BIGINT}
+			,#{downloadSize,jdbcType=BIGINT}
+			,#{createOper,jdbcType=BIGINT}
+			,#{createTime,jdbcType=TIMESTAMP}
+			,#{lastModifyOper,jdbcType=BIGINT}
+			,#{lastModifyTime,jdbcType=TIMESTAMP}
+			,#{state,jdbcType=INTEGER}
+			,#{showOrder,jdbcType=BIGINT}
+			,#{memo,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<!-- 修改 -->
+	<update id="updateByKey" parameterType="FileStoragePrositionModel">
+		UPDATE
+		<include refid="table_name" />
+		<set>
+					<if test="serverId != null">
+						server_id = #{serverId,jdbcType=BIGINT},
+					</if>
+					<if test="name != null">
+						storage_prosition_name = #{name,jdbcType=VARCHAR},
+					</if>
+					<if test="type != null">
+						storage_prosition_type = #{type,jdbcType=INTEGER},
+					</if>
+					<if test="port != null">
+						storage_prosition_port = #{port,jdbcType=INTEGER},
+					</if>
+					<if test="addrType != null">
+						storage_prosition_addr_type = #{addrType,jdbcType=INTEGER},
+					</if>
+					<if test="addrUrl != null">
+						storage_prosition_addr_url = #{addrUrl,jdbcType=VARCHAR},
+					</if>
+					<if test="total != null">
+						storage_prosition_total = #{total,jdbcType=BIGINT},
+					</if>
+					<if test="available != null">
+						storage_prosition_available = #{available,jdbcType=BIGINT},
+					</if>
+					<if test="used != null">
+						storage_prosition_used = #{used,jdbcType=BIGINT},
+					</if>
+					<if test="fileCount != null">
+						storage_prosition_file_count = #{fileCount,jdbcType=BIGINT},
+					</if>
+					<if test="fileCountUplimit != null">
+						storage_prosition_file_count_uplimit = #{fileCountUplimit,jdbcType=BIGINT},
+					</if>
+					<if test="fileUplimit != null">
+						storage_prosition_file_uplimit = #{fileUplimit,jdbcType=BIGINT},
+					</if>
+					<if test="downloadCount != null">
+						storage_prosition_download_count = #{downloadCount,jdbcType=BIGINT},
+					</if>
+					<if test="downloadSize != null">
+						storage_prosition_download_size = #{downloadSize,jdbcType=BIGINT},
+					</if>
+					<if test="createOper != null">
+						create_oper = #{createOper,jdbcType=BIGINT},
+					</if>
+					<if test="createTime != null">
+						create_time = #{createTime,jdbcType=TIMESTAMP},
+					</if>
+					<if test="lastModifyOper != null">
+						last_modify_oper = #{lastModifyOper,jdbcType=BIGINT},
+					</if>
+					<if test="lastModifyTime != null">
+						last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+					</if>
+					<if test="state != null">
+						storage_prosition_state = #{state,jdbcType=INTEGER},
+					</if>
+					<if test="showOrder != null">
+						show_order = #{showOrder,jdbcType=BIGINT},
+					</if>
+					<if test="memo != null">
+						memo = #{memo,jdbcType=VARCHAR},
+					</if>
+		</set>
+		where storage_prosition_id = #{id,jdbcType=BIGINT}
+		AND
+		head_corp_id = #{headCorpId,jdbcType=BIGINT}
+	</update>
+
+	
+
+	<!-- 通过主键查询 -->
+	<select id="getByKey" parameterType="map" resultMap="base_result_map">
+		SELECT
+		<include refid="base_column_list" />
+		FROM
+		<include refid="table_name" />
+		WHERE storage_prosition_id = #{id,jdbcType=BIGINT}
+		AND
+		head_corp_id = #{headCorpId,jdbcType=BIGINT}
+	</select>
+
+	<!-- 通过主键集合查询 -->
+	<select id="getByKeys" parameterType="map" resultMap="base_result_map">
+		SELECT
+		<include refid="base_column_list" />
+		FROM
+		<include refid="table_name" />
+		WHERE storage_prosition_id IN
+		<foreach collection="ids" item="i" open="(" close=")"
+			separator=",">
+			#{i}
+		</foreach>
+		AND
+		head_corp_id = #{headCorpId,jdbcType=BIGINT}
+	</select>
+
+	<!-- 根据主键删除 -->
+	<delete id="deleteByKey" parameterType="map">
+		UPDATE
+		<include refid="table_name" />
+		SET storage_prosition_state = 0,
+		last_modify_time = NOW()
+		WHERE
+		storage_prosition_id = #{id,jdbcType=BIGINT}
+		AND head_corp_id =
+		#{headCorpId,jdbcType=BIGINT}
+	</delete>
+	
+	<!-- 带条件查询分页 -->
+	<select id="getListWithPage" parameterType="FileStoragePrositionModel"
+		resultMap="base_result_map">
+		<include refid="selector" />
+		<include refid="query_where" />
+		<include refid="list_order" />
+		<include refid="list_limit" />
+	</select>
+
+	<!-- 带条件查询不分页 -->
+	<select id="getList" parameterType="FileStoragePrositionModel"
+		resultMap="base_result_map">
+		<include refid="selector" />
+		<include refid="query_where" />
+		<include refid="list_order" />
+	</select>
+
+	<!-- 通过查询条件获取数据条数 -->
+	<select id="getListCount" parameterType="FileStoragePrositionModel"
+		resultType="int">
+		SELECT COUNT(1) FROM
+		<include refid="table_name" />
+		<include refid="query_where" />
+	</select>
+
+
+</mapper>

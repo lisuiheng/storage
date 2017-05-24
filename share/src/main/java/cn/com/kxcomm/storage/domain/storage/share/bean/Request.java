@@ -25,7 +25,7 @@ public class Request implements Serializable {
     }
 
     public Request(Request request) {
-        id = System.nanoTime();
+        id = request.getId();
         this.headCorpId = request.getHeadCorpId();
         this.loginOperId = request.getLoginOperId();
         this.sysCode = request.getSysCode();

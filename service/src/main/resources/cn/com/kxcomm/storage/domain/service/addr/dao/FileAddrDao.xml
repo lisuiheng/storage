@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.kxcomm.storage.domain.service.addr.dao.FileAddrDao">
+	<resultMap id="base_result_map"
+		type="FileAddrModel">
+		<id column="file_addr_id" property="id" jdbcType="BIGINT" />
+			<result column="head_corp_id" property="headCorpId" jdbcType="BIGINT" />
+			<result column="file_id" property="fileId" jdbcType="BIGINT" />
+			<result column="storage_position_id" property="storagePositionId" jdbcType="BIGINT" />
+			<result column="server_id" property="serverId" jdbcType="BIGINT" />
+			<result column="file_addr_storage_name" property="storageName" jdbcType="VARCHAR" />
+			<result column="file_addr_storage_dir" property="storageDir" jdbcType="VARCHAR" />
+			<result column="file_addr_type" property="type" jdbcType="INTEGER" />
+			<result column="file_addr_url" property="url" jdbcType="VARCHAR" />
+			<result column="file_addr_download_count" property="downloadCount" jdbcType="BIGINT" />
+			<result column="create_oper" property="createOper" jdbcType="BIGINT" />
+			<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+			<result column="last_modify_oper" property="lastModifyOper" jdbcType="BIGINT" />
+			<result column="last_modify_time" property="lastModifyTime" jdbcType="TIMESTAMP" />
+			<result column="file_addr_state" property="state" jdbcType="INTEGER" />
+			<result column="memo" property="memo" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 所有数据库的列名 -->
+	<sql id="base_column_list">
+		*
+	</sql>
+
+	<sql id="table_name">FILE_ADDR_LIST</sql>
+
+	<!-- 查询内容sql片段 -->
+	<sql id="selector">
+		SELECT
+		<if test="fields!=null">
+			${fields} 
+		</if>
+		<if test="fields==null">
+			<include refid="base_column_list"></include>
+		</if>
+		FROM
+		<include refid="table_name"></include>
+	</sql>
+
+	<!-- 查询片段 -->
+	<sql id="query_where">
+		<where>
+			<if test="id != null">
+				AND file_addr_id = #{id}
+			</if>
+			<if test="headCorpId != null">
+				AND head_corp_id = #{headCorpId,jdbcType=BIGINT}
+			</if>
+			<if test="fileId != null">
+				AND file_id = #{fileId,jdbcType=BIGINT}
+			</if>
+			<if test="fileIdList != null">
+				AND file_id in      
+			<foreach collection="fileIdList" item="i" open="(" close=")"
+            separator=",">
+             #{i}
+             </foreach>
+			</if>
+			<if test="storagePositionId != null">
+				AND storage_position_id = #{storagePositionId,jdbcType=BIGINT}
+			</if>
+			<if test="serverId != null">
+				AND server_id = #{serverId,jdbcType=BIGINT}
+			</if>
+			<if test="storageName != null">
+				AND file_addr_storage_name = #{storageName,jdbcType=VARCHAR}
+			</if>
+			<if test="storageDir != null">
+				AND file_addr_storage_dir = #{storageDir,jdbcType=VARCHAR}
+			</if>
+			<if test="type != null">
+				AND file_addr_type = #{type,jdbcType=INTEGER}
+			</if>
+			<if test="url != null">
+				AND file_addr_url = #{url,jdbcType=VARCHAR}
+			</if>
+			<if test="downloadCount != null">
+				AND file_addr_download_count = #{downloadCount,jdbcType=BIGINT}
+			</if>
+			<if test="createOper != null">
+				AND create_oper = #{createOper,jdbcType=BIGINT}
+			</if>
+			<if test="createTime != null">
+				AND create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifyOper != null">
+				AND last_modify_oper = #{lastModifyOper}
+			</if>
+			<if test="lastModifyTime != null">
+				AND last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="state != null">
+				AND file_addr_state = #{state,jdbcType=INTEGER}
+			</if>
+			<if test="state == null">
+				AND file_addr_state NOT IN (0)
+			</if>
+			<if test="memo != null">
+				AND memo = #{memo,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</sql>
+
+	<!-- 分页sql片段 -->
+	<sql id="list_limit">
+		<if test="startRow != null">
+			LIMIT #{startRow},#{pageSize}
+		</if>
+	</sql>
+
+	<!-- 排序sql片段 -->
+	<sql id="list_order">
+		<if test="orderFields != null and orderFields.size >0">
+			ORDER BY
+			<foreach collection="orderFields" separator="," item="orderField">
+				${orderField.fieldName} ${orderField.order}
+			</foreach>
+		</if>
+		<if test="orderFields == null or orderFields.size == 0">
+			ORDER BY create_time DESC
+		</if>
+	</sql>
+
+	<!-- 添加 -->
+	<insert id="add" parameterType="FileAddrModel">
+		INSERT INTO
+		<include refid="table_name" />
+		(
+		file_addr_id
+			,head_corp_id
+			,file_id
+			,storage_position_id
+			,server_id
+			,file_addr_storage_name
+			,file_addr_storage_dir
+			,file_addr_type
+			,file_addr_url
+			,file_addr_download_count
+			,create_oper
+			,create_time
+			,last_modify_oper
+			,last_modify_time
+			,file_addr_state
+			,memo
+
+		)
+		VALUES (
+		#{id,jdbcType=BIGINT}
+			,#{headCorpId,jdbcType=BIGINT}
+			,#{fileId,jdbcType=BIGINT}
+			,#{storagePositionId,jdbcType=BIGINT}
+			,#{serverId,jdbcType=BIGINT}
+			,#{storageName,jdbcType=VARCHAR}
+			,#{storageDir,jdbcType=VARCHAR}
+			,#{type,jdbcType=INTEGER}
+			,#{url,jdbcType=VARCHAR}
+			,#{downloadCount,jdbcType=BIGINT}
+			,#{createOper,jdbcType=BIGINT}
+			,#{createTime,jdbcType=TIMESTAMP}
+			,#{lastModifyOper,jdbcType=BIGINT}
+			,#{lastModifyTime,jdbcType=TIMESTAMP}
+			,#{state,jdbcType=INTEGER}
+			,#{memo,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<!-- 修改 -->
+	<update id="updateByKey" parameterType="FileAddrModel">
+		UPDATE
+		<include refid="table_name" />
+		<set>
+					<if test="fileId != null">
+						file_id = #{fileId,jdbcType=BIGINT},
+					</if>
+					<if test="storagePositionId != null">
+						storage_position_id = #{storagePositionId,jdbcType=BIGINT},
+					</if>
+					<if test="serverId != null">
+						server_id = #{serverId,jdbcType=BIGINT},
+					</if>
+					<if test="storageName != null">
+						file_addr_storage_name = #{storageName,jdbcType=VARCHAR},
+					</if>
+					<if test="storageDir != null">
+						file_addr_storage_dir = #{storageDir,jdbcType=VARCHAR},
+					</if>
+					<if test="type != null">
+						file_addr_type = #{type,jdbcType=INTEGER},
+					</if>
+					<if test="url != null">
+						file_addr_url = #{url,jdbcType=VARCHAR},
+					</if>
+					<if test="downloadCount != null">
+						file_addr_download_count = #{downloadCount,jdbcType=BIGINT},
+					</if>
+					<if test="createOper != null">
+						create_oper = #{createOper,jdbcType=BIGINT},
+					</if>
+					<if test="createTime != null">
+						create_time = #{createTime,jdbcType=TIMESTAMP},
+					</if>
+					<if test="lastModifyOper != null">
+						last_modify_oper = #{lastModifyOper,jdbcType=TIMESTAMP},
+					</if>
+					<if test="lastModifyTime != null">
+						last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+					</if>
+					<if test="state != null">
+						file_addr_state = #{state,jdbcType=INTEGER},
+					</if>
+					<if test="memo != null">
+						memo = #{memo,jdbcType=VARCHAR},
+					</if>
+		</set>
+		where file_addr_id = #{id,jdbcType=BIGINT}
+		AND
+		head_corp_id = #{headCorpId,jdbcType=BIGINT}
+	</update>
+
+
+
+
+
+	<!-- 带条件查询分页 -->
+	<select id="getListWithPage" parameterType="FileAddrModel"
+		resultMap="base_result_map">
+		<include refid="selector" />
+		<include refid="query_where" />
+		<include refid="list_order" />
+		<include refid="list_limit" />
+	</select>
+
+	<!-- 带条件查询不分页 -->
+	<select id="getList" parameterType="FileAddrModel"
+		resultMap="base_result_map">
+		<include refid="selector" />
+		<include refid="query_where" />
+		<include refid="list_order" />
+	</select>
+
+	<!-- 通过查询条件获取数据条数 -->
+	<select id="getListCount" parameterType="FileAddrModel"
+		resultType="int">
+		SELECT COUNT(1) FROM
+		<include refid="table_name" />
+		<include refid="query_where" />
+	</select>
+
+</mapper>

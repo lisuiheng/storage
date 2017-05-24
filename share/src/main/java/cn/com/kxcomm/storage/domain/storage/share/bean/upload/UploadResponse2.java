@@ -9,19 +9,19 @@ import lombok.ToString;
 
 @Getter
 @EqualsAndHashCode(callSuper = false)
-@ToString
+@ToString(callSuper = true)
 public class UploadResponse2 extends Response {
     private long storageId;
-    private String path;
+    private String relativePath;
     private long size;
     private String md5;
 
-    public UploadResponse2(long storageId, String path, long size, String md5, Request request) {
-        super(request);
+    public UploadResponse2(long storageId, UploadResponse3 uploadResponse3) {
+        super(uploadResponse3);
         this.storageId = storageId;
-        this.path = path;
-        this.size = size;
-        this.md5 = md5;
+        this.relativePath = uploadResponse3.getRelativePath();
+        this.size = uploadResponse3.getSize();
+        this.md5 = uploadResponse3.getMd5();
     }
 
 }

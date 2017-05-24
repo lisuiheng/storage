@@ -1,0 +1,20 @@
+spring:
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:mysql://172.16.103.200:3306/122_StorageManageSystem?useUnicode=true&characterEncoding=utf8
+        username: root
+        password: root
+        driver-class-name: com.mysql.jdbc.Driver
+        hikari:
+          idle-timeout: 10000
+    output:
+      ansi:
+        enabled: always
+mybatis:
+  config-location: classpath:mybatis_config.xml
+
+proxy:
+  config:
+    port: 8006
+    proxy-start-port: 8300
+    timeout: 1000000

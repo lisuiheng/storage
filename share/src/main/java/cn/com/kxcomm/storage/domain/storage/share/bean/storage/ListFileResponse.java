@@ -37,13 +37,30 @@ public class ListFileResponse extends Response {
     }
 
 
-    @AllArgsConstructor
+
     @ToString
     @EqualsAndHashCode
+    @Getter
     public class File implements Serializable {
         private String relativeName;
         private long size;
         private String md5;
         private long lastModifiedTime;
+
+        private String relativeDir;
+        private String fileName;
+
+        public File(String relativeName, long size, String md5, long lastModifiedTime) {
+            this.relativeName = relativeName;
+            this.size = size;
+            this.md5 = md5;
+            this.lastModifiedTime = lastModifiedTime;
+
+            int lastIndexOf = relativeName.lastIndexOf("/");
+            relativeDir = relativeName.substring(0, lastIndexOf);
+            fileName = relativeName.substring(lastIndexOf, relativeName.length());
+        }
+
+
     }
 }

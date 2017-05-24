@@ -7,21 +7,17 @@ import lombok.ToString;
 
 @Getter
 @EqualsAndHashCode(callSuper = false)
-@ToString
+@ToString(exclude = "data", callSuper = true)
 public class UploadRequest2 extends Request {
     private String fileName;
     private byte[] data;
 
     public UploadRequest2(UploadRequest1 uploadRequest1) {
-        super(uploadRequest1.getHeadCorpId(), uploadRequest1.getLoginOperId(), uploadRequest1.getSysCode());
+        super(uploadRequest1);
         this.fileName = uploadRequest1.getFileName();
         this.data = uploadRequest1.getData();
     }
 
-    public UploadRequest2(String fileName, byte[] data, long headCorpId, long loginOperId, String sysCode) {
-        super(headCorpId, loginOperId, sysCode);
-        this.fileName = fileName;
-        this.data = data;
-    }
+
 
 }

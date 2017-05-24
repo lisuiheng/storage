@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.kxcomm.storage.domain.service.view.dao.FileViewDao">
+	<resultMap id="base_result_map"
+		type="FileViewModel">
+		<id column="file_view_id" property="id" jdbcType="BIGINT" />
+			<result column="head_corp_id" property="headCorpId" jdbcType="BIGINT" />
+			<result column="file_view_name" property="name" jdbcType="VARCHAR" />
+			<result column="file_id" property="fileId" jdbcType="BIGINT" />
+			<result column="file_view_code" property="code" jdbcType="VARCHAR" />
+			<result column="sys_code" property="sysCode" jdbcType="VARCHAR" />
+			<result column="file_view_active_count" property="activeCount" jdbcType="BIGINT" />
+			<result column="file_view_storage_count" property="storageCount" jdbcType="BIGINT" />
+			<result column="user_id" property="userId" jdbcType="VARCHAR" />
+			<result column="create_oper" property="createOper" jdbcType="BIGINT" />
+			<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+			<result column="last_modify_time" property="lastModifyTime" jdbcType="TIMESTAMP" />
+			<result column="file_view_state" property="state" jdbcType="INTEGER" />
+	</resultMap>
+
+	<!-- 所有数据库的列名 -->
+	<sql id="base_column_list">
+		*
+	</sql>
+
+	<sql id="table_name">FILE_VIEW_LIST</sql>
+
+	<!-- 查询内容sql片段 -->
+	<sql id="selector">
+		SELECT
+		<if test="fields!=null">
+			${fields}
+		</if>
+		<if test="fields==null">
+			<include refid="base_column_list"></include>
+		</if>
+		FROM
+		<include refid="table_name"></include>
+	</sql>
+
+	<!-- 查询片段 -->
+	<sql id="query_where">
+		<where>
+			<if test="id != null">
+				AND file_view_id = #{id,jdbcType=BIGINT}
+			</if>
+			<if test="headCorpId != null">
+				AND head_corp_id = #{headCorpId,jdbcType=BIGINT}
+			</if>
+			<if test="name != null">
+				AND file_view_name = #{name,jdbcType=VARCHAR}
+			</if>
+			<if test="fileId != null">
+				AND file_id = #{fileId,jdbcType=BIGINT}
+			</if>
+			<if test="code != null">
+				AND file_view_code = #{code,jdbcType=VARCHAR}
+			</if>
+			<if test="sysCode != null">
+				AND sys_code = #{sysCode,jdbcType=VARCHAR}
+			</if>
+			<if test="activeCount != null">
+				AND file_view_active_count = #{activeCount,jdbcType=BIGINT}
+			</if>
+			<if test="storageCount != null">
+				AND file_view_storage_count = #{storageCount,jdbcType=BIGINT}
+			</if>
+			<if test="userId != null">
+				AND user_id = #{userId,jdbcType=VARCHAR}
+			</if>
+			<if test="createOper != null">
+				AND create_oper = #{createOper,jdbcType=BIGINT}
+			</if>
+			<if test="createTime != null">
+				AND create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifyOper != null">
+				AND last_modify_oper = #{lastModifyOper}
+			</if>
+			<if test="lastModifyTime != null">
+				AND last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="state != null">
+				AND file_view_state = #{state,jdbcType=INTEGER}
+			</if>
+			<if test="state == null">
+				AND file_view_state NOT IN (0)
+			</if>
+		</where>
+	</sql>
+
+	<!-- 分页sql片段 -->
+	<sql id="list_limit">
+		<if test="startRow != null">
+			LIMIT #{startRow},#{pageSize}
+		</if>
+	</sql>
+
+	<!-- 排序sql片段 -->
+	<sql id="list_order">
+		<if test="orderFields != null and orderFields.size >0">
+			ORDER BY
+			<foreach collection="orderFields" separator="," item="orderField">
+				${orderField.fieldName} ${orderField.order}
+			</foreach>
+		</if>
+		<if test="orderFields == null or orderFields.size == 0">
+			ORDER BY create_time DESC
+		</if>
+	</sql>
+
+	<!-- 添加 -->
+	<insert id="add" parameterType="FileViewModel">
+		INSERT INTO
+		<include refid="table_name" />
+		(
+		file_view_id
+			,head_corp_id
+			,file_view_name
+			,file_id
+			,file_view_code
+			,sys_code
+			,file_view_active_count
+			,file_view_storage_count
+			,user_id
+			,create_oper
+			,create_time
+			,last_modify_oper
+			,last_modify_time
+			,file_view_state
+		)
+		VALUES (
+		#{id,jdbcType=BIGINT}
+			,#{headCorpId,jdbcType=BIGINT}
+			,#{name,jdbcType=VARCHAR}
+			,#{fileId,jdbcType=BIGINT}
+			,#{code,jdbcType=VARCHAR}
+			,#{sysCode,jdbcType=VARCHAR}
+			,#{activeCount,jdbcType=BIGINT}
+			,#{storageCount,jdbcType=BIGINT}
+			,#{userId,jdbcType=VARCHAR}
+			,#{createOper,jdbcType=BIGINT}
+			,#{createTime,jdbcType=TIMESTAMP}
+			,#{lastModifyOper,jdbcType=BIGINT}
+			,#{lastModifyTime,jdbcType=TIMESTAMP}
+			,#{state,jdbcType=INTEGER}
+		)
+	</insert>
+
+	<!-- 修改 -->
+	<update id="updateByKey" parameterType="FileViewModel">
+		UPDATE
+		<include refid="table_name" />
+		<set>
+					<if test="name != null">
+						file_view_name = #{name,jdbcType=VARCHAR},
+					</if>
+					<if test="fileId != null">
+						file_id = #{fileId,jdbcType=BIGINT},
+					</if>
+					<if test="code != null">
+						file_view_code = #{code,jdbcType=VARCHAR},
+					</if>
+					<if test="sysCode != null">
+						sys_code = #{sysCode,jdbcType=VARCHAR},
+					</if>
+					<if test="activeCount != null">
+						file_view_active_count = #{activeCount,jdbcType=BIGINT},
+					</if>
+					<if test="storageCount != null">
+						file_view_storage_count = #{storageCount,jdbcType=BIGINT},
+					</if>
+					<if test="userId != null">
+						user_id = #{userId,jdbcType=VARCHAR},
+					</if>
+					<if test="createOper != null">
+						create_oper = #{createOper,jdbcType=BIGINT},
+					</if>
+					<if test="createTime != null">
+						create_time = #{createTime,jdbcType=TIMESTAMP},
+					</if>
+					<if test="lastModifyOper != null">
+						last_modify_oper = #{lastModifyOper,jdbcType=TIMESTAMP},
+					</if>
+					<if test="lastModifyTime != null">
+						last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+					</if>
+					<if test="state != null">
+						file_view_state = #{state,jdbcType=INTEGER},
+					</if>
+		</set>
+		where file_view_id = #{id,jdbcType=BIGINT}
+		AND
+		head_corp_id = #{headCorpId,jdbcType=BIGINT}
+	</update>
+
+	<!-- 带条件查询分页 -->
+	<select id="getListWithPage" parameterType="FileViewModel"
+		resultMap="base_result_map">
+		<include refid="selector" />
+		<include refid="query_where" />
+		<include refid="list_order" />
+		<include refid="list_limit" />
+	</select>
+
+	<!-- 带条件查询不分页 -->
+	<select id="getList" parameterType="FileViewModel"
+		resultMap="base_result_map">
+		<include refid="selector" />
+		<include refid="query_where" />
+		<include refid="list_order" />
+	</select>
+
+	<!-- 通过查询条件获取数据条数 -->
+	<select id="getListCount" parameterType="FileViewModel"
+		resultType="int">
+		SELECT COUNT(1) FROM
+		<include refid="table_name" />
+		<include refid="query_where" />
+	</select>
+	
+
+</mapper>

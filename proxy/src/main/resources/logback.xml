@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+
+    <appender name="STDOUT"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{36}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+    <logger name="cn.com.kxcomm.storage" level="DEBUG" />
+    <logger name="cn.com.kxcomm.storage.domain.proxy.ScheduledTasks" level="INFO" />
+
+    <!--<logger name="org.springframework" level="INFO">-->
+        <!--<appender-ref ref="STDOUT" />-->
+    <!--</logger>-->
+
+    <!--<logger name="io.netty.handler.logging" level="INFO">-->
+        <!--<appender-ref ref="STDOUT" />-->
+    <!--</logger>-->
+</configuration>

@@ -10,9 +10,9 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = false)
 @ToString
 public class CheckFileExistResponse extends Response {
-    private long fileViewCode;
+    private String fileViewCode;
 
-    CheckFileExistResponse(long fileViewCode, Request request) {
+    public CheckFileExistResponse(String fileViewCode, Request request) {
         super(request);
         this.fileViewCode = fileViewCode;
     }

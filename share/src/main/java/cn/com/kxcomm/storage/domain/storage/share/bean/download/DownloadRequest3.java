@@ -12,13 +12,9 @@ import lombok.ToString;
 @ToString
 public class DownloadRequest3 extends Request {
     private String path;
-    public DownloadRequest3(DownloadRequest2 downloadRequest2) {
-       super(downloadRequest2);
-       path = downloadRequest2.getPath();
-    }
 
-    public DownloadRequest3(String path, long headCorpId, long loginOperId, String sysCode) {
-        super(headCorpId, loginOperId, sysCode);
+    public DownloadRequest3(String path, Request request) {
+        super(request);
         this.path = path;
     }
 

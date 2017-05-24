@@ -9,6 +9,7 @@ import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadResponse
 import cn.com.kxcomm.storage.domain.storage.share.bean.storage.ListFileRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.storage.SpaceRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadRequest2;
+import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadRequest3;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadResponse2;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -38,8 +39,8 @@ public class StorageHandler extends ChannelInboundHandlerAdapter {
             CompletableFuture.supplyAsync(() -> {
                 Response response = new Response(new RuntimeException(String.format("no handle request:(%s) method exit ", request.toString())), request);
                 try {
-                    if(request instanceof UploadRequest2) {
-                        response = api.upload((UploadRequest2) request);
+                    if(request instanceof UploadRequest3) {
+                        response = api.upload((UploadRequest3) request);
                     } else if(request instanceof DownloadRequest3) {
                         response = api.download((DownloadRequest3) request);
                     } else if(request instanceof SpaceRequest) {

@@ -8,7 +8,7 @@ import lombok.ToString;
 
 @Getter
 @EqualsAndHashCode(callSuper = false)
-@ToString
+@ToString(callSuper = true)
 public class UploadResponse1 extends Response {
     private long fileViewCode;
 

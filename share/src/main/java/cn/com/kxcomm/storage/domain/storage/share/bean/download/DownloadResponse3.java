@@ -8,8 +8,6 @@ import lombok.ToString;
 
 
 @Getter
-@EqualsAndHashCode(callSuper = false)
-@ToString
 public class DownloadResponse3 extends Response {
     private byte[] data;
 
@@ -18,4 +16,11 @@ public class DownloadResponse3 extends Response {
         this.data = data;
     }
 
+    @Override
+    public String toString() {
+        return "DownloadResponse3{" +
+                "id=" + id +
+                ", throwable=" + throwable +
+                '}';
+    }
 }

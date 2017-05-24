@@ -13,9 +13,9 @@ import lombok.ToString;
 public class DownloadResponse2 extends Response {
     private byte[] data;
 
-    public DownloadResponse2( byte[] data, Request request) {
-        super(request);
-        this.data = data;
+    public DownloadResponse2(DownloadResponse3 downloadResponse3) {
+        super(downloadResponse3);
+        this.data = downloadResponse3.getData();
     }
 
     public DownloadResponse2(Throwable throwable, Request request) {

@@ -1,27 +1,26 @@
 package cn.com.kxcomm.storage.domain.storage;
 
-import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest2;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest3;
-import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadResponse2;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadResponse3;
 import cn.com.kxcomm.storage.domain.storage.share.bean.storage.ListFileRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.storage.ListFileResponse;
 import cn.com.kxcomm.storage.domain.storage.share.bean.storage.SpaceRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.storage.SpaceResponse;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadRequest2;
-import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadResponse2;
+import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadRequest3;
+import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadResponse3;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.util.DigestUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Component
 public class Api {
@@ -35,16 +34,15 @@ public class Api {
         this.storageConfig = storageConfig;
     }
 
-    public UploadResponse2 upload(UploadRequest2 request) throws IOException {
+    public UploadResponse3 upload(UploadRequest3 request) throws IOException {
         String fileName = request.getFileName();
         byte[] data = request.getData();
 
-        Long storageId = storageConfig.getFileStorageId();
         String path = fileAgent.writeByte(fileName, data);
         long size = data.length;
         String md5 = fileAgent.md5(data);
 
-        return new UploadResponse2(storageId, path, size, md5, request);
+        return new UploadResponse3(path, size, md5, request);
     }
 
     public DownloadResponse3 download(DownloadRequest3 request) throws IOException {

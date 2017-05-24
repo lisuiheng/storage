@@ -1,0 +1,1252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9026c1bc-b283-4373-a768-6c7a181866b3" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/common" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/common/resourse" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/common/resourse/file" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/common/resourse/file/impl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/src/test/java/cn/com/kxcomm/common" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/src/test/java/cn/com/kxcomm/common/resourse" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/src/test/java/cn/com/kxcomm/common/resourse/file" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/download" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/test/java/cn" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/test/java/cn/com" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/test/java/cn/com/kxcomm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/cn/com/kxcomm/storage/domain/database" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/cn/com/kxcomm/storage/domain/database/addr" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/cn/com/kxcomm/storage/domain/database/addr/dao" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/StorageManageSystemClient.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/common/resourse/file/Config.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/common/resourse/file/ConnectionListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/common/resourse/file/Constants.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/common/resourse/file/FileProvide.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/common/resourse/file/impl/FileImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/src/main/resources/logback.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/Request.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/Response.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/TransportRequest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/download/DownloadRequest1.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/download/DownloadRequest2.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/download/DownloadResponse1.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/download/DownloadResponse2.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload/CheckFileExistRequest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload/CheckFileExistResponse.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload/UploadRequest1.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload/UploadRequest2.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload/UploadResponse1.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload/UploadResponse2.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/proxy.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/test/file/client/Application.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../client/src/main/resources/application.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/Request.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/RequestAction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/Response.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/TransportRequest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/addr/FileAddrModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/addr/FileAddrQuery.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/addr/FileAddrVo.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/file/FileModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/file/FileQuery.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/file/FileVo.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/manager/FileManagerBean.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/server/FileServerModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/server/FileServerQuery.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/server/FileServerVo.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/storage/FileStoragePrositionModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/storage/FileStoragePrositionQuery.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/storage/FileStoragePrositionVo.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/view/FileViewModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/view/FileViewQuery.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/view/FileViewVo.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/download/DownloadRequest1.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/download/DownloadRequest2.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/download/DownloadResponse1.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/download/DownloadResponse2.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/upload/CheckFileExistRequest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/upload/CheckFileExistResponse.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/upload/UploadRequest1.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/upload/UploadRequest2.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/upload/UploadResponse1.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/upload/UploadResponse2.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/transport.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/test/file" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/test/file/client" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../client/src/test/java/cn/com/kxcomm/test" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../client/src/test/java/cn/com/kxcomm/test/file" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../client/src/test/java/cn/com/kxcomm/test/file/client" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/addr" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/file" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/manager" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/server" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/storage" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/bean/view" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/download" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/test/file/share/upload" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/cn/com/kxcomm/storage/domain/filenamenode/addr/dao" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/test/file/client/Api.java" afterPath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/common/resourse/file/Api.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/test/file/client/Client.java" afterPath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/common/resourse/file/Client.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/test/file/client/ClientHandler.java" afterPath="$PROJECT_DIR$/../client/src/main/java/cn/com/kxcomm/common/resourse/file/ClientHandler.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/src/test/java/cn/com/kxcomm/test/file/client/ApiTest.java" afterPath="$PROJECT_DIR$/../client/src/test/java/cn/com/kxcomm/common/resourse/file/ApiTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../client/src/test/java/cn/com/kxcomm/test/file/client/FileSystemClientTest.java" afterPath="$PROJECT_DIR$/../client/src/test/java/cn/com/kxcomm/common/resourse/file/FileSystemClientTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/cn/com/kxcomm/storage/domain/filenamenode/addr/dao/FileAddrDaoTest.java" afterPath="$PROJECT_DIR$/src/test/java/cn/com/kxcomm/storage/domain/database/addr/dao/FileAddrDaoTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/client.iml" afterPath="$PROJECT_DIR$/../client/client.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../client/pom.xml" afterPath="$PROJECT_DIR$/../client/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../share/pom.xml" afterPath="$PROJECT_DIR$/../share/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../share/share.iml" afterPath="$PROJECT_DIR$/../share/share.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../share/src/main/resources/logback.xml" afterPath="$PROJECT_DIR$/../share/src/main/resources/logback.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/com/kxcomm/test/file/transport/HexDumpProxyBackendHandler.java" afterPath="$PROJECT_DIR$/src/main/java/cn/com/kxcomm/test/file/transport/HexDumpProxyBackendHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/com/kxcomm/test/file/transport/HexDumpProxyFrontendHandler.java" afterPath="$PROJECT_DIR$/src/main/java/cn/com/kxcomm/test/file/transport/HexDumpProxyFrontendHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.yml" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mybatis_config.xml" afterPath="$PROJECT_DIR$/src/main/resources/mybatis_config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cn/com/kxcomm/test/file/transport/HexDumpProxyFrontendHandlerTest.java" afterPath="$PROJECT_DIR$/src/test/java/cn/com/kxcomm/test/file/transport/HexDumpProxyFrontendHandlerTest.java" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/../share/target/" />
+    <ignored path="$PROJECT_DIR$/../database-test/target/" />
+    <ignored path="$PROJECT_DIR$/../client/target/" />
+    <ignored path="$PROJECT_DIR$/../clienttest/target/" />
+    <ignored path="$PROJECT_DIR$/../service/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/../share/pom.xml" />
+        <option value="$PROJECT_DIR$/../database-test/pom.xml" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/file/FileQuery.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/view/FileViewModel.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/view/FileViewQuery.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/file/FileModel.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/server/FileServerModel.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/server/FileServerQuery.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/storage/FileStoragePrositionModel.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/storage/FileStoragePrositionQuery.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/addr/FileAddrModel.java" />
+        <option value="$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/addr/model/FileAddrModel.java" />
+        <option value="$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/addr/model/query/FileAddrQuery.java" />
+        <option value="$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/file/model/query/FileQuery.java" />
+        <option value="$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/file/model/FileModel.java" />
+        <option value="$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/server/model/FileServerModel.java" />
+        <option value="$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/server/model/query/FileServerQuery.java" />
+        <option value="$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/storage/model/FileStoragePrositionModel.java" />
+        <option value="$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/storage/model/query/FileStoragePrositionQuery.java" />
+        <option value="$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/view/model/FileViewModel.java" />
+        <option value="$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/view/model/FileViewQuery.java" />
+        <option value="$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/view/model/query/FileViewQuery.java" />
+        <option value="$PROJECT_DIR$/../service/src/test/java/cn/com/kxcomm/storage/domain/service/view/dao/FileViewDaoTest.java" />
+        <option value="$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/view/dao/FileViewDao.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/Response.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload/CheckFileExistRequest.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload/CheckFileExistResponse.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload/UploadRequest1.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/Request.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload/UploadResponse1.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload/UploadRequest2.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload/UploadResponse2.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/TransportRequest.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/download/DownloadRequest1.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/download/DownloadResponse2.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/download/DownloadRequest2.java" />
+        <option value="$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/download/DownloadResponse1.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="width" value="1680" />
+    <option name="height" value="1020" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="transport" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="transport" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="transport" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../service" />
+    <property name="settings.editor.selected.configurable" value="vcs.Subversion" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="cn.com.kxcomm.storage.domain.service.view.model.query" />
+      <recent name="cn.com.kxcomm.storage.domain.service.server" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/view" />
+      <recent name="$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/storage" />
+      <recent name="$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/server" />
+      <recent name="$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/file" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.FileViewDaoTest">
+    <configuration default="false" name="FileViewDaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="cn.com.kxcomm.storage.domain.service.view.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="service" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="cn.com.kxcomm.storage.domain.service.view.dao" />
+      <option name="MAIN_CLASS_NAME" value="cn.com.kxcomm.storage.domain.service.view.dao.FileViewDaoTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/usr/bin/flashplayerdebugger" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/usr/bin/flashplayerdebugger" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SCRATCH_FILE_ID" value="0" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="transport" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="JUnit.FileViewDaoTest" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.FileViewDaoTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>$USER_HOME$/.subversion</configuration>
+    <option name="sshUserName" value="lisuiheng" />
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$/../client" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$/../client" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$/../share" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$/../share" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$/../client" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$/../client" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$/../share" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$/../share" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9026c1bc-b283-4373-a768-6c7a181866b3" name="Default" comment="" />
+      <created>1495018148452</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1495018148452</updated>
+      <workItem from="1495018150852" duration="3217000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3217000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1680" height="1020" extended-state="6" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32960895" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35985312" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/kxcomm/test/file/transport/HexDumpProxyBackendHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="44" lean-forward="false" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="23" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/database.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/service.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../share/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/file/FileVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/addr/model/query/FileAddrQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="24" column="38" lean-forward="false" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/file/model/query/FileQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="24" column="34" lean-forward="false" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1495019385844" expanded="false" signature="536:563" ph="/unused/" />
+            <marker date="1495019385844" expanded="false" signature="821:833" ph="&lt;~&gt;" />
+            <marker date="1495019385844" expanded="false" signature="899:904" ph=" { " />
+            <marker date="1495019385844" expanded="false" signature="920:923" ph=" }" />
+            <marker date="1495019385844" expanded="false" signature="1155:1160" ph=" { " />
+            <marker date="1495019385844" expanded="false" signature="1176:1179" ph=" }" />
+            <marker date="1495019385844" expanded="false" signature="1253:1258" ph=" { " />
+            <marker date="1495019385844" expanded="false" signature="1283:1286" ph=" }" />
+            <marker date="1495019385844" expanded="false" signature="1343:1348" ph=" { " />
+            <marker date="1495019385844" expanded="false" signature="1362:1365" ph=" }" />
+            <marker date="1495019385844" expanded="false" signature="1566:1571" ph=" { " />
+            <marker date="1495019385844" expanded="false" signature="1585:1588" ph=" }" />
+            <marker date="1495019385844" expanded="false" signature="1659:1664" ph=" { " />
+            <marker date="1495019385844" expanded="false" signature="1685:1688" ph=" }" />
+            <marker date="1495019385844" expanded="false" signature="1768:1773" ph=" { " />
+            <marker date="1495019385844" expanded="false" signature="1792:1795" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/file/model/FileModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="35" lean-forward="false" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/addr/model/FileAddrModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/server/model/FileServerModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="25" lean-forward="true" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/server/model/query/FileServerQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="20" column="42" lean-forward="false" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#504#531#0" expanded="false" />
+            <element signature="e#870#882#0" expanded="false" />
+            <element signature="e#1085#1086#0" expanded="false" />
+            <element signature="e#1116#1117#0" expanded="false" />
+            <element signature="e#1405#1406#0" expanded="false" />
+            <element signature="e#1436#1437#0" expanded="false" />
+            <element signature="e#1524#1525#0" expanded="false" />
+            <element signature="e#1564#1565#0" expanded="false" />
+            <element signature="e#1635#1636#0" expanded="false" />
+            <element signature="e#1664#1665#0" expanded="false" />
+            <element signature="e#1910#1911#0" expanded="false" />
+            <element signature="e#1939#1940#0" expanded="false" />
+            <element signature="e#2024#2025#0" expanded="false" />
+            <element signature="e#2060#2061#0" expanded="false" />
+            <element signature="e#2154#2155#0" expanded="false" />
+            <element signature="e#2188#2189#0" expanded="false" />
+            <element signature="e#2303#2304#0" expanded="false" />
+            <element signature="e#2352#2353#0" expanded="false" />
+            <element signature="e#2675#2676#0" expanded="false" />
+            <element signature="e#2717#2718#0" expanded="false" />
+            <element signature="e#2842#2843#0" expanded="false" />
+            <element signature="e#2904#2905#0" expanded="false" />
+            <element signature="e#2982#2983#0" expanded="false" />
+            <element signature="e#3011#3012#0" expanded="false" />
+            <element signature="e#3100#3101#0" expanded="false" />
+            <element signature="e#3136#3137#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/storage/model/FileStoragePrositionModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/storage/model/query/FileStoragePrositionQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="35" lean-forward="false" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#545#572#0" expanded="false" />
+            <element signature="e#891#903#0" expanded="false" />
+            <element signature="e#1106#1107#0" expanded="false" />
+            <element signature="e#1137#1138#0" expanded="false" />
+            <element signature="e#1430#1431#0" expanded="false" />
+            <element signature="e#1461#1462#0" expanded="false" />
+            <element signature="e#1548#1549#0" expanded="false" />
+            <element signature="e#1588#1589#0" expanded="false" />
+            <element signature="e#1658#1659#0" expanded="false" />
+            <element signature="e#1687#1688#0" expanded="false" />
+            <element signature="e#1927#1928#0" expanded="false" />
+            <element signature="e#1956#1957#0" expanded="false" />
+            <element signature="e#2040#2041#0" expanded="false" />
+            <element signature="e#2076#2077#0" expanded="false" />
+            <element signature="e#2169#2170#0" expanded="false" />
+            <element signature="e#2203#2204#0" expanded="false" />
+            <element signature="e#2314#2315#0" expanded="false" />
+            <element signature="e#2363#2364#0" expanded="false" />
+            <element signature="e#2679#2680#0" expanded="false" />
+            <element signature="e#2721#2722#0" expanded="false" />
+            <element signature="e#2843#2844#0" expanded="false" />
+            <element signature="e#2905#2906#0" expanded="false" />
+            <element signature="e#2982#2983#0" expanded="false" />
+            <element signature="e#3011#3012#0" expanded="false" />
+            <element signature="e#3099#3100#0" expanded="false" />
+            <element signature="e#3135#3136#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/view/model/FileViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/view/model/query/FileViewQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="24" column="41" lean-forward="false" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+          <folding>
+            <marker date="1495019559334" expanded="false" signature="551:578" ph="/unused/" />
+            <marker date="1495019559334" expanded="false" signature="836:848" ph="&lt;~&gt;" />
+            <marker date="1495019559334" expanded="false" signature="914:919" ph=" { " />
+            <marker date="1495019559334" expanded="false" signature="935:938" ph=" }" />
+            <marker date="1495019559334" expanded="false" signature="1174:1179" ph=" { " />
+            <marker date="1495019559334" expanded="false" signature="1195:1198" ph=" }" />
+            <marker date="1495019559334" expanded="false" signature="1272:1277" ph=" { " />
+            <marker date="1495019559334" expanded="false" signature="1302:1305" ph=" }" />
+            <marker date="1495019559334" expanded="false" signature="1362:1367" ph=" { " />
+            <marker date="1495019559334" expanded="false" signature="1381:1384" ph=" }" />
+            <marker date="1495019559334" expanded="false" signature="1585:1590" ph=" { " />
+            <marker date="1495019559334" expanded="false" signature="1604:1607" ph=" }" />
+            <marker date="1495019559334" expanded="false" signature="1678:1683" ph=" { " />
+            <marker date="1495019559334" expanded="false" signature="1704:1707" ph=" }" />
+            <marker date="1495019559334" expanded="false" signature="1787:1792" ph=" { " />
+            <marker date="1495019559334" expanded="false" signature="1811:1814" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/src/main/resources/mybatis_config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="59" lean-forward="false" selection-start-line="17" selection-start-column="59" selection-end-line="17" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/src/test/java/cn/com/kxcomm/storage/domain/service/storage/service/FileStoragePrositionServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/src/test/java/cn/com/kxcomm/storage/domain/service/view/dao/FileViewDaoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="45" column="54" lean-forward="false" selection-start-line="45" selection-start-column="54" selection-end-line="45" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/view/dao/FileViewDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="27" column="48" lean-forward="false" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/src/test/java/cn/com/kxcomm/storage/domain/service/view/service/FileViewServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/Response.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload/CheckFileExistRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="9" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload/CheckFileExistResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="9" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#566#567#0" expanded="true" />
+            <element signature="e#601#602#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/Request.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="11" lean-forward="false" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload/UploadRequest1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="9" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload/UploadRequest2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="9" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload/UploadResponse1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="40" lean-forward="false" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#737#738#0" expanded="true" />
+            <element signature="e#772#773#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/download/DownloadRequest1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="46" lean-forward="false" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/download/DownloadResponse2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="9" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#384#385#0" expanded="true" />
+            <element signature="e#419#420#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/TransportRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/download/DownloadRequest2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="10" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/upload/UploadResponse2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="39" lean-forward="false" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+          <folding>
+            <element signature="e#441#442#0" expanded="true" />
+            <element signature="e#476#477#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../share/src/main/java/cn/com/kxcomm/storage/domain/share/bean/download/DownloadResponse1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="9" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/kxcomm/test/file/transport/HexDumpProxyFrontendHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="29" column="26" lean-forward="false" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../service/src/main/java/cn/com/kxcomm/storage/domain/service/server/dao/FileServerDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

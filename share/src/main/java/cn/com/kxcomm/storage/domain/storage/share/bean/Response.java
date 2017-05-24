@@ -17,6 +17,10 @@ public class Response implements Serializable {
         this.id = request.getId();
     }
 
+    public Response(Response response) {
+        this.id = response.getId();
+    }
+
     public Response(Throwable throwable, Request request ) {
         this.id = request.getId();
         this.throwable = throwable;

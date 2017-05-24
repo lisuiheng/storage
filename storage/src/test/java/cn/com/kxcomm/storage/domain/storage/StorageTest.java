@@ -2,6 +2,7 @@ package cn.com.kxcomm.storage.domain.storage;
 
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
+import cn.com.kxcomm.storage.domain.storage.share.bean.storage.ListFileResponse;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
@@ -16,7 +17,8 @@ import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.*;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Stream;
@@ -185,5 +187,68 @@ public class StorageTest {
         Path file = Paths.get("/home/lee/Downloads/hello/hello.txt");
         String substring = file.toString().substring(dir.toString().length() + 1, file.toString().length());
         log.info(substring);
+    }
+
+    @Test
+    public void substringFileName() {
+        String relativeName = "20170515/20170515110559484461.txt";
+        int lastIndexOf = relativeName.lastIndexOf("/");
+        String relativeDir = relativeName.substring(0, lastIndexOf);
+        String fileName = relativeName.substring(lastIndexOf, relativeName.length());
+        log.info("dir:{}, name:{}", relativeDir, relativeName);
+    }
+
+    @Test
+    public void listFiles() throws IOException, InterruptedException {
+        FileTime formTime = FileTime.fromMillis(0);
+
+        final ListFileResponse response = new ListFileResponse(new Request(1L,1L,""));
+        Path path = Paths.get("/home/lee/Downloads/file/20170509");
+
+        int subLength = "/home/lee/Downloads/file".length() + 1;
+
+        CompletableFuture.supplyAsync(() -> {
+            try {
+                Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
+                    @Override
+                    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                        FileTime lastModifiedTime = Files.getLastModifiedTime(file);
+                        //skip file time before formTime
+                        if(formTime.compareTo(lastModifiedTime) < 0) {
+                            String allName = file.toString();
+
+                            String relativeName = allName.substring(subLength, allName.length());
+
+                            byte[] data = Files.readAllBytes(file);
+                            String md5 = "";
+                            response.append(relativeName, data.length, md5, lastModifiedTime.toMillis());
+                        }
+                        return FileVisitResult.CONTINUE;
+                    }
+
+                    @Override
+                    public FileVisitResult visitFileFailed(Path file, IOException exc) {
+                        // Skip folders that can't be traversed
+                        log.warn("skipped: {}, ({})", file, exc);
+                        return FileVisitResult.CONTINUE;
+                    }
+
+                    @Override
+                    public FileVisitResult postVisitDirectory(Path dir, IOException exc) {
+                        // Ignore errors traversing a folder
+                        if (exc != null) {
+                            log.warn("had trouble traversing: {}, ({})", dir, exc);
+                        }
+                        return FileVisitResult.CONTINUE;
+                    }
+                });
+            } catch (IOException e) {
+                log.error(e.getMessage());
+            }
+//            Set<ListFileResponse.File> files = response.getFiles();
+//            System.out.println(files.size());
+            return null;
+        });
+        Thread.sleep(2000L);
     }
 }

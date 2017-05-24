@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.kxcomm.storage.domain.service.server.dao.FileServerDao">
+	<resultMap id="base_result_map"
+		type="FileServerModel">
+		<id column="server_id" property="id" jdbcType="BIGINT" />
+			<result column="head_corp_id" property="headCorpId" jdbcType="BIGINT" />
+			<result column="server_name" property="name" jdbcType="VARCHAR" />
+			<result column="area_id" property="areaId" jdbcType="BIGINT" />
+			<result column="area_code" property="areaCode" jdbcType="VARCHAR" />
+			<result column="engine_room_id" property="engineRoomId" jdbcType="BIGINT" />
+			<result column="engine_room_code" property="engineRoomCode" jdbcType="VARCHAR" />
+			<result column="cabinets_id" property="cabinetsId" jdbcType="BIGINT" />
+			<result column="cabinets_code" property="cabinetsCode" jdbcType="VARCHAR" />
+			<result column="server_ip" property="ip" jdbcType="VARCHAR" />
+			<result column="server_storage_total" property="storageTotal" jdbcType="BIGINT" />
+			<result column="server_storage_available" property="storageAvailable" jdbcType="BIGINT" />
+			<result column="server_storage_used" property="storageUsed" jdbcType="BIGINT" />
+			<result column="server_storage_file_count" property="storageFileCount" jdbcType="BIGINT" />
+			<result column="server_storage_file_count_uplimit" property="storageFileCountUplimit" jdbcType="BIGINT" />
+			<result column="server_storage_file_uplimit" property="storageFileUplimit" jdbcType="BIGINT" />
+			<result column="server_file_download_count" property="fileDownloadCount" jdbcType="BIGINT" />
+			<result column="server_file_download_size" property="fileDownloadSize" jdbcType="BIGINT" />
+			<result column="create_oper" property="createOper" jdbcType="BIGINT" />
+			<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+			<result column="last_modify_oper" property="lastModifyOper" jdbcType="BIGINT" />
+			<result column="last_modify_time" property="lastModifyTime" jdbcType="TIMESTAMP" />
+			<result column="server_state" property="state" jdbcType="INTEGER" />
+			<result column="show_order" property="showOrder" jdbcType="BIGINT" />
+			<result column="memo" property="memo" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 所有数据库的列名 -->
+	<sql id="base_column_list">
+		*
+	</sql>
+
+	<sql id="table_name">FILE_SERVER_LIST</sql>
+
+	<!-- 查询内容sql片段 -->
+	<sql id="selector">
+		SELECT
+		<if test="fields!=null">
+			${fields} 
+		</if>
+		<if test="fields==null">
+			<include refid="base_column_list"></include>
+		</if>
+		FROM
+		<include refid="table_name"></include>
+	</sql>
+
+	<!-- 查询片段 -->
+	<sql id="query_where">
+		<where>
+			<if test="id != null">
+				AND server_id = #{id}
+			</if>
+			<if test="headCorpId != null">
+				AND head_corp_id = #{headCorpId,jdbcType=BIGINT}
+			</if>
+			<if test="name != null">
+				AND server_name = #{name,jdbcType=VARCHAR}
+			</if>
+			<if test="areaId != null">
+				AND area_id = #{areaId,jdbcType=BIGINT}
+			</if>
+			<if test="areaCode != null">
+				AND area_code = #{areaCode,jdbcType=VARCHAR}
+			</if>
+			<if test="engineRoomId != null">
+				AND engine_room_id = #{engineRoomId,jdbcType=BIGINT}
+			</if>
+			<if test="engineRoomCode != null">
+				AND engine_room_code = #{engineRoomCode,jdbcType=VARCHAR}
+			</if>
+			<if test="cabinetsId != null">
+				AND cabinets_id = #{cabinetsId,jdbcType=BIGINT}
+			</if>
+			<if test="cabinetsCode != null">
+				AND cabinets_code = #{cabinetsCode,jdbcType=VARCHAR}
+			</if>
+			<if test="ip != null">
+				AND server_ip = #{ip,jdbcType=VARCHAR}
+			</if>
+			<if test="storageTotal != null">
+				AND server_storage_total = #{storageTotal,jdbcType=BIGINT}
+			</if>
+			<if test="storageAvailable != null">
+                 <if test="!isLessThanAvailable">
+    				AND server_storage_available = #{storageAvailable,jdbcType=BIGINT}
+                 </if>
+                 <if test="isLessThanAvailable">
+    				AND server_storage_available  &gt; #{storageAvailable,jdbcType=BIGINT}
+                 </if>
+			</if>
+			<if test="storageUsed != null">
+				AND server_storage_used = #{storageUsed,jdbcType=BIGINT}
+			</if>
+			<if test="storageFileCount != null">
+				AND server_storage_file_count = #{storageFileCount,jdbcType=BIGINT}
+			</if>
+			<if test="storageFileCountUplimit != null">
+			     <if test="!isLessThanFileCountUplimit">
+					AND server_storage_file_count_uplimit = #{storageFileCountUplimit,jdbcType=BIGINT}
+			     </if>
+			     <if test="isLessThanFileCountUplimit">
+					AND server_storage_file_count_uplimit &gt; #{storageFileCountUplimit,jdbcType=BIGINT}
+			     </if>
+			</if>
+			<if test="storageFileUplimit != null">
+				AND server_storage_file_uplimit = #{storageFileUplimit,jdbcType=BIGINT}
+			</if>
+			<if test="fileDownloadCount != null">
+				AND server_file_download_count = #{fileDownloadCount,jdbcType=BIGINT}
+			</if>
+			<if test="fileDownloadSize != null">
+				AND server_file_download_size = #{fileDownloadSize,jdbcType=BIGINT}
+			</if>
+			<if test="createOper != null">
+				AND create_oper = #{createOper,jdbcType=BIGINT}
+			</if>
+			<if test="createTime != null">
+				AND create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="lastModifyOper != null">
+				AND last_modify_oper = #{lastModifyOper,jdbcType=BIGINT}
+			</if>
+			<if test="lastModifyTime != null">
+				AND last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="state != null">
+				AND server_state = #{state,jdbcType=INTEGER}
+			</if>
+			<if test="state == null">
+				AND server_state NOT IN (0)
+			</if>
+			<if test="showOrder != null">
+				AND show_order = #{showOrder,jdbcType=BIGINT}
+			</if>
+			<if test="memo != null">
+				AND memo = #{memo,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</sql>
+
+	<!-- 分页sql片段 -->
+	<sql id="list_limit">
+		<if test="startRow != null">
+			LIMIT #{startRow},#{pageSize}
+		</if>
+	</sql>
+
+	<!-- 排序sql片段 -->
+	<sql id="list_order">
+		<if test="orderFields != null and orderFields.size >0">
+			ORDER BY
+			<foreach collection="orderFields" separator="," item="orderField">
+				${orderField.fieldName} ${orderField.order}
+			</foreach>
+		</if>
+		<if test="orderFields == null or orderFields.size == 0">
+			ORDER BY show_order ASC,create_time DESC
+		</if>
+	</sql>
+
+	<!-- 添加 -->
+	<insert id="add" parameterType="FileServerModel">
+		INSERT INTO
+		<include refid="table_name" />
+		(
+		server_id
+			,head_corp_id
+			,server_name
+			,area_id
+			,area_code
+			,engine_room_id
+			,engine_room_code
+			,cabinets_id
+			,cabinets_code
+			,server_ip
+			,server_storage_total
+			,server_storage_available
+			,server_storage_used
+			,server_storage_file_count
+			,server_storage_file_count_uplimit
+			,server_storage_file_uplimit
+			,server_file_download_count
+			,server_file_download_size
+			,create_oper
+			,create_time
+			,last_modify_oper
+			,last_modify_time
+			,server_state
+			,show_order
+			,memo
+		)
+		VALUES (
+		#{id,jdbcType=BIGINT}
+			,#{headCorpId,jdbcType=BIGINT}
+			,#{name,jdbcType=VARCHAR}
+			,#{areaId,jdbcType=BIGINT}
+			,#{areaCode,jdbcType=VARCHAR}
+			,#{engineRoomId,jdbcType=BIGINT}
+			,#{engineRoomCode,jdbcType=VARCHAR}
+			,#{cabinetsId,jdbcType=BIGINT}
+			,#{cabinetsCode,jdbcType=VARCHAR}
+			,#{ip,jdbcType=VARCHAR}
+			,#{storageTotal,jdbcType=BIGINT}
+			,#{storageAvailable,jdbcType=BIGINT}
+			,#{storageUsed,jdbcType=BIGINT}
+			,#{storageFileCount,jdbcType=BIGINT}
+			,#{storageFileCountUplimit,jdbcType=BIGINT}
+			,#{storageFileUplimit,jdbcType=BIGINT}
+			,#{fileDownloadCount,jdbcType=BIGINT}
+			,#{fileDownloadSize,jdbcType=BIGINT}
+			,#{createOper,jdbcType=BIGINT}
+			,#{createTime,jdbcType=TIMESTAMP}
+			,#{lastModifyOper,jdbcType=BIGINT}
+			,#{lastModifyTime,jdbcType=TIMESTAMP}
+			,#{state,jdbcType=INTEGER}
+			,#{showOrder,jdbcType=BIGINT}
+			,#{memo,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<!-- 修改 -->
+	<update id="updateByKey" parameterType="FileServerModel">
+		UPDATE
+		<include refid="table_name" />
+		<set>
+					<if test="name != null">
+						server_name = #{name,jdbcType=VARCHAR},
+					</if>
+					<if test="areaId != null">
+						area_id = #{areaId,jdbcType=BIGINT},
+					</if>
+					<if test="areaCode != null">
+						area_code = #{areaCode,jdbcType=VARCHAR},
+					</if>
+					<if test="engineRoomId != null">
+						engine_room_id = #{engineRoomId,jdbcType=BIGINT},
+					</if>
+					<if test="engineRoomCode != null">
+						engine_room_code = #{engineRoomCode,jdbcType=VARCHAR},
+					</if>
+					<if test="cabinetsId != null">
+						cabinets_id = #{cabinetsId,jdbcType=BIGINT},
+					</if>
+					<if test="cabinetsCode != null">
+						cabinets_code = #{cabinetsCode,jdbcType=VARCHAR},
+					</if>
+					<if test="ip != null">
+						server_ip = #{ip,jdbcType=VARCHAR},
+					</if>
+					<if test="storageTotal != null">
+						server_storage_total = #{storageTotal,jdbcType=BIGINT},
+					</if>
+					<if test="storageAvailable != null">
+						server_storage_available = #{storageAvailable,jdbcType=BIGINT},
+					</if>
+					<if test="storageUsed != null">
+						server_storage_used = #{storageUsed,jdbcType=BIGINT},
+					</if>
+					<if test="storageFileCount != null">
+						server_storage_file_count = #{storageFileCount,jdbcType=BIGINT},
+					</if>
+					<if test="storageFileCountUplimit != null">
+						server_storage_file_count_uplimit = #{storageFileCountUplimit,jdbcType=BIGINT},
+					</if>
+					<if test="storageFileUplimit != null">
+						server_storage_file_uplimit = #{storageFileUplimit,jdbcType=BIGINT},
+					</if>
+					<if test="fileDownloadCount != null">
+						server_file_download_count = #{fileDownloadCount,jdbcType=BIGINT},
+					</if>
+					<if test="fileDownloadSize != null">
+						server_file_download_size = #{fileDownloadSize,jdbcType=BIGINT},
+					</if>
+					<if test="createOper != null">
+						create_oper = #{createOper,jdbcType=BIGINT},
+					</if>
+					<if test="createTime != null">
+						create_time = #{createTime,jdbcType=TIMESTAMP},
+					</if>
+					<if test="lastModifyOper != null">
+						last_modify_oper = #{lastModifyOper,jdbcType=BIGINT},
+					</if>
+					<if test="lastModifyTime != null">
+						last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+					</if>
+					<if test="state != null">
+						server_state = #{state,jdbcType=INTEGER},
+					</if>
+					<if test="showOrder != null">
+						show_order = #{showOrder,jdbcType=BIGINT},
+					</if>
+					<if test="memo != null">
+						memo = #{memo,jdbcType=VARCHAR},
+					</if>
+		</set>
+		where server_id = #{id,jdbcType=BIGINT}
+		AND
+		head_corp_id = #{headCorpId,jdbcType=BIGINT}
+	</update>
+
+	
+
+	<!-- 通过主键查询 -->
+	<select id="getByKey" parameterType="map" resultMap="base_result_map">
+		SELECT
+		<include refid="base_column_list" />
+		FROM
+		<include refid="table_name" />
+		WHERE server_id = #{id,jdbcType=BIGINT}
+		AND
+		head_corp_id = #{headCorpId,jdbcType=BIGINT}
+	</select>
+
+	<!-- 通过主键集合查询 -->
+	<select id="getByKeys" parameterType="map" resultMap="base_result_map">
+		SELECT
+		<include refid="base_column_list" />
+		FROM
+		<include refid="table_name" />
+		WHERE server_id IN
+		<foreach collection="ids" item="i" open="(" close=")"
+			separator=",">
+			#{i}
+		</foreach>
+		AND
+		head_corp_id = #{headCorpId,jdbcType=BIGINT}
+	</select>
+
+	<!-- 带条件查询分页 -->
+	<select id="getListWithPage" parameterType="FileServerModel"
+		resultMap="base_result_map">
+		<include refid="selector" />
+		<include refid="query_where" />
+		<include refid="list_order" />
+		<include refid="list_limit" />
+	</select>
+
+	<!-- 带条件查询不分页 -->
+	<select id="getList" parameterType="FileServerModel"
+		resultMap="base_result_map">
+		<include refid="selector" />
+		<include refid="query_where" />
+		<include refid="list_order" />
+	</select>
+
+	<!-- 通过查询条件获取数据条数 -->
+	<select id="getListCount" parameterType="FileServerModel"
+		resultType="int">
+		SELECT COUNT(1) FROM
+		<include refid="table_name" />
+		<include refid="query_where" />
+	</select>
+
+</mapper>

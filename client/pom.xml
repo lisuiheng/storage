@@ -3,11 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>cn.com.kxcomm.storage</groupId>
     <artifactId>client</artifactId>
-    <packaging>pom</packaging>
     <version>002.00.00</version>
-    <name>client</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -40,14 +39,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>kxcomm</id>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <url>http://mavendev.kxcomm.com:8081/nexus/content/groups/kxcomm/</url>
-        </repository>
-    </repositories>
 </project>

@@ -9,10 +9,12 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = false)
 @ToString
 public class CheckFileExistRequest extends Request {
+    private String fileName;
     private String md5;
 
-    public CheckFileExistRequest(String md5, long headCorpId, long loginOperId, String sysCode) {
+    public CheckFileExistRequest(String fileName, String md5, long headCorpId, long loginOperId, String sysCode) {
         super(headCorpId, loginOperId, sysCode);
+        this.fileName = fileName;
         this.md5 = md5;
     }
 }

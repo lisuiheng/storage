@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="proxy" />
+        <module name="share" />
+        <module name="transport" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="client-test" target="1.7" />
+      <module name="database-test" target="1.8" />
+      <module name="proxy" target="1.8" />
+      <module name="service" target="1.8" />
+      <module name="share" target="1.8" />
+      <module name="StorageManageSystemClient" target="1.7" />
+      <module name="transport" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
