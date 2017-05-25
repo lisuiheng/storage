@@ -9,9 +9,8 @@ import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
-import static cn.com.kxcomm.storage.domain.storage.common.constants.Constants.SYSTEM_HEAD_CORP_ID;
+import static cn.com.kxcomm.storage.domain.storage.common.constants.ShareConstants.SYSTEM_HEAD_CORP_ID;
 
 @Component
 @Getter

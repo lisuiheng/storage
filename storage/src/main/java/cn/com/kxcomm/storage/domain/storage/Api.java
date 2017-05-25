@@ -1,5 +1,6 @@
 package cn.com.kxcomm.storage.domain.storage;
 
+import cn.com.kxcomm.storage.domain.storage.common.utils.MD5Util;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest3;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadResponse3;
 import cn.com.kxcomm.storage.domain.storage.share.bean.storage.ListFileRequest;
@@ -40,7 +41,7 @@ public class Api {
 
         String path = fileAgent.writeByte(fileName, data);
         long size = data.length;
-        String md5 = fileAgent.md5(data);
+        String md5 = MD5Util.md5(data);
 
         return new UploadResponse3(path, size, md5, request);
     }
@@ -78,7 +79,7 @@ public class Api {
                         String relativeName = allName.substring(subLength, allName.length());
 
                         byte[] data = Files.readAllBytes(file);
-                        String md5 = fileAgent.md5(data);
+                        String md5 = MD5Util.md5(data);
                         response.append(relativeName, data.length, md5, lastModifiedTime.toMillis());
                     }
                     return FileVisitResult.CONTINUE;

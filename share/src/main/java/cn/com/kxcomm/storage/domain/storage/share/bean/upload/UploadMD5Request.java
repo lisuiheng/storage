@@ -9,19 +9,19 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode(callSuper = false)
 @ToString(callSuper = true)
-public class UploadRequest1 extends Request {
+public class UploadMD5Request extends Request {
     private String fileName;
     private long storageCount;
-    private byte[] data;
+    private String md5;
 
-    public UploadRequest1(String fileName, byte[] data, long headCorpId, long loginOperId, String sysCode) {
-        this(fileName, data, ShareConstants.STORAGE_COUNT_DEFAULT, headCorpId, loginOperId, sysCode);
+    public UploadMD5Request(String fileName,String md5, long headCorpId, long loginOperId, String sysCode) {
+        this(fileName, md5, ShareConstants.STORAGE_COUNT_DEFAULT, headCorpId, loginOperId, sysCode);
     }
-    public UploadRequest1(String fileName, byte[] data,long storageCount,  long headCorpId, long loginOperId, String sysCode) {
+    public UploadMD5Request(String fileName,String md5, long storageCount, long headCorpId, long loginOperId, String sysCode) {
         super(headCorpId, loginOperId, sysCode);
         this.fileName = fileName;
+        this.md5 = md5;
         this.storageCount = storageCount;
-        this.data = data;
         this.sysCode = sysCode;
     }
 }

@@ -9,7 +9,7 @@ import lombok.ToString;
 
 @Getter
 @EqualsAndHashCode(callSuper = false)
-@ToString
+@ToString(exclude = "data", callSuper = true)
 public class DownloadResponse2 extends Response {
     private byte[] data;
 

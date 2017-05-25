@@ -7,7 +7,7 @@ import lombok.ToString;
 
 @Getter
 @EqualsAndHashCode(callSuper = false)
-@ToString
+@ToString(callSuper = true)
 public class DownloadRequest1 extends Request {
     private Long fileViewCode;
 

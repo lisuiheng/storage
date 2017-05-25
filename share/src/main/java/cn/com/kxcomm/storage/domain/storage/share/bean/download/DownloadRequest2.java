@@ -9,11 +9,11 @@ import lombok.ToString;
 
 @Getter
 @EqualsAndHashCode(callSuper = false)
-@ToString
+@ToString(callSuper = true)
 public class DownloadRequest2 extends Request {
     private long fileId;
     public DownloadRequest2(long fileId, DownloadRequest1 downloadRequest1) {
-       super(downloadRequest1.getHeadCorpId(), downloadRequest1.getLoginOperId(), downloadRequest1.getSysCode());
+       super(downloadRequest1);
         this.fileId = fileId;
     }
 

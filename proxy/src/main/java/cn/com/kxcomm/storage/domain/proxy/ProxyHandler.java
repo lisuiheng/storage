@@ -16,12 +16,12 @@ import java.util.concurrent.*;
 
 @Component
 @ChannelHandler.Sharable
-public class SelectHandler extends ChannelInboundHandlerAdapter {
-    private final Logger log = LoggerFactory.getLogger(SelectHandler.class);
+public class ProxyHandler extends ChannelInboundHandlerAdapter {
+    private final Logger log = LoggerFactory.getLogger(ProxyHandler.class);
 
     private final Api api;
 
-    public SelectHandler(Api api) {
+    public ProxyHandler(Api api) {
         this.api = api;
     }
 

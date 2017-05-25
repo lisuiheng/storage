@@ -98,9 +98,5 @@ public class FileAgent {
         return Files.readAllBytes(filePath);
     }
 
-    public String md5(byte[] data) {
-        return DigestUtils.md5DigestAsHex(data);
-    }
-
 
 }

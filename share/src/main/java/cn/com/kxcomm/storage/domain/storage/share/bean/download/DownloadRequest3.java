@@ -9,7 +9,7 @@ import lombok.ToString;
 
 @Getter
 @EqualsAndHashCode(callSuper = false)
-@ToString
+@ToString(callSuper = true)
 public class DownloadRequest3 extends Request {
     private String path;
 

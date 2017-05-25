@@ -48,6 +48,8 @@ public class ProxyTest {
         assertNull(uploadResponse2.getThrowable());
     }
 
+
+
     @Test
     public void download() throws StorageException {
         DownloadRequest2 downloadRequest2 = new DownloadRequest2(1, new DownloadRequest1(1, headCorpId, loginOperId, sysCode));

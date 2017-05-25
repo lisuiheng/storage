@@ -9,13 +9,15 @@ import lombok.ToString;
 
 @Getter
 @EqualsAndHashCode(callSuper = false)
-@ToString
+@ToString(exclude = "data", callSuper = true)
 public class DownloadResponse1 extends Response {
+    private String fileName;
     private byte[] data;
 
-    public DownloadResponse1(byte[] data, Request request) {
-        super(request);
-        this.data = data;
+    public DownloadResponse1(String fileName, DownloadResponse2 downloadResponse2) {
+        super(downloadResponse2);
+        this.fileName = fileName;
+        this.data = downloadResponse2.getData();
     }
 
 }

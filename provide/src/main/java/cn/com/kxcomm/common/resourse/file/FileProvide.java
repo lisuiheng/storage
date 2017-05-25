@@ -25,6 +25,10 @@ import java.nio.file.Path;
  */
 public interface FileProvide {
 
+    Long upload(File file, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
+
+    Long upload(Path path, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
+
     /**
      *
      * @method upload
@@ -47,6 +51,8 @@ public interface FileProvide {
      */
     Long upload(File file,Long storageCount, Long loginOperId, Long headCorpId, String platformCode, String platformKey,
                 String sysCode, String sysKey) throws IOException, StorageException;
+
+    Long upload(Path path, Long storageCount, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
 
     /**
      *

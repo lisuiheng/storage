@@ -1,5 +1,6 @@
 package cn.com.kxcomm.storage.domain.manager;
 
+import cn.com.kxcomm.storage.domain.service.addr.model.FileAddrModel;
 import cn.com.kxcomm.storage.domain.service.addr.service.FileAddrService;
 import cn.com.kxcomm.storage.domain.service.file.model.FileModel;
 import cn.com.kxcomm.storage.domain.service.file.service.FileService;
@@ -10,6 +11,8 @@ import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest1;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest2;
+import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadResponse1;
+import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadResponse2;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.*;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFutureListener;
@@ -55,6 +58,23 @@ public class Api {
         return new CheckFileExistResponse(fileViewCode, request);
     }
 
+    private UploadMD5Response handelUploadMD5Request(UploadMD5Request uploadMD5Request) {
+        String md5 = uploadMD5Request.getMd5();
+        Long headCorpId = uploadMD5Request.getHeadCorpId();
+        FileModel fileModel = fileService.getByMd5(md5, headCorpId);
+        if(fileModel == null) {
+            return new UploadMD5Response(uploadMD5Request);
+        }
+
+        Long fileId = fileModel.getId();
+        String fileName = uploadMD5Request.getFileName();
+        long storageCount = uploadMD5Request.getStorageCount();
+        Long loginOperId = uploadMD5Request.getLoginOperId();
+        String sysCode = uploadMD5Request.getSysCode();
+        FileViewModel fileViewModel = fileViewService.add(fileId, fileName, headCorpId, loginOperId, sysCode);
+        return new UploadMD5Response(Long.parseLong(fileViewModel.getCode()), uploadMD5Request);
+    }
+
     private UploadRequest2 handelUploadRequest(UploadRequest1 request1) {
         return  new UploadRequest2(request1);
     }
@@ -79,6 +99,15 @@ public class Api {
         return new DownloadRequest2(fileId, downloadRequest1);
     }
 
+    private DownloadResponse1 handelDownloadResponse(DownloadResponse2 downloadResponse2, DownloadRequest1 downloadRequest1) {
+        Long headCorpId = downloadRequest1.getHeadCorpId();
+        Long fileViewCode = downloadRequest1.getFileViewCode();
+        FileViewModel fileViewModel = fileViewService.getByViewCode(fileViewCode.toString(), headCorpId);
+        return new DownloadResponse1(fileViewModel.getName() ,downloadResponse2);
+    }
+
+
+
     void handel(Request request, Channel outboundChannel, Channel inboundChannel) {
         log.debug("handel Request {}", request);
         CompletableFuture.supplyAsync(() -> {
@@ -87,7 +116,9 @@ public class Api {
                 Request outboundRequest = null;
                 if(request instanceof CheckFileExistRequest) {
                     inboundResponse = checkFileExist((CheckFileExistRequest) request);
-                } else if(request instanceof UploadRequest1) {
+                }  else if(request instanceof  UploadMD5Request) {
+                    inboundResponse = handelUploadMD5Request((UploadMD5Request) request);
+                }   else if(request instanceof UploadRequest1) {
                     outboundRequest = handelUploadRequest((UploadRequest1) request);
                 } else if(request instanceof DownloadRequest1) {
                     outboundRequest = handelDownloadRequest((DownloadRequest1) request);
@@ -123,6 +154,8 @@ public class Api {
             if(response != null) {
                 if(response instanceof UploadResponse2) {
                     response = handelUploadResponse((UploadResponse2) response, (UploadRequest1) request);
+                } else if(response instanceof DownloadResponse2) {
+                    response = handelDownloadResponse((DownloadResponse2) response, (DownloadRequest1) request);
                 }
                 inboundChannel.writeAndFlush(response).addListener((ChannelFutureListener) future -> {
                     if (future.isSuccess()) {
@@ -138,4 +171,8 @@ public class Api {
             return null;
         });
     }
+
+
+
+
 }

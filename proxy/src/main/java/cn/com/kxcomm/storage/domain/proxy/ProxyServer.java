@@ -19,7 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.util.concurrent.CompletableFuture;
 
@@ -30,13 +29,13 @@ public class ProxyServer implements CommandLineRunner {
     private final ProxyConfig proxyConfig;
     private final ProxyClientManager proxyClientManager;
 
-    private final SelectHandler selectHandler;
+    private final ProxyHandler proxyHandler;
 
     @Autowired
-    public ProxyServer(ProxyConfig proxyConfig, FileServerService fileServer, ProxyClientManager proxyClientManager, SelectHandler selectHandler) {
+    public ProxyServer(ProxyConfig proxyConfig, FileServerService fileServer, ProxyClientManager proxyClientManager, ProxyHandler proxyHandler) {
         this.proxyConfig = proxyConfig;
         this.proxyClientManager = proxyClientManager;
-        this.selectHandler = selectHandler;
+        this.proxyHandler = proxyHandler;
     }
 
 
@@ -90,7 +89,7 @@ public class ProxyServer implements CommandLineRunner {
                             ch.pipeline().addLast(
                                     new ObjectEncoder(),
                                     new ObjectDecoder(1048576 * 101, ClassResolvers.cacheDisabled(null)),
-                                    selectHandler
+                                    proxyHandler
                             );
                         }
                     })

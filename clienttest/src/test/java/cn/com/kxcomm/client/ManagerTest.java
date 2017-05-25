@@ -2,6 +2,7 @@ package cn.com.kxcomm.client;
 
 import cn.com.kxcomm.storage.domain.client.ClientApi;
 import cn.com.kxcomm.storage.domain.client.common.StorageException;
+import cn.com.kxcomm.storage.domain.storage.common.utils.MD5Util;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest1;
@@ -58,9 +59,20 @@ public class ManagerTest {
     }
 
     @Test
+    public void uploadMD5() throws IOException, StorageException {
+        String fileName = "1.txt";
+        byte[] data = Files.readAllBytes(Paths.get("/home/lee/workspace/java/test/storage/clienttest/src/main/resources",fileName));
+        String md5 = MD5Util.md5(data);
+        UploadMD5Request uploadMD5Request = new UploadMD5Request(fileName, md5, headCorpId, loginOperId, sysCode);
+        UploadMD5Response uploadMD5Response = (UploadMD5Response) clientApi.send(uploadMD5Request);
+        assertNotNull(uploadMD5Request);
+    }
+
+    @Test
     public void download() throws StorageException {
         DownloadRequest1 downloadRequest1 = new DownloadRequest1(1, headCorpId, loginOperId, sysCode);
         DownloadResponse1 downloadResponse1 = (DownloadResponse1) clientApi.send(downloadRequest1);
         assertNotNull(downloadResponse1.getData());
+        assertNotNull(downloadResponse1.getFileName());
     }
 }
