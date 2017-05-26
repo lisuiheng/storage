@@ -12,4 +12,3 @@ spring:
         enabled: always
 mybatis:
   config-location: classpath:mybatis_config.xml
-
