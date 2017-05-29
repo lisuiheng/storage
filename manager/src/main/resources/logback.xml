@@ -15,7 +15,7 @@
         <appender-ref ref="STDOUT" />
     </root>
 
-    <logger name="cn.com.kxcomm.storage.domain" level="DEBUG" />
+    <logger name="cn.com.kxcomm.storage.domain.manager" level="DEBUG" />
 
     <!--<logger name="org.springframework" level="INFO">-->
         <!--<appender-ref ref="STDOUT" />-->

@@ -12,3 +12,10 @@ spring:
         enabled: always
 mybatis:
   config-location: classpath:mybatis_config.xml
+
+manager:
+  config:
+    port: 8005
+    proxy-start-port: 8200
+    proxyHost: localhost
+    proxyPort: 8006

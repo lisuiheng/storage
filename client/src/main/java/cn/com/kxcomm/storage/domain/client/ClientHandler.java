@@ -6,6 +6,8 @@ import io.netty.channel.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.concurrent.TimeUnit;
+
 @ChannelHandler.Sharable
 public class ClientHandler extends ChannelInboundHandlerAdapter {
     private final Logger log = LoggerFactory.getLogger(ClientHandler.class);
@@ -20,7 +22,7 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        log.debug("channelActive");
+
         this.channel = ctx.channel();
     }
 
@@ -37,14 +39,21 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) {
         ctx.flush();
+
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        final EventLoop eventLoop = ctx.channel().eventLoop();
         log.error("channelInactive");
+        log.debug("channelActive");
+        final EventLoop eventLoop = ctx.channel().eventLoop();
+        eventLoop.schedule(new Runnable() {
+            @Override
+            public void run() {
+                client.start();
+            }
+        }, 1L, TimeUnit.SECONDS);
         super.channelInactive(ctx);
-        ctx.channel().close();
     }
 
     @Override

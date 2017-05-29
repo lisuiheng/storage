@@ -8,6 +8,8 @@ import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest2
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest3;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadResponse2;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadResponse3;
+import cn.com.kxcomm.storage.domain.storage.share.bean.proxy.ConnectRequest;
+import cn.com.kxcomm.storage.domain.storage.share.bean.proxy.ConnectResponse;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadRequest2;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadRequest3;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadResponse2;
@@ -16,22 +18,26 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.net.InetSocketAddress;
+import java.net.SocketAddress;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Random;
 
 @Component
 public class Api {
     private final Logger log = LoggerFactory.getLogger(Api.class);
-    
-    private final ProxyClientManager proxyClientManager;
+
+    private final ConnectPool connectPool;
     private final FileAddrService fileAddrServicef;
 
     private final Random random = new Random();
     private final Object[] storageIds;
 
-    public Api(ProxyClientManager proxyClientManager, FileAddrService fileAddrServicef) {
+    public Api(ConnectPool connectPool, FileAddrService fileAddrServicef) {
         this.fileAddrServicef = fileAddrServicef;
-        this.proxyClientManager = proxyClientManager;
-        storageIds = proxyClientManager.getStorageLocalClientMap().keySet().toArray();
+        this.connectPool = connectPool;
+        storageIds = connectPool.getStorageLocalClientMap().keySet().toArray();
     }
 
     public UploadResponse2 upload(UploadRequest2 uploadRequest2) throws StorageException {
@@ -47,8 +53,19 @@ public class Api {
         return new DownloadResponse2(downloadResponse3);
     }
 
+    public ConnectResponse connect(ConnectRequest connectRequest) {
+        Collection<InetSocketAddress> localAddress = connectPool.getStorageLocalAddressMap().values();
+        int[] ports = new int[localAddress.size()];
+        Iterator<InetSocketAddress> iterator = localAddress.iterator();
+        for (int i = 0; iterator.hasNext(); i++) {
+            ports[i] = iterator.next().getPort();
+        }
+        return new ConnectResponse(ports, connectRequest);
+    }
+
+
     private ClientApi getClientApi(long storageId) {
-        return proxyClientManager.getStorageLocalClientMap().get(storageId);
+        return connectPool.getStorageLocalClientMap().get(storageId);
     }
 
     private Long getRandomStorageId() {

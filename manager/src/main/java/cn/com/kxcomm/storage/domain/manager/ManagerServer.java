@@ -1,5 +1,8 @@
 package cn.com.kxcomm.storage.domain.manager;
 
+import cn.com.kxcomm.storage.domain.client.ClientApi;
+import cn.com.kxcomm.storage.domain.storage.share.bean.proxy.ConnectRequest;
+import cn.com.kxcomm.storage.domain.storage.share.bean.proxy.ConnectResponse;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -12,68 +15,130 @@ import io.netty.handler.logging.LoggingHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
+
+import java.net.InetSocketAddress;
+import java.util.concurrent.CompletableFuture;
+
+import static cn.com.kxcomm.storage.domain.storage.common.constants.ShareConstants.SYSTEM_HEAD_CORP_ID;
+import static cn.com.kxcomm.storage.domain.storage.common.constants.ShareConstants.SYSTEM_LOGIN_OPER_ID;
+import static cn.com.kxcomm.storage.domain.storage.common.constants.ShareConstants.SYSTEM_SYSCODE;
 
 @Component
 @ChannelHandler.Sharable
-@PropertySource(value = "classpath:manager.properties")
 public final class ManagerServer implements CommandLineRunner {
     private final Logger log = LoggerFactory.getLogger(ManagerServer.class);
 
-    private final FrontendHandler frontendHandler;
+    private final ClientApi clientApi;
+    private final ConnectPool connectPool;
+    private final ManFrontendHandler manFrontendHandler;
+    private final ManagerConfig managerConfig;
 
-    @Value("${local.port}")
-    private int localPort;
-    @Value("${remote.host}")
-    private String remoteHost;
-    @Value("${remote.port}")
-    private int remotePort;
+
 
     @Autowired
-    public ManagerServer(FrontendHandler frontendHandler) {
-        this.frontendHandler = frontendHandler;
+    public ManagerServer(ClientApi clientApi, ConnectPool connectPool, ManFrontendHandler manFrontendHandler, ManagerConfig managerConfig) {
+        this.clientApi = clientApi;
+        this.connectPool = connectPool;
+        this.manFrontendHandler = manFrontendHandler;
+        this.managerConfig = managerConfig;
     }
 
 
     @Override
     public void run(String... strings) throws Exception {
-//        CompletableFuture.supplyAsync(() -> {
-            log.info("Proxying *:" + localPort + " to " + remoteHost + ':' + remotePort + " ...");
-            // Configure the bootstrap.
-            EventLoopGroup bossGroup = new NioEventLoopGroup(1);
-            EventLoopGroup workerGroup = new NioEventLoopGroup();
-            try {
+
+        ConnectRequest connectRequest = new ConnectRequest(SYSTEM_HEAD_CORP_ID, SYSTEM_LOGIN_OPER_ID, SYSTEM_SYSCODE);
+        ConnectResponse connectResponse = (ConnectResponse) clientApi.send(connectRequest);
+        int[] ports = connectResponse.getPorts();
+
+        // Configure the bootstrap.
+        EventLoopGroup bossGroup = new NioEventLoopGroup(1);
+        EventLoopGroup workerGroup = new NioEventLoopGroup();
+        int proxyStartPort = managerConfig.getProxyStartPort();
+        for (int proxyPort : ports) {
+            int managerPort = proxyStartPort++;
+            final InetSocketAddress localhostAddress = new InetSocketAddress("localhost", managerPort);
+            final InetSocketAddress remoteAdress = new InetSocketAddress(managerConfig.getProxyHost(), proxyPort);
+            connectPool.putManagerProxyPort(managerPort, proxyPort);
+
+            CompletableFuture.supplyAsync(() -> {
                 ServerBootstrap b = new ServerBootstrap();
-                b.group(bossGroup, workerGroup)
-                        .channel(NioServerSocketChannel.class)
-                          .handler(new LoggingHandler(LogLevel.INFO))
-//                        .childHandler(new HexDumpProxyInitializer(REMOTE_HOST, REMOTE_PORT))
-                          .childHandler(new ChannelInitializer() {
-                              @Override
-                              protected void initChannel(Channel ch) throws Exception {
-                                  ch.pipeline().addLast(
+                try {
+                    b.group(bossGroup, workerGroup)
+                            .channel(NioServerSocketChannel.class)
+                            .handler(new LoggingHandler(LogLevel.INFO))
+                            .childHandler(new ChannelInitializer() {
+                                @Override
+                                protected void initChannel(Channel ch) throws Exception {
+                                    ch.pipeline().addLast(
+                                            new ObjectEncoder(),
+                                            new ObjectDecoder(1048576 * 101, ClassResolvers.cacheDisabled(null)),
+                                            new FrontendHandler(remoteAdress)
+                                    );
+                                }
+                            })
+                            .childOption(ChannelOption.AUTO_READ, false)
+                            .bind(localhostAddress).sync().channel().closeFuture().sync();
+                    log.info("listen {} for {}", localhostAddress, remoteAdress);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                return null;
+            }).exceptionally(throwable -> {
+                log.error(throwable.getMessage());
+                return null;
+            });
+
+        }
+
+
+        try {
+            ServerBootstrap b = new ServerBootstrap();
+            b.group(bossGroup, workerGroup)
+                    .channel(NioServerSocketChannel.class)
+                    .handler(new LoggingHandler(LogLevel.INFO))
+                    .childHandler(new ChannelInitializer() {
+                        @Override
+                        protected void initChannel(Channel ch) throws Exception {
+                            ch.pipeline().addLast(
                                     new ObjectEncoder(),
                                     new ObjectDecoder(1048576 * 100, ClassResolvers.cacheDisabled(null)),
-                                    frontendHandler);
-                              }
-                          })
-                        .childOption(ChannelOption.AUTO_READ, false)
-                        .bind(localPort).sync().channel().closeFuture().sync();
-            } catch (Exception e) {
-                throw new RuntimeException(e.getMessage());
-            }
-            finally {
-                bossGroup.shutdownGracefully();
-                workerGroup.shutdownGracefully();
-            }
-//            return null;
-//        }).exceptionally(e -> {
-//            log.error(e.getMessage());
-//            return null;
-//        });
+                                    manFrontendHandler);
+                        }
+                    })
+                    .childOption(ChannelOption.AUTO_READ, false)
+                    .bind(managerConfig.getPort()).sync().channel().closeFuture().sync();
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+        finally {
+            bossGroup.shutdownGracefully();
+            workerGroup.shutdownGracefully();
+        }
+
+//            try {
+//                ServerBootstrap b = new ServerBootstrap();
+//                b.group(bossGroup, workerGroup)
+//                        .channel(NioServerSocketChannel.class)
+////                          .handler(new LoggingHandler(LogLevel.INFO))
+//                          .childHandler(new ChannelInitializer() {
+//                              @Override
+//                              protected void initChannel(Channel ch) throws Exception {
+//                                  ch.pipeline().addLast(
+//                                      new FrontendHandler(new InetSocketAddress("localhost", 8006)));
+//                              }
+//                          })
+//                        .childOption(ChannelOption.AUTO_READ, false)
+//                        .bind(localPort).sync().channel().closeFuture().sync();
+//            } catch (Exception e) {
+//                throw new RuntimeException(e.getMessage());
+//            }
+//            finally {
+//                bossGroup.shutdownGracefully();
+//                workerGroup.shutdownGracefully();
+//            }
 
     }
 }

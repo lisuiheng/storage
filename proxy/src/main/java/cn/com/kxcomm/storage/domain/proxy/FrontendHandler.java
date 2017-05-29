@@ -39,7 +39,7 @@ public class FrontendHandler extends ChannelInboundHandlerAdapter {
                         ChannelPipeline p = ch.pipeline();
                         p.addLast(
                                 new ObjectEncoder(),
-                                new ObjectDecoder(ClassResolvers.cacheDisabled(null)),
+                                new ObjectDecoder(1048576 * 101, ClassResolvers.cacheDisabled(null)),
                                 new BackendHandler(inboundChannel));
                     }
                 })

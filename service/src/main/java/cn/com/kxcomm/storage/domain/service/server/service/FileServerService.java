@@ -30,11 +30,11 @@ public class FileServerService {
         return getAdressMap(heaCorpId).keySet();
     }
 
-    public Map<Long, SocketAddress> getStorageAddressMap(long headCorpId) {
+    public Map<Long, InetSocketAddress> getStorageAddressMap(long headCorpId) {
         FileServerQuery fileServerQuery = new FileServerQuery();
         List<FileServerModel> fileServerModels = getList(fileServerQuery, headCorpId);
 
-        Map<Long, SocketAddress>  storageAddressMap = new HashMap<>();
+        Map<Long, InetSocketAddress>  storageAddressMap = new HashMap<>();
         fileServerModels.forEach((server) -> {
             FileStoragePrositionQuery storagePrositionQuery = new FileStoragePrositionQuery();
             storagePrositionQuery.setServerId(server.getId());

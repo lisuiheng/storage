@@ -10,6 +10,8 @@ import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadResponse
 import cn.com.kxcomm.storage.domain.storage.share.bean.storage.SpaceRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.*;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -20,6 +22,8 @@ import java.nio.file.Paths;
 import static org.junit.Assert.*;
 
 public class StorageTest {
+    private final Logger log = LoggerFactory.getLogger(StorageTest.class);
+
     private final String dir = "/home/lee/workspace/java/test/storage/clienttest/src/main/resources";
     private final String name = "1.txt";
     private long headCorpId = 1L;
@@ -27,8 +31,27 @@ public class StorageTest {
     protected String sysCode = "coms";
 
 
-    private ClientApi clientApi = new ClientApi(new InetSocketAddress("172.16.103.200", 8007));
+    private ClientApi clientApi = new ClientApi(new InetSocketAddress("127.0.0.1", 8200));
 
+    @Test
+    public void speed() throws IOException, StorageException, InterruptedException {
+        //zero 164
+        //5M 673
+        Path filePath = Paths.get(dir, name);
+        byte[] data = Files.readAllBytes(filePath);
+        UploadRequest3 uploadRequest3 = new UploadRequest3(new UploadRequest2(new UploadRequest1(name, data, headCorpId, loginOperId, sysCode)));
+        for (int i = 0; i < 10; i++) {
+            long start = System.currentTimeMillis();
+            clientApi.send(uploadRequest3);
+            long end = System.currentTimeMillis();
+            log.debug("time cost {}", end - start);
+            Thread.sleep(   5 *1000);
+        }
+
+
+
+
+    }
 
     @Test
     public void upadload() throws IOException, StorageException {
@@ -36,7 +59,6 @@ public class StorageTest {
         byte[] data = Files.readAllBytes(filePath);
         UploadRequest3 uploadRequest3 = new UploadRequest3(new UploadRequest2(new UploadRequest1(name, data, headCorpId, loginOperId, sysCode)));
         UploadResponse3 uploadResponse3 = null;
-        uploadResponse3 = (UploadResponse3) clientApi.send(uploadRequest3);
         uploadResponse3 = (UploadResponse3) clientApi.send(uploadRequest3);
         String md5 = uploadResponse3.getMd5();
         String path = uploadResponse3.getRelativePath();

@@ -1,6 +1,7 @@
 package cn.com.kxcomm.storage.domain.proxy;
 
 import cn.com.kxcomm.storage.domain.service.server.service.FileServerService;
+
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
@@ -19,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.util.concurrent.CompletableFuture;
 
@@ -27,14 +29,14 @@ public class ProxyServer implements CommandLineRunner {
     private final Logger log = LoggerFactory.getLogger(ProxyServer.class);
 
     private final ProxyConfig proxyConfig;
-    private final ProxyClientManager proxyClientManager;
+    private final ConnectPool connectPool;
 
     private final ProxyHandler proxyHandler;
 
     @Autowired
-    public ProxyServer(ProxyConfig proxyConfig, FileServerService fileServer, ProxyClientManager proxyClientManager, ProxyHandler proxyHandler) {
+    public ProxyServer(ProxyConfig proxyConfig, FileServerService fileServer, ConnectPool connectPool, ProxyHandler proxyHandler) {
         this.proxyConfig = proxyConfig;
-        this.proxyClientManager = proxyClientManager;
+        this.connectPool = connectPool;
         this.proxyHandler = proxyHandler;
     }
 
@@ -45,9 +47,9 @@ public class ProxyServer implements CommandLineRunner {
         EventLoopGroup bossGroup = new NioEventLoopGroup(2);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
-        proxyClientManager.getStorageRemoteAddressMap().forEach((storageId, remoteAdress) -> {
+        connectPool.getStorageRemoteAddressMap().forEach((storageId, remoteAdress) -> {
             CompletableFuture.supplyAsync(() -> {
-                SocketAddress localhostAddress = proxyClientManager.getStorageLocalAddressMap().get(storageId);
+                SocketAddress localhostAddress = connectPool.getStorageLocalAddressMap().get(storageId);
                 ServerBootstrap b = new ServerBootstrap();
                 try {
                     b.group(bossGroup, workerGroup)
@@ -98,6 +100,31 @@ public class ProxyServer implements CommandLineRunner {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }
+//
+//        // Configure the bootstrap.
+//        EventLoopGroup bossGroup = new NioEventLoopGroup(1);
+//        EventLoopGroup workerGroup = new NioEventLoopGroup();
+//        try {
+//            ServerBootstrap b = new ServerBootstrap();
+//            b.group(bossGroup, workerGroup)
+//                    .channel(NioServerSocketChannel.class)
+////                    .handler(new LoggingHandler(LogLevel.INFO))
+//                    .childHandler(new ChannelInitializer() {
+//                        @Override
+//                        protected void initChannel(Channel ch) throws Exception {
+//                            ch.pipeline().addLast(
+//                                    new FrontendHandler(new InetSocketAddress("localhost", 8007)));
+//                        }
+//                    })
+//                    .childOption(ChannelOption.AUTO_READ, false)
+//                    .bind(8006).sync().channel().closeFuture().sync();
+//        } catch (Exception e) {
+//            throw new RuntimeException(e.getMessage());
+//        }
+//        finally {
+//            bossGroup.shutdownGracefully();
+//            workerGroup.shutdownGracefully();
+//        }
     }
 
 

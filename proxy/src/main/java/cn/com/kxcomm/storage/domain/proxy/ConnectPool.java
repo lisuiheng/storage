@@ -14,17 +14,17 @@ import static cn.com.kxcomm.storage.domain.storage.common.constants.ShareConstan
 
 @Component
 @Getter
-public class ProxyClientManager {
+public class ConnectPool {
 
-    private final Map<Long ,SocketAddress> storageRemoteAddressMap;
-    private final Map<Long, SocketAddress> storageLocalAddressMap = new HashMap<>();
+    private final Map<Long ,InetSocketAddress> storageRemoteAddressMap;
+    private final Map<Long, InetSocketAddress> storageLocalAddressMap = new HashMap<>();
     private final Map<Long, ClientApi> storageLocalClientMap = new HashMap<>();
 
 
 
     private final ProxyConfig proxyConfig;
 
-    public ProxyClientManager(FileServerService fileServer, ProxyConfig proxyConfig) {
+    public ConnectPool(FileServerService fileServer, ProxyConfig proxyConfig) {
         this.proxyConfig = proxyConfig;
         final int[] proxyStartPort = {this.proxyConfig.getProxyStartPort()};
         storageRemoteAddressMap = fileServer.getStorageAddressMap(SYSTEM_HEAD_CORP_ID);

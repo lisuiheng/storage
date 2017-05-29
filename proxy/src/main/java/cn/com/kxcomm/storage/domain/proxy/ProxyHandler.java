@@ -4,6 +4,7 @@ import cn.com.kxcomm.storage.domain.client.common.StorageException;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest2;
+import cn.com.kxcomm.storage.domain.storage.share.bean.proxy.ConnectRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadRequest2;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -38,6 +39,8 @@ public class ProxyHandler extends ChannelInboundHandlerAdapter {
                         response = api.upload((UploadRequest2) request);
                     } else if(request instanceof DownloadRequest2) {
                         response = api.download((DownloadRequest2) request);
+                    } else if(request instanceof ConnectRequest) {
+                        response = api.connect((ConnectRequest) request);
                     }
                     ctx.writeAndFlush(response);
                 } catch (StorageException e) {

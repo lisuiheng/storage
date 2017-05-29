@@ -1,6 +1,5 @@
 package cn.com.kxcomm.storage.domain.manager;
 
-import cn.com.kxcomm.storage.domain.service.addr.model.FileAddrModel;
 import cn.com.kxcomm.storage.domain.service.addr.service.FileAddrService;
 import cn.com.kxcomm.storage.domain.service.file.model.FileModel;
 import cn.com.kxcomm.storage.domain.service.file.service.FileService;
@@ -27,14 +26,14 @@ import java.util.concurrent.CompletableFuture;
 public class Api {
     private final Logger log = LoggerFactory.getLogger(Api.class);
 
-    private final BackendHandler backendHandler;
+    private final ManBackendHandler manBackendHandler;
     private final FileAddrService fileAddrService;
     private final FileServerService fileServerService;
     private final FileViewService fileViewService;
     private final FileService fileService;
 
-    public Api(BackendHandler backendHandler, FileAddrService fileAddrService, FileServerService fileServerService, FileViewService fileViewService, FileService fileService) {
-        this.backendHandler = backendHandler;
+    public Api(ManBackendHandler manBackendHandler, FileAddrService fileAddrService, FileServerService fileServerService, FileViewService fileViewService, FileService fileService) {
+        this.manBackendHandler = manBackendHandler;
         this.fileAddrService = fileAddrService;
         this.fileServerService = fileServerService;
         this.fileViewService = fileViewService;
@@ -145,7 +144,7 @@ public class Api {
                             future.channel().close();
                         }
                     });
-                    return backendHandler.getResponse(request);
+                    return manBackendHandler.getResponse(request);
                 }
             }
             return null;

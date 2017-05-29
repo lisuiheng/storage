@@ -8,6 +8,8 @@ import cn.com.kxcomm.storage.domain.storage.share.bean.TransportRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest1;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest2;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadResponse2;
+import cn.com.kxcomm.storage.domain.storage.share.bean.proxy.ConnectRequest;
+import cn.com.kxcomm.storage.domain.storage.share.bean.proxy.ConnectResponse;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.*;
 import org.junit.Test;
 
@@ -48,12 +50,17 @@ public class ProxyTest {
         assertNull(uploadResponse2.getThrowable());
     }
 
-
-
     @Test
     public void download() throws StorageException {
         DownloadRequest2 downloadRequest2 = new DownloadRequest2(1, new DownloadRequest1(1, headCorpId, loginOperId, sysCode));
         DownloadResponse2 downloadResponse2 = (DownloadResponse2) clientApi.send(downloadRequest2);
         assertNotNull(downloadResponse2.getData());
+    }
+
+    @Test
+    public void connect() throws StorageException {
+        ConnectRequest connectRequest = new ConnectRequest(headCorpId, loginOperId, sysCode);
+        ConnectResponse connectResponse = (ConnectResponse) clientApi.send(connectRequest);
+        assertNotNull(connectResponse.getPorts());
     }
 }
