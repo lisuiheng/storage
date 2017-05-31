@@ -63,6 +63,8 @@ public interface FileProvide {
 
     Long uploadAsync(Path path, Long storageCount, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
 
+    Long uploadByMD5(String fileName, String md5, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws StorageException;
+
     /**
      *
      * @method downLoad

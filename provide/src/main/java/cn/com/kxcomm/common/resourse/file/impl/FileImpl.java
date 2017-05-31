@@ -104,6 +104,13 @@ public class FileImpl implements FileProvide {
         return fileViewCode;
     }
 
+    @Override
+    public Long uploadByMD5(String fileName, String md5, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws StorageException {
+        UploadMD5Request uploadMD5Request = new UploadMD5Request(fileName, md5, headCorpId, loginOperId, sysCode);
+        UploadMD5Response uploadMD5Response = (UploadMD5Response) managerClient.send(uploadMD5Request);
+        return uploadMD5Response.getFileViewCode();
+    }
+
     private void uploadFile(String fileName, String md5, byte[] data, long fileViewCode, Long storageCount, Long loginOperId, Long headCorpId, String sysCode) throws IOException, StorageException {
         PreUploadRequest1 preUploadRequest1 = new PreUploadRequest1(data.length, headCorpId, loginOperId, sysCode);
         PreUploadResponse1 preUploadResponse1 = (PreUploadResponse1) managerClient.send(preUploadRequest1);

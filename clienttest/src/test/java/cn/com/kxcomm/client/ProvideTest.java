@@ -30,6 +30,13 @@ public class ProvideTest {
     private FileProvide fileProvide = new FileImpl();
 
     @Test
+    public void uploadByMD5() throws StorageException {
+        String md5 = "289f6f6ed90914b7a8ee43ba9ebc7f9d";
+        String fileName = "3.txt";
+        fileProvide.uploadByMD5(fileName, md5, loginOperId, headCorpId, platformCode, platformKey, sysCode, sysKey);
+    }
+
+    @Test
     public void uploadDownload() throws IOException, StorageException {
         File file = new File(dir, name);
         Long fileViewCode = fileProvide.upload(file, loginOperId, headCorpId, platformCode, platformKey, sysCode, sysKey);

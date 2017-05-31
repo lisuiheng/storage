@@ -45,23 +45,6 @@ public class Api {
         this.connectPool = connectPool;
     }
 
-
-//    private CheckFileExistResponse checkFileExist(CheckFileExistRequest request) {
-//        String md5 = request.getMd5();
-//        String fileName = request.getFileName();
-//        Long headCorpId = request.getHeadCorpId();
-//        Long loginOperId = request.getLoginOperId();
-//        String sysCode = request.getSysCode();
-//
-//        FileModel fileModel = fileService.getByMd5(md5, headCorpId);
-//        String fileViewCode = null;
-//        if(fileModel != null) {
-//            FileViewModel fileViewModel = fileViewService.add(fileModel.getId(), fileName, headCorpId, loginOperId, sysCode);
-//            fileViewCode = fileViewModel.getCode();
-//        }
-//        return new CheckFileExistResponse(fileViewCode, request);
-//    }
-
     private UploadMD5Response handelUploadMD5Request(UploadMD5Request uploadMD5Request) {
         String md5 = uploadMD5Request.getMd5();
         Long headCorpId = uploadMD5Request.getHeadCorpId();
