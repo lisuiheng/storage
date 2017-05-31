@@ -12,6 +12,8 @@ import cn.com.kxcomm.storage.domain.service.view.service.FileViewService;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.*;
+import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveRequest;
+import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveResponse;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.*;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFutureListener;
@@ -145,7 +147,13 @@ public class Api {
         return new DownloadResponse1(fileViewModel.getName() ,downloadResponse2);
     }
 
-
+    private RemoveResponse handelRemove(RemoveRequest removeRequest) {
+        long fileViewCode = removeRequest.getFileViewCode();
+        Long headCorpId = removeRequest.getHeadCorpId();
+        Long loginOperId = removeRequest.getLoginOperId();
+        fileViewService.delete(fileViewCode, headCorpId, loginOperId);
+        return new RemoveResponse(removeRequest);
+    }
 
     void handel(Request request, Channel outboundChannel, Channel inboundChannel) {
         log.debug("handel Request {}", request);
@@ -165,6 +173,8 @@ public class Api {
                     outboundRequest = handelPreUploadRequest((PreUploadRequest1) request);
                 } else if(request instanceof PreDownloadRequest1) {
                     outboundRequest = handelPreDownloadRequest((PreDownloadRequest1) request);
+                } else if(request instanceof RemoveRequest) {
+                    inboundResponse = handelRemove((RemoveRequest) request);
                 }
                 else {
                     outboundRequest = request;

@@ -108,4 +108,8 @@ public interface FileProvide {
      * @version 002.00.00
      */
     void downLoad(Long fileCode, Path targetPath, Long headCorpId, Long loginOperId, String platformCode, String platformKey, String sysCode, String sysKey) throws StorageException, IOException;
+
+    void deleteFileByCode(Long fileViewCode, Long loginOperId, Long headCorpId,
+                             String platformCode, String platformKey, String sysCode,
+                             String sysKey) throws StorageException;
 }

@@ -6,6 +6,7 @@ import cn.com.kxcomm.storage.domain.storage.common.utils.MD5Util;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.*;
+import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.*;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -124,5 +125,6 @@ public class ManagerTest {
         DownloadResponse3 downloadResponse3 = (DownloadResponse3) storageClient.send(downloadRequest3);
         assertNotNull(downloadResponse3.getData());
     }
+
 
 }

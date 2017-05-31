@@ -7,7 +7,9 @@ import cn.com.kxcomm.storage.domain.client.common.StorageException;
 import cn.com.kxcomm.storage.domain.storage.common.constants.ShareConstants;
 import cn.com.kxcomm.storage.domain.storage.common.utils.MD5Util;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
+import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.*;
+import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -142,5 +144,11 @@ public class FileImpl implements FileProvide {
         return clientApi;
     }
 
-
+    @Override
+    public void deleteFileByCode(Long fileViewCode, Long loginOperId, Long headCorpId,
+                                 String platformCode, String platformKey, String sysCode,
+                                 String sysKey) throws StorageException {
+        RemoveRequest removeRequest = new RemoveRequest(fileViewCode, headCorpId, loginOperId, sysCode);
+        managerClient.send(removeRequest);
+    }
 }

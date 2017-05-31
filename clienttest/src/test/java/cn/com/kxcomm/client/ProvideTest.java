@@ -3,6 +3,7 @@ package cn.com.kxcomm.client;
 import cn.com.kxcomm.common.resourse.file.FileProvide;
 import cn.com.kxcomm.common.resourse.file.impl.FileImpl;
 import cn.com.kxcomm.storage.domain.client.common.StorageException;
+import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveRequest;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,6 +57,11 @@ public class ProvideTest {
         long end = System.currentTimeMillis();
         log.debug("upload count {}", end - start);
         Thread.sleep(2000);
+    }
+
+    @Test
+    public void remove() throws StorageException {
+        fileProvide.deleteFileByCode(1496193236545L, loginOperId, headCorpId, platformCode, platformKey, sysCode, sysKey);
     }
 }
 
