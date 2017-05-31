@@ -31,9 +31,9 @@
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.41" level="project" />
     <orderEntry type="module" module-name="share" />
     <orderEntry type="library" name="Maven: cn.com.kxcomm:BaseBean:001.00.00" level="project" />
-    <orderEntry type="library" name="Maven: cn.com.kxcomm:BaseConstants:001.00.00" level="project" />
     <orderEntry type="library" name="Maven: cn.com.kxcomm:FormatUtil:001.00.00" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.1.1" level="project" />
+    <orderEntry type="library" name="Maven: cn.com.kxcomm:BaseConstants:001.00.00" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.16.16" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.12" level="project" />
@@ -46,6 +46,8 @@
     <orderEntry type="library" name="Maven: io.netty:netty-handler:4.1.9.Final" level="project" />
     <orderEntry type="module" module-name="client" />
     <orderEntry type="library" name="Maven: cn.com.kxcomm:Md5Util:001.00.00" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.10" level="project" />
+    <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:1.5.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:1.5.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.3.8.RELEASE" level="project" />

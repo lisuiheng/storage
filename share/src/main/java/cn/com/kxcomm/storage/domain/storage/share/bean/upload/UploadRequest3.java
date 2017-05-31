@@ -18,9 +18,4 @@ public class UploadRequest3 extends Request {
         this.data = data;
     }
 
-    public UploadRequest3(UploadRequest2 uploadRequest2) {
-        super(uploadRequest2);
-        this.fileName = uploadRequest2.getFileName();
-        this.data = uploadRequest2.getData();
-    }
 }

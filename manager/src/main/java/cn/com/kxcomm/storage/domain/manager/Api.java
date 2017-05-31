@@ -12,8 +12,8 @@ import cn.com.kxcomm.storage.domain.service.view.service.FileViewService;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.*;
-import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveRequest;
-import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveResponse;
+import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveRequest1;
+import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveResponse1;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.*;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFutureListener;
@@ -45,21 +45,21 @@ public class Api {
         this.connectPool = connectPool;
     }
 
-    private UploadMD5Response handelUploadMD5Request(UploadMD5Request uploadMD5Request) {
-        String md5 = uploadMD5Request.getMd5();
-        Long headCorpId = uploadMD5Request.getHeadCorpId();
+    private UploadMD5Response1 handelUploadMD5Request(UploadMD5Request1 uploadMD5Request1) {
+        String md5 = uploadMD5Request1.getMd5();
+        Long headCorpId = uploadMD5Request1.getHeadCorpId();
         FileModel fileModel = fileService.getByMd5(md5, headCorpId);
         if(fileModel == null) {
-            return new UploadMD5Response(SysSequenceUtil.getSequenceId(Constants.SEQUENCE_ID_CODE_FILE_VIEW_CODE), false, uploadMD5Request);
+            return new UploadMD5Response1(SysSequenceUtil.getSequenceId(Constants.SEQUENCE_ID_CODE_FILE_VIEW_CODE), false, uploadMD5Request1);
         }
 
         Long fileId = fileModel.getId();
-        String fileName = uploadMD5Request.getFileName();
-        long storageCount = uploadMD5Request.getStorageCount();
-        Long loginOperId = uploadMD5Request.getLoginOperId();
-        String sysCode = uploadMD5Request.getSysCode();
+        String fileName = uploadMD5Request1.getFileName();
+        long storageCount = uploadMD5Request1.getStorageCount();
+        Long loginOperId = uploadMD5Request1.getLoginOperId();
+        String sysCode = uploadMD5Request1.getSysCode();
         FileViewModel fileViewModel = fileViewService.add(fileId, fileName, null, headCorpId, loginOperId, sysCode);
-        return new UploadMD5Response(Long.parseLong(fileViewModel.getCode()), true, uploadMD5Request);
+        return new UploadMD5Response1(Long.parseLong(fileViewModel.getCode()), true, uploadMD5Request1);
     }
 
     private PreUploadRequest2 handelPreUploadRequest(PreUploadRequest1 preUploadRequest1) {
@@ -73,32 +73,16 @@ public class Api {
         return new PreUploadResponse1(managerPort, storageId, preUploadResponse2);
     }
 
-    private UploadInfoResponse handelUploadInfoRequest(UploadInfoRequest uploadInfoRequest) {
-        String fileName = uploadInfoRequest.getFileName();
-        long size = uploadInfoRequest.getSize();
-        String md5 = uploadInfoRequest.getMd5();
-        long storageCount = uploadInfoRequest.getStorageCount();
-        long fileViewCode = uploadInfoRequest.getFileViewCode();
-        long storageId = uploadInfoRequest.getStorageId();
-        String path = uploadInfoRequest.getPath();
-        fileService.add(path, size, md5, storageCount, storageId, fileName, String.valueOf(fileViewCode), uploadInfoRequest.getHeadCorpId(), uploadInfoRequest.getLoginOperId(), uploadInfoRequest.getSysCode());
-        return new UploadInfoResponse(uploadInfoRequest);
-    }
-
-    private UploadRequest2 handelUploadRequest(UploadRequest1 request1) {
-        return  new UploadRequest2(request1);
-    }
-
-    private UploadResponse1 handelUploadResponse(UploadResponse2 uploadResponse2, UploadRequest1 uploadRequest1) {
-        String path = uploadResponse2.getRelativePath();
-        long size = uploadResponse2.getSize();
-        String md5 = uploadResponse2.getMd5();
-        long storageId = uploadResponse2.getStorageId();
-
-        String fileName = uploadRequest1.getFileName();
-        long storageCount = uploadRequest1.getStorageCount();
-        String fileViewCode = fileService.add(path, size, md5, storageCount, storageId, fileName, null, uploadRequest1.getHeadCorpId(), uploadRequest1.getLoginOperId(), uploadRequest1.getSysCode());
-        return new UploadResponse1(Long.parseLong(fileViewCode), uploadRequest1);
+    private UploadInfoResponse1 handelUploadInfoRequest(UploadInfoRequest1 uploadInfoRequest1) {
+        String fileName = uploadInfoRequest1.getFileName();
+        long size = uploadInfoRequest1.getSize();
+        String md5 = uploadInfoRequest1.getMd5();
+        long storageCount = uploadInfoRequest1.getStorageCount();
+        long fileViewCode = uploadInfoRequest1.getFileViewCode();
+        long storageId = uploadInfoRequest1.getStorageId();
+        String path = uploadInfoRequest1.getPath();
+        fileService.add(path, size, md5, storageCount, storageId, fileName, String.valueOf(fileViewCode), uploadInfoRequest1.getHeadCorpId(), uploadInfoRequest1.getLoginOperId(), uploadInfoRequest1.getSysCode());
+        return new UploadInfoResponse1(uploadInfoRequest1);
     }
 
     private PreDownloadRequest2 handelPreDownloadRequest(PreDownloadRequest1 preDownloadRequest1) {
@@ -115,27 +99,13 @@ public class Api {
         return new PreDownloadResponse1(preDownloadResponse2);
     }
 
-    private DownloadRequest2 handelDownloadRequest(DownloadRequest1 downloadRequest1) {
-        Long headCorpId = downloadRequest1.getHeadCorpId();
-        Long fileViewCode = downloadRequest1.getFileViewCode();
-        FileViewModel fileViewModel = fileViewService.getByViewCode(fileViewCode.toString(), headCorpId);
-        Long fileId = fileViewModel.getFileId();
-        return new DownloadRequest2(fileId, downloadRequest1);
-    }
 
-    private DownloadResponse1 handelDownloadResponse(DownloadResponse2 downloadResponse2, DownloadRequest1 downloadRequest1) {
-        Long headCorpId = downloadRequest1.getHeadCorpId();
-        Long fileViewCode = downloadRequest1.getFileViewCode();
-        FileViewModel fileViewModel = fileViewService.getByViewCode(fileViewCode.toString(), headCorpId);
-        return new DownloadResponse1(fileViewModel.getName() ,downloadResponse2);
-    }
-
-    private RemoveResponse handelRemove(RemoveRequest removeRequest) {
-        long fileViewCode = removeRequest.getFileViewCode();
-        Long headCorpId = removeRequest.getHeadCorpId();
-        Long loginOperId = removeRequest.getLoginOperId();
+    private RemoveResponse1 handelRemove(RemoveRequest1 removeRequest1) {
+        long fileViewCode = removeRequest1.getFileViewCode();
+        Long headCorpId = removeRequest1.getHeadCorpId();
+        Long loginOperId = removeRequest1.getLoginOperId();
         fileViewService.delete(fileViewCode, headCorpId, loginOperId);
-        return new RemoveResponse(removeRequest);
+        return new RemoveResponse1(removeRequest1);
     }
 
     void handel(Request request, Channel outboundChannel, Channel inboundChannel) {
@@ -144,20 +114,16 @@ public class Api {
             if (outboundChannel.isActive()) {
                 Response inboundResponse = null;
                 Request outboundRequest = null;
-                if(request instanceof  UploadMD5Request) {
-                    inboundResponse = handelUploadMD5Request((UploadMD5Request) request);
-                }  else if(request instanceof UploadRequest1) {
-                    outboundRequest = handelUploadRequest((UploadRequest1) request);
-                } else if(request instanceof DownloadRequest1) {
-                    outboundRequest = handelDownloadRequest((DownloadRequest1) request);
-                } else if(request instanceof UploadInfoRequest) {
-                    inboundResponse = handelUploadInfoRequest((UploadInfoRequest) request);
+                if(request instanceof UploadMD5Request1) {
+                    inboundResponse = handelUploadMD5Request((UploadMD5Request1) request);
+                } else if(request instanceof UploadInfoRequest1) {
+                    inboundResponse = handelUploadInfoRequest((UploadInfoRequest1) request);
                 } else if(request instanceof PreUploadRequest1) {
                     outboundRequest = handelPreUploadRequest((PreUploadRequest1) request);
                 } else if(request instanceof PreDownloadRequest1) {
                     outboundRequest = handelPreDownloadRequest((PreDownloadRequest1) request);
-                } else if(request instanceof RemoveRequest) {
-                    inboundResponse = handelRemove((RemoveRequest) request);
+                } else if(request instanceof RemoveRequest1) {
+                    inboundResponse = handelRemove((RemoveRequest1) request);
                 }
                 else {
                     outboundRequest = request;
@@ -188,11 +154,7 @@ public class Api {
         }).thenAcceptAsync (response -> {
             log.debug("handel responese {}", response);
             if(response != null) {
-                if(response instanceof UploadResponse2) {
-                    response = handelUploadResponse((UploadResponse2) response, (UploadRequest1) request);
-                } else if(response instanceof DownloadResponse2) {
-                    response = handelDownloadResponse((DownloadResponse2) response, (DownloadRequest1) request);
-                } else if(response instanceof PreUploadResponse2) {
+                if(response instanceof PreUploadResponse2) {
                     response = handelPreUploadResponse((PreUploadResponse2) response);
                 } else if(response instanceof PreDownloadResponse2) {
                     response = handelPreDownloadResponse((PreDownloadResponse2) response);

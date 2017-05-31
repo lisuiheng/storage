@@ -6,7 +6,6 @@ import cn.com.kxcomm.storage.domain.storage.common.utils.MD5Util;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.*;
-import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.*;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -35,45 +34,19 @@ public class ManagerTest {
         log.info(response.toString());
     }
 
-    @Test
-    public void checkFileExist() throws StorageException {
-        String expectFileName = "1.txt";
-        String expectMD5 = "202cb962ac59075b964b07152d234b70";
-        CheckFileExistRequest request = new CheckFileExistRequest(expectFileName, expectMD5, headCorpId, loginOperId, sysCode);
-        CheckFileExistResponse response = (CheckFileExistResponse) clientApi.send(request);
-        assertNotNull(response.getFileViewCode());
 
-        request = new CheckFileExistRequest(expectFileName, "", headCorpId, loginOperId, sysCode);
-        response = (CheckFileExistResponse) clientApi.send(request);
-        assertNull(response.getFileViewCode());
-    }
 
-    @Test
-    public void upload() throws IOException, StorageException {
-        String fileName = "1.txt";
-        byte[] data = Files.readAllBytes(Paths.get("/home/lee/workspace/java/test/storage/clienttest/src/main/resources",fileName));
-        UploadRequest1 uploadRequest1 = new UploadRequest1(fileName, data, headCorpId, loginOperId, sysCode);
-        UploadResponse1 response = (UploadResponse1) clientApi.send(uploadRequest1);
-        assertNotNull(response.getFileViewCode());
-    }
 
     @Test
     public void uploadMD5() throws IOException, StorageException {
         String fileName = "1.txt";
         byte[] data = Files.readAllBytes(Paths.get("/home/lee/workspace/java/test/storage/clienttest/src/main/resources",fileName));
         String md5 = MD5Util.md5(data);
-        UploadMD5Request uploadMD5Request = new UploadMD5Request(fileName, md5, headCorpId, loginOperId, sysCode);
-        UploadMD5Response uploadMD5Response = (UploadMD5Response) clientApi.send(uploadMD5Request);
-        assertNotNull(uploadMD5Request);
+        UploadMD5Request1 uploadMD5Request1 = new UploadMD5Request1(fileName, md5, headCorpId, loginOperId, sysCode);
+        UploadMD5Response1 uploadMD5Response1 = (UploadMD5Response1) clientApi.send(uploadMD5Request1);
+        assertNotNull(uploadMD5Request1);
     }
 
-    @Test
-    public void download() throws StorageException {
-        DownloadRequest1 downloadRequest1 = new DownloadRequest1(1, headCorpId, loginOperId, sysCode);
-        DownloadResponse1 downloadResponse1 = (DownloadResponse1) clientApi.send(downloadRequest1);
-        assertNotNull(downloadResponse1.getData());
-        assertNotNull(downloadResponse1.getFileName());
-    }
 
     @Test
     public void preUpload() throws StorageException {
@@ -89,11 +62,11 @@ public class ManagerTest {
         String fileName = "1.txt";
         byte[] data = Files.readAllBytes(Paths.get("/home/lee/workspace/java/test/storage/clienttest/src/main/resources",fileName));
         String md5 = MD5Util.md5(data);
-        UploadMD5Request uploadMD5Request = new UploadMD5Request(fileName, md5, headCorpId, loginOperId, sysCode);
-        UploadMD5Response uploadMD5Response = (UploadMD5Response) clientApi.send(uploadMD5Request);
-        Long fileViewCode = uploadMD5Response.getFileViewCode();
+        UploadMD5Request1 uploadMD5Request1 = new UploadMD5Request1(fileName, md5, headCorpId, loginOperId, sysCode);
+        UploadMD5Response1 uploadMD5Response1 = (UploadMD5Response1) clientApi.send(uploadMD5Request1);
+        Long fileViewCode = uploadMD5Response1.getFileViewCode();
 
-        if(!uploadMD5Response.isFileExit()) {
+        if(!uploadMD5Response1.isFileExit()) {
             PreUploadRequest1 preUploadRequest1 = new PreUploadRequest1(data.length, headCorpId, loginOperId, sysCode);
             PreUploadResponse1 preUploadResponse1 = (PreUploadResponse1) clientApi.send(preUploadRequest1);
             int uploadPort = preUploadResponse1.getUploadPort();
@@ -103,9 +76,9 @@ public class ManagerTest {
 
             long storageId = preUploadResponse1.getStorageId();
             String path = uploadResponse3.getRelativePath();
-            UploadInfoRequest uploadInfoRequest = new UploadInfoRequest(fileName, data.length, md5, 1, fileViewCode, storageId, path, uploadRequest3);
+            UploadInfoRequest1 uploadInfoRequest1 = new UploadInfoRequest1(fileName, data.length, md5, 1, fileViewCode, storageId, path, uploadRequest3);
             ClientApi managerClient = new ClientApi("localhost", 8005);
-            UploadInfoResponse uploadInfoResponse = (UploadInfoResponse) managerClient.send(uploadInfoRequest);
+            UploadInfoResponse1 uploadInfoResponse1 = (UploadInfoResponse1) managerClient.send(uploadInfoRequest1);
         }
         log.info("time use {}", System.currentTimeMillis() - start);
     }

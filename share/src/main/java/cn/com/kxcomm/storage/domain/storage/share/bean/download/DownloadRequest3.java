@@ -2,7 +2,6 @@ package cn.com.kxcomm.storage.domain.storage.share.bean.download;
 
 
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
-import cn.com.kxcomm.storage.domain.storage.share.bean.TransportRequest;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;

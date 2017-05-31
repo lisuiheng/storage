@@ -3,11 +3,12 @@ package cn.com.kxcomm.storage.domain.storage;
 import cn.com.kxcomm.storage.domain.storage.common.utils.MD5Util;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest3;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadResponse3;
+import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveRequest3;
+import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveResponse3;
 import cn.com.kxcomm.storage.domain.storage.share.bean.storage.ListFileRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.storage.ListFileResponse;
 import cn.com.kxcomm.storage.domain.storage.share.bean.storage.SpaceRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.storage.SpaceResponse;
-import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadRequest2;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadRequest3;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadResponse3;
 import org.slf4j.Logger;
@@ -35,7 +36,7 @@ public class Api {
         this.storageConfig = storageConfig;
     }
 
-    public UploadResponse3 upload(UploadRequest3 request) throws IOException {
+    UploadResponse3 upload(UploadRequest3 request) throws IOException {
         String fileName = request.getFileName();
         byte[] data = request.getData();
 
@@ -46,27 +47,27 @@ public class Api {
         return new UploadResponse3(path, request);
     }
 
-    public DownloadResponse3 download(DownloadRequest3 request) throws IOException {
+    DownloadResponse3 download(DownloadRequest3 request) throws IOException {
         byte[] data;
         String path = request.getPath();
         data = fileAgent.readAllBytes(path);
         return new DownloadResponse3(data, request);
     }
 
-    public SpaceResponse space(SpaceRequest request) {
+    SpaceResponse space(SpaceRequest request) {
         String relativePath = request.getRelativePath();
         File dir = new File(storageConfig.getPath().toString(), relativePath);
         return new SpaceResponse(dir.getFreeSpace(), dir.getUsableSpace(), dir.getTotalSpace(), request);
     }
 
-    public ListFileResponse listFile(ListFileRequest request) {
+    ListFileResponse listFile(ListFileRequest request) {
         String relativePath = request.getRelativePath();
         FileTime formTime = FileTime.fromMillis(request.getLastModifiedTime());
 
         final ListFileResponse response = new ListFileResponse(request);
-        Path path = storageConfig.getPath().resolve(relativePath);
+        Path path = storageConfig.getPath(relativePath);
 
-        int subLength = storageConfig.getPath().toString().length() + 1;
+        int subLength = path.toString().length() + 1;
         try {
             Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
                 @Override
@@ -107,6 +108,17 @@ public class Api {
         return response;
     }
 
+
+    RemoveResponse3 remove(RemoveRequest3 removeRequest3) {
+        String relativePath = removeRequest3.getRelativePath();
+        Path path = storageConfig.getPath(relativePath);
+        try {
+            Files.delete(path);
+        } catch (IOException e) {
+            return new RemoveResponse3(e, removeRequest3);
+        }
+        return new RemoveResponse3(removeRequest3);
+    }
 
 
 

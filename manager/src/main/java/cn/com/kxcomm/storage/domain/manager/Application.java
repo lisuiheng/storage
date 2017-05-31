@@ -1,4 +1,4 @@
-package cn.com.kxcomm.storage.domain;
+package cn.com.kxcomm.storage.domain.manager;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

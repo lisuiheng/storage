@@ -8,10 +8,10 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode(callSuper = false)
 @ToString(callSuper = true)
-public class RemoveRequest extends Request {
+public class RemoveRequest1 extends Request {
     private long fileViewCode;
 
-    public RemoveRequest(long fileViewCode, long headCorpId, long loginOperId, String sysCode) {
+    public RemoveRequest1(long fileViewCode, long headCorpId, long loginOperId, String sysCode) {
         super(headCorpId, loginOperId, sysCode);
         this.fileViewCode = fileViewCode;
     }

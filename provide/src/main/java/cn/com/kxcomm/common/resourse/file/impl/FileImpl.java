@@ -7,9 +7,8 @@ import cn.com.kxcomm.storage.domain.client.common.StorageException;
 import cn.com.kxcomm.storage.domain.storage.common.constants.ShareConstants;
 import cn.com.kxcomm.storage.domain.storage.common.utils.MD5Util;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
-import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.*;
-import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveRequest;
+import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveRequest1;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,14 +18,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
 
 public class FileImpl implements FileProvide {
     private final Logger log = LoggerFactory.getLogger(FileImpl.class);
@@ -55,11 +50,11 @@ public class FileImpl implements FileProvide {
         String fileName = path.getFileName().toString();
         byte[] data = Files.readAllBytes(path);
         String md5 = MD5Util.md5(data);
-        UploadMD5Request uploadMD5Request = new UploadMD5Request(fileName, md5, headCorpId, loginOperId, sysCode);
-        UploadMD5Response uploadMD5Response = (UploadMD5Response) managerClient.send(uploadMD5Request);
-        Long fileViewCode = uploadMD5Response.getFileViewCode();
+        UploadMD5Request1 uploadMD5Request1 = new UploadMD5Request1(fileName, md5, headCorpId, loginOperId, sysCode);
+        UploadMD5Response1 uploadMD5Response1 = (UploadMD5Response1) managerClient.send(uploadMD5Request1);
+        Long fileViewCode = uploadMD5Response1.getFileViewCode();
 
-        if(!uploadMD5Response.isFileExit()) {
+        if(!uploadMD5Response1.isFileExit()) {
             uploadFile(fileName, md5, data, fileViewCode, storageCount, loginOperId, headCorpId, sysCode);
         }
         return fileViewCode;
@@ -85,11 +80,11 @@ public class FileImpl implements FileProvide {
         final String fileName = path.getFileName().toString();
         final byte[] data = Files.readAllBytes(path);
         final String md5 = MD5Util.md5(data);
-        UploadMD5Request uploadMD5Request = new UploadMD5Request(fileName, md5, headCorpId, loginOperId, sysCode);
-        UploadMD5Response uploadMD5Response = (UploadMD5Response) managerClient.send(uploadMD5Request);
-        final Long fileViewCode = uploadMD5Response.getFileViewCode();
+        UploadMD5Request1 uploadMD5Request1 = new UploadMD5Request1(fileName, md5, headCorpId, loginOperId, sysCode);
+        UploadMD5Response1 uploadMD5Response1 = (UploadMD5Response1) managerClient.send(uploadMD5Request1);
+        final Long fileViewCode = uploadMD5Response1.getFileViewCode();
 
-        if(!uploadMD5Response.isFileExit()) {
+        if(!uploadMD5Response1.isFileExit()) {
             uploadAsyncExecutor.submit(new Runnable() {
                 @Override
                 public void run() {
@@ -106,9 +101,9 @@ public class FileImpl implements FileProvide {
 
     @Override
     public Long uploadByMD5(String fileName, String md5, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws StorageException {
-        UploadMD5Request uploadMD5Request = new UploadMD5Request(fileName, md5, headCorpId, loginOperId, sysCode);
-        UploadMD5Response uploadMD5Response = (UploadMD5Response) managerClient.send(uploadMD5Request);
-        return uploadMD5Response.getFileViewCode();
+        UploadMD5Request1 uploadMD5Request1 = new UploadMD5Request1(fileName, md5, headCorpId, loginOperId, sysCode);
+        UploadMD5Response1 uploadMD5Response1 = (UploadMD5Response1) managerClient.send(uploadMD5Request1);
+        return uploadMD5Response1.getFileViewCode();
     }
 
     private void uploadFile(String fileName, String md5, byte[] data, long fileViewCode, Long storageCount, Long loginOperId, Long headCorpId, String sysCode) throws IOException, StorageException {
@@ -119,8 +114,8 @@ public class FileImpl implements FileProvide {
         UploadResponse3 uploadResponse3 = (UploadResponse3) transportClient(uploadPort).send(uploadRequest3);
         long storageId = preUploadResponse1.getStorageId();
         String storagePath = uploadResponse3.getRelativePath();
-        UploadInfoRequest uploadInfoRequest = new UploadInfoRequest(fileName, data.length, md5, storageCount, fileViewCode, storageId, storagePath, uploadRequest3);
-        managerClient.send(uploadInfoRequest);
+        UploadInfoRequest1 uploadInfoRequest1 = new UploadInfoRequest1(fileName, data.length, md5, storageCount, fileViewCode, storageId, storagePath, uploadRequest3);
+        managerClient.send(uploadInfoRequest1);
     }
 
     @Override
@@ -155,7 +150,7 @@ public class FileImpl implements FileProvide {
     public void deleteFileByCode(Long fileViewCode, Long loginOperId, Long headCorpId,
                                  String platformCode, String platformKey, String sysCode,
                                  String sysKey) throws StorageException {
-        RemoveRequest removeRequest = new RemoveRequest(fileViewCode, headCorpId, loginOperId, sysCode);
-        managerClient.send(removeRequest);
+        RemoveRequest1 removeRequest1 = new RemoveRequest1(fileViewCode, headCorpId, loginOperId, sysCode);
+        managerClient.send(removeRequest1);
     }
 }

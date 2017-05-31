@@ -9,16 +9,16 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode(callSuper = false)
 @ToString(callSuper = true)
-public class RemoveResponse extends Response {
-    public RemoveResponse(Request request) {
+public class RemoveResponse1 extends Response {
+    public RemoveResponse1(Request request) {
         super(request);
     }
 
-    public RemoveResponse(Response response) {
+    public RemoveResponse1(Response response) {
         super(response);
     }
 
-    public RemoveResponse(Throwable throwable, Request request) {
+    public RemoveResponse1(Throwable throwable, Request request) {
         super(throwable, request);
     }
 }

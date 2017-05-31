@@ -8,7 +8,7 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode(callSuper = false)
 @ToString(callSuper = true)
-public class UploadInfoRequest extends Request {
+public class UploadInfoRequest1 extends Request {
     private String fileName;
     private long size;
     private String md5;
@@ -18,7 +18,7 @@ public class UploadInfoRequest extends Request {
     private String path;
 
 
-    public UploadInfoRequest(String fileName, long size, String md5, long storageCount, long fileViewCode, long storageId, String path, Request request) {
+    public UploadInfoRequest1(String fileName, long size, String md5, long storageCount, long fileViewCode, long storageId, String path, Request request) {
         super(request);
         this.fileName = fileName;
         this.size = size;

@@ -1,19 +1,17 @@
-package cn.com.kxcomm.storage.domain.storage.share.bean.storage;
+package cn.com.kxcomm.storage.domain.storage.share.bean.remove;
 
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
-import java.net.SocketAddress;
-
 @Getter
 @EqualsAndHashCode(callSuper = false)
-@ToString
-public class SpaceRequest extends Request {
+@ToString(callSuper = true)
+public class RemoveRequest3 extends Request {
     private String relativePath;
 
-    public SpaceRequest(String relativePath, long headCorpId, long loginOperId, String sysCode) {
+    public RemoveRequest3(String relativePath, long headCorpId, long loginOperId, String sysCode) {
         super(headCorpId, loginOperId, sysCode);
         this.relativePath = relativePath;
     }

@@ -1,4 +1,4 @@
-package cn.com.kxcomm.storage.domain.storage.share.bean.upload;
+package cn.com.kxcomm.storage.domain.storage.share.bean.remove;
 
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
@@ -9,12 +9,11 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode(callSuper = false)
 @ToString(callSuper = true)
-public class UploadResponse1 extends Response {
-    private long fileViewCode;
-
-    public UploadResponse1(long fileViewCode, Request request) {
+public class RemoveResponse3 extends Response {
+    public RemoveResponse3(Request request) {
         super(request);
-        this.fileViewCode = fileViewCode;
     }
-
+    public RemoveResponse3(Throwable t, Request request) {
+        super(t, request);
+    }
 }

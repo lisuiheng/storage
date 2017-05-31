@@ -1,6 +1,5 @@
 package cn.com.kxcomm.storage.domain.manager;
 
-import cn.com.kxcomm.storage.domain.Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

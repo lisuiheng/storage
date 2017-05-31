@@ -8,13 +8,15 @@ import lombok.ToString;
 
 @Getter
 @EqualsAndHashCode(callSuper = false)
-@ToString
-public class CheckFileExistResponse extends Response {
-    private String fileViewCode;
+@ToString( callSuper = true)
+public class UploadMD5Response1 extends Response {
+    private Long fileViewCode;
+    private boolean FileExit;
 
-    public CheckFileExistResponse(String fileViewCode, Request request) {
+
+    public UploadMD5Response1(Long fileViewCode, boolean FileExit, Request request) {
         super(request);
         this.fileViewCode = fileViewCode;
+        this.FileExit = FileExit;
     }
-
 }

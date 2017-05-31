@@ -10,7 +10,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.com.kxcomm.storage</groupId>
+            <groupId>cn.com.kxcomm.StorageManageSystem</groupId>
             <artifactId>client</artifactId>
             <version>002.00.00</version>
         </dependency>

@@ -4,9 +4,7 @@ package cn.com.kxcomm.client;
 import cn.com.kxcomm.storage.domain.client.ClientApi;
 import cn.com.kxcomm.storage.domain.client.common.StorageException;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
-import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest2;
-import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest3;
-import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadResponse3;
+import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveRequest3;
 import cn.com.kxcomm.storage.domain.storage.share.bean.storage.SpaceRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.*;
 import org.junit.Test;
@@ -31,70 +29,15 @@ public class StorageTest {
     protected String sysCode = "coms";
 
 
-    private ClientApi clientApi = new ClientApi(new InetSocketAddress("127.0.0.1", 8200));
+    private ClientApi clientApi = new ClientApi(new InetSocketAddress("127.0.0.1", 8007));
 
     @Test
-    public void speed() throws IOException, StorageException, InterruptedException {
-        //zero 164
-        //5M 673
-        Path filePath = Paths.get(dir, name);
-        byte[] data = Files.readAllBytes(filePath);
-        UploadRequest3 uploadRequest3 = new UploadRequest3(new UploadRequest2(new UploadRequest1(name, data, headCorpId, loginOperId, sysCode)));
-        for (int i = 0; i < 10; i++) {
-            long start = System.currentTimeMillis();
-            clientApi.send(uploadRequest3);
-            long end = System.currentTimeMillis();
-            log.debug("time cost {}", end - start);
-            Thread.sleep(   5 *1000);
-        }
-
-
-
-
+    public void remove() throws StorageException {
+        Path basePath = Paths.get("/home/lee/Downloads/file");
+        String relativePath = "20170427/20170427154452318528.txt";
+        RemoveRequest3 removeRequest3 = new RemoveRequest3(relativePath, headCorpId, loginOperId, sysCode);
+        assertTrue(Files.exists(basePath.resolve(relativePath)));
+        clientApi.send(removeRequest3);
+        assertFalse(Files.exists(basePath.resolve(relativePath)));
     }
-
-    @Test
-    public void upadload() throws IOException, StorageException {
-        Path filePath = Paths.get(dir, name);
-        byte[] data = Files.readAllBytes(filePath);
-        UploadRequest3 uploadRequest3 = new UploadRequest3(new UploadRequest2(new UploadRequest1(name, data, headCorpId, loginOperId, sysCode)));
-        UploadResponse3 uploadResponse3 = null;
-        uploadResponse3 = (UploadResponse3) clientApi.send(uploadRequest3);
-        String path = uploadResponse3.getRelativePath();
-        assertNotNull(path);
-    }
-
-//    @Test
-//    public void uploadDownload() throws IOException, StorageException {
-//        Path filePath = Paths.get(dir, name);
-//        byte[] data = Files.readAllBytes(filePath);
-//        UploadRequest3 uploadRequest3 = new UploadRequest3(new UploadRequest2(new UploadRequest1(name, data, headCorpId, loginOperId, sysCode)));
-//        UploadResponse3 uploadResponse3 = (UploadResponse3) clientApi.send(uploadRequest3);
-//        String md5 = uploadResponse3.getMd5();
-//        String path = uploadResponse3.getRelativePath();
-//        long size = uploadResponse3.getSize();
-//        assertNotNull(md5);
-//        assertNotNull(path);
-//        assertNotNull(size);
-//
-//        assertEquals(data.length, size);
-//
-//        DownloadRequest3 downloadRequest3 = new DownloadRequest3(path, new DownloadRequest2(headCorpId, loginOperId, sysCode));
-//        DownloadResponse3 downloadResponse3 = (DownloadResponse3) clientApi.send(downloadRequest3);
-//        assertArrayEquals(data, downloadResponse3.getData());
-//    }
-
-    @Test
-    public void space() throws StorageException {
-        SpaceRequest request = new SpaceRequest(new InetSocketAddress("loacalhost",8007), headCorpId, loginOperId, sysCode);
-        Response response = clientApi.send(request);
-        assertNull(response.getThrowable());
-    }
-
-//    @Test
-//    public void listFile() throws StorageException {
-//        ListFileRequest request = new ListFileRequest("", headCorpId, loginOperId, sysCode);
-//        ListFileResponse response = (ListFileResponse) clientApi.send(request);
-//        assertNull(response.getThrowable());
-//    }
 }

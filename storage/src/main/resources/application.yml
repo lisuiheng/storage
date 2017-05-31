@@ -14,4 +14,6 @@ storage:
     port: 8007
     dir_format: yyyyMMdd
     file_storage_id: 1
-    base_dir: /home/lee/Downloads/file
+    base_path: /home/lee/Downloads/file
+    # MB
+    max_object_size: 100

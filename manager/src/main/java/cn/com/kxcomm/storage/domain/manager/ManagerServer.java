@@ -21,9 +21,7 @@ import org.springframework.stereotype.Component;
 import java.net.InetSocketAddress;
 import java.util.concurrent.CompletableFuture;
 
-import static cn.com.kxcomm.storage.domain.storage.common.constants.ShareConstants.SYSTEM_HEAD_CORP_ID;
-import static cn.com.kxcomm.storage.domain.storage.common.constants.ShareConstants.SYSTEM_LOGIN_OPER_ID;
-import static cn.com.kxcomm.storage.domain.storage.common.constants.ShareConstants.SYSTEM_SYSCODE;
+import static cn.com.kxcomm.storage.domain.storage.common.constants.ShareConstants.*;
 
 @Component
 @ChannelHandler.Sharable

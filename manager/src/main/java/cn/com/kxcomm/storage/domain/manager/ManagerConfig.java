@@ -1,11 +1,8 @@
 package cn.com.kxcomm.storage.domain.manager;
 
-import com.sun.istack.internal.NotNull;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.annotation.Validated;
 
 import java.net.InetSocketAddress;
 

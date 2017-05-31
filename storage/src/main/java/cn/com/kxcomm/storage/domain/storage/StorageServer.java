@@ -12,16 +12,28 @@ import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
-import io.netty.handler.stream.ChunkedWriteHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class StorageServer {
-    @Autowired
-    private StorageHandler storageHandler;
+public class StorageServer implements CommandLineRunner {
+    private final Logger log = LoggerFactory.getLogger(StorageServer.class);
 
-    public void start(int port) throws Exception {
+    private final StorageConfig storageConfig;
+    private final StorageHandler storageHandler;
+
+    @Autowired
+    public StorageServer(StorageConfig storageConfig, StorageHandler storageHandler) {
+        this.storageConfig = storageConfig;
+        this.storageHandler = storageHandler;
+    }
+
+
+    @Override
+    public void run(String... strings) throws Exception {
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
@@ -35,21 +47,18 @@ public class StorageServer {
                             ChannelPipeline p = ch.pipeline();
                             p.addLast(
                                     new ObjectEncoder(),
-                                    new ObjectDecoder(1048576 * 100 ,ClassResolvers.cacheDisabled(null)),
-//                                    new ChunkedWriteHandler(),
+                                    new ObjectDecoder( storageConfig.getMaxObjectSize() , ClassResolvers.cacheDisabled(null)),
                                     storageHandler
                             );
                         }
                     });
 
             // Bind and start to accept incoming connections.
-            b.bind(port).sync().channel().closeFuture().sync();
+            b.bind(storageConfig.getPort()).sync().channel().closeFuture().sync();
 
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }
     }
-
-
 }

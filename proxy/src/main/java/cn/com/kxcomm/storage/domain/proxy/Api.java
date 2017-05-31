@@ -41,23 +41,11 @@ public class Api {
         return new PreUploadResponse2(inetSocketAddress.getPort(), randomStorageId,preUploadRequest2);
     }
 
-    public UploadResponse2 upload(UploadRequest2 uploadRequest2) throws StorageException {
-        Long randomStorageId = getRandomStorageId();
-        UploadResponse3 uploadResponse3 = (UploadResponse3) getClientApi(randomStorageId).send(new UploadRequest3(uploadRequest2));
-        return new UploadResponse2(randomStorageId, uploadResponse3);
-    }
 
     PreDownloadResponse2 preDownload(PreDownloadRequest2 preDownloadRequest2) {
         long storageId = preDownloadRequest2.getStorageId();
         InetSocketAddress address = connectPool.getStorageLocalAddressMap().get(storageId);
         return new PreDownloadResponse2(address.getPort(), preDownloadRequest2);
-    }
-
-    public DownloadResponse2 download(DownloadRequest2 downloadRequest2) throws StorageException {
-        long fileId = downloadRequest2.getFileId();
-        FileAddrModel fileAddrModel = fileAddrServicef.getByFileId(fileId, downloadRequest2.getHeadCorpId());
-        DownloadResponse3 downloadResponse3 = (DownloadResponse3) getClientApi(fileAddrModel.getStoragePositionId()).send(new DownloadRequest3(fileAddrModel.getPath(), downloadRequest2));
-        return new DownloadResponse2(downloadResponse3);
     }
 
     public ConnectResponse connect(ConnectRequest connectRequest) {

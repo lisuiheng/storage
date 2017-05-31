@@ -5,7 +5,6 @@ import cn.com.kxcomm.storage.domain.service.common.constants.Constants;
 import cn.com.kxcomm.storage.domain.service.view.dao.FileViewDao;
 import cn.com.kxcomm.storage.domain.service.view.model.FileViewModel;
 import cn.com.kxcomm.storage.domain.service.view.model.query.FileViewQuery;
-import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

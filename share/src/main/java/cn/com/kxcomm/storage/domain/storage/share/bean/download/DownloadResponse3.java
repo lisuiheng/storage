@@ -18,11 +18,5 @@ public class DownloadResponse3 extends Response {
         this.data = data;
     }
 
-    @Override
-    public String toString() {
-        return "DownloadResponse3{" +
-                "id=" + id +
-                ", throwable=" + throwable +
-                '}';
-    }
+
 }

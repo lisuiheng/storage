@@ -4,10 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.com.kxcomm.test.file</groupId>
+    <groupId>cn.com.kxcomm.StorageManageSystem</groupId>
     <artifactId>manager</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <version>002.00.00</version>
 
     <name>manager</name>
 
@@ -19,15 +19,16 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.com.kxcomm.storage</groupId>
+            <groupId>cn.com.kxcomm.StorageManageSystem</groupId>
             <artifactId>service</artifactId>
             <version>002.00.00</version>
         </dependency>
         <dependency>
-            <groupId>cn.com.kxcomm.storage</groupId>
-            <artifactId>share</artifactId>
+            <groupId>cn.com.kxcomm.StorageManageSystem</groupId>
+            <artifactId>client</artifactId>
             <version>002.00.00</version>
         </dependency>
+
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -36,11 +37,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.com.kxcomm.storage</groupId>
-            <artifactId>client</artifactId>
-            <version>002.00.00</version>
         </dependency>
 
         <dependency>
@@ -61,6 +57,13 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -70,7 +73,17 @@
             <releases>
                 <enabled>true</enabled>
             </releases>
-            <url>http://mavendev.kxcomm.com:8081/nexus/content/groups/kxcomm/</url>
+            <url>
+                http://mavendev.kxcomm.com:8081/nexus/content/groups/kxcomm/
+            </url>
         </repository>
     </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>KxcommProject</id>
+            <name>KxcommProject</name>
+            <url>http://mavendev.kxcomm.com:8081/nexus/content/repositories/KxcommProject/</url>
+        </repository>
+    </distributionManagement>
 </project>

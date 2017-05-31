@@ -3,14 +3,11 @@ package cn.com.kxcomm.storage.domain.storage;
 
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
-import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest2;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest3;
-import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadResponse2;
+import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveRequest3;
 import cn.com.kxcomm.storage.domain.storage.share.bean.storage.ListFileRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.storage.SpaceRequest;
-import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadRequest2;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadRequest3;
-import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadResponse2;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -18,7 +15,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 
 @Component
@@ -43,6 +39,8 @@ public class StorageHandler extends ChannelInboundHandlerAdapter {
                         response = api.upload((UploadRequest3) request);
                     } else if(request instanceof DownloadRequest3) {
                         response = api.download((DownloadRequest3) request);
+                    } else if(request instanceof RemoveRequest3) {
+                        response = api.remove((RemoveRequest3) request);
                     } else if(request instanceof SpaceRequest) {
                         response = api.space((SpaceRequest)request);
                     } else if(request instanceof ListFileRequest) {
@@ -57,7 +55,7 @@ public class StorageHandler extends ChannelInboundHandlerAdapter {
                 log.debug("writeAndFlush response {}", resp);
             }).exceptionally(t -> {
                 log.error("Unexpected error {}", t);
-                ctx.writeAndFlush(new DownloadResponse2(t, request));
+                ctx.writeAndFlush(new Response(t, request));
                 return null;
             });
 
