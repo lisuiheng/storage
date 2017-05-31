@@ -43,7 +43,7 @@ public class Api {
         long size = data.length;
         String md5 = MD5Util.md5(data);
 
-        return new UploadResponse3(path, size, md5, request);
+        return new UploadResponse3(path, request);
     }
 
     public DownloadResponse3 download(DownloadRequest3 request) throws IOException {

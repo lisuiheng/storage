@@ -6,20 +6,21 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
-
 @Getter
 @EqualsAndHashCode(callSuper = false)
 @ToString(callSuper = true)
-public class UploadResponse2 extends Response {
+public class PreUploadResponse1 extends Response {
+    private int uploadPort;
     private long storageId;
-    private String relativePath;
-    private long size;
-    private String md5;
 
-    public UploadResponse2(long storageId, UploadResponse3 uploadResponse3) {
-        super(uploadResponse3);
+
+    public PreUploadResponse1(int uploadPort, long storageId, Response response) {
+        super(response);
+        this.uploadPort = uploadPort;
         this.storageId = storageId;
-        this.relativePath = uploadResponse3.getRelativePath();
     }
 
+    public PreUploadResponse1(Throwable throwable, Request request) {
+        super(throwable, request);
+    }
 }

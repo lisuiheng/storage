@@ -36,7 +36,7 @@ public class FileService {
         this.fileViewService = fileViewService;
     }
 
-    public String add(String relativePath, long size, String md5, long storageCount, long storageId, String fileViewName, long headCorpId, long loginOperId, String sysCode) {
+    public String add(String relativePath, long size, String md5, long storageCount, long storageId, String fileViewName, String fileViewCode, long headCorpId, long loginOperId, String sysCode) {
         int dirIndex = relativePath.lastIndexOf("/");
         String dir = relativePath.substring(0, dirIndex);
         String fileName = relativePath.substring(dirIndex + 1, relativePath.length());
@@ -61,7 +61,7 @@ public class FileService {
         Optional<Long> fileIdOp = fileModelOp.map(FileModel::getId);
         if(fileIdOp.isPresent()) {
             FileAddrModel fileAddrModel = fileAddrService.add(fileIdOp.get(), storageId, fileName, dir, headCorpId, loginOperId);
-            FileViewModel fileViewModel = fileViewService.add(fileIdOp.get(), fileViewName, headCorpId, loginOperId, sysCode);
+            FileViewModel fileViewModel = fileViewService.add(fileIdOp.get(), fileViewName, fileViewCode, headCorpId, loginOperId, sysCode);
             return fileViewModel.getCode();
         } else {
             throw new RuntimeException("fileId is null");

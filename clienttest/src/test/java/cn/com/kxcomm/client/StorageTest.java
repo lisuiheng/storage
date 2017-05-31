@@ -60,12 +60,8 @@ public class StorageTest {
         UploadRequest3 uploadRequest3 = new UploadRequest3(new UploadRequest2(new UploadRequest1(name, data, headCorpId, loginOperId, sysCode)));
         UploadResponse3 uploadResponse3 = null;
         uploadResponse3 = (UploadResponse3) clientApi.send(uploadRequest3);
-        String md5 = uploadResponse3.getMd5();
         String path = uploadResponse3.getRelativePath();
-        long size = uploadResponse3.getSize();
-        assertNotNull(md5);
         assertNotNull(path);
-        assertNotNull(size);
     }
 
 //    @Test

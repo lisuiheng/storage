@@ -4,16 +4,10 @@ import cn.com.kxcomm.storage.domain.client.ClientApi;
 import cn.com.kxcomm.storage.domain.client.common.StorageException;
 import cn.com.kxcomm.storage.domain.service.addr.model.FileAddrModel;
 import cn.com.kxcomm.storage.domain.service.addr.service.FileAddrService;
-import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest2;
-import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest3;
-import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadResponse2;
-import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadResponse3;
+import cn.com.kxcomm.storage.domain.storage.share.bean.download.*;
 import cn.com.kxcomm.storage.domain.storage.share.bean.proxy.ConnectRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.proxy.ConnectResponse;
-import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadRequest2;
-import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadRequest3;
-import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadResponse2;
-import cn.com.kxcomm.storage.domain.storage.share.bean.upload.UploadResponse3;
+import cn.com.kxcomm.storage.domain.storage.share.bean.upload.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -40,10 +34,23 @@ public class Api {
         storageIds = connectPool.getStorageLocalClientMap().keySet().toArray();
     }
 
+    public PreUploadResponse2 preUpload(PreUploadRequest2 preUploadRequest2) {
+        long size = preUploadRequest2.getSize();
+        Long randomStorageId = getRandomStorageId();
+        InetSocketAddress inetSocketAddress = connectPool.getStorageLocalAddressMap().get(randomStorageId);
+        return new PreUploadResponse2(inetSocketAddress.getPort(), randomStorageId,preUploadRequest2);
+    }
+
     public UploadResponse2 upload(UploadRequest2 uploadRequest2) throws StorageException {
         Long randomStorageId = getRandomStorageId();
         UploadResponse3 uploadResponse3 = (UploadResponse3) getClientApi(randomStorageId).send(new UploadRequest3(uploadRequest2));
         return new UploadResponse2(randomStorageId, uploadResponse3);
+    }
+
+    PreDownloadResponse2 preDownload(PreDownloadRequest2 preDownloadRequest2) {
+        long storageId = preDownloadRequest2.getStorageId();
+        InetSocketAddress address = connectPool.getStorageLocalAddressMap().get(storageId);
+        return new PreDownloadResponse2(address.getPort(), preDownloadRequest2);
     }
 
     public DownloadResponse2 download(DownloadRequest2 downloadRequest2) throws StorageException {

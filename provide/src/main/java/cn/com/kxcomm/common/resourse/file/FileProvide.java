@@ -52,7 +52,16 @@ public interface FileProvide {
     Long upload(File file,Long storageCount, Long loginOperId, Long headCorpId, String platformCode, String platformKey,
                 String sysCode, String sysKey) throws IOException, StorageException;
 
+
     Long upload(Path path, Long storageCount, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
+
+    Long uploadAsync(File file, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
+
+    Long uploadAsync(Path path, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
+
+    Long uploadAsync(File file, Long storageCount, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
+
+    Long uploadAsync(Path path, Long storageCount, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
 
     /**
      *

@@ -63,4 +63,12 @@ public class ProxyTest {
         ConnectResponse connectResponse = (ConnectResponse) clientApi.send(connectRequest);
         assertNotNull(connectResponse.getPorts());
     }
+
+    @Test
+    public void preUpload() throws StorageException {
+        PreUploadRequest2 preUploadRequest2 = new PreUploadRequest2(new PreUploadRequest1(1, headCorpId, loginOperId, sysCode));
+        PreUploadResponse2 preUploadResponse2 = (PreUploadResponse2) clientApi.send(preUploadRequest2);
+        assertNotEquals(0, preUploadResponse2.getStorageId());
+        assertNotEquals(0, preUploadResponse2.getUploadPort());
+    }
 }

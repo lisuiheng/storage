@@ -19,6 +19,10 @@ public class ConnectPool {
     private final Map<Integer, Integer> managerProxyPortMap = new HashMap<>();
 
     public void putManagerProxyPort(int managerPort, int proxyPort) {
-        managerProxyPortMap.put(managerPort, proxyPort);
+        managerProxyPortMap.put(proxyPort, managerPort);
+    }
+
+    public int getManagerPort(int proxyPort) {
+        return managerProxyPortMap.get(proxyPort);
     }
 }

@@ -38,4 +38,8 @@ public class Config {
     public static int getRetryTimeOut() {
         return getInt(Constants.RETRY_TIMEOUT);
     }
+
+    public static int getUploadAsyncExecutorSize() {
+        return getInt(Constants.UPLOAD_ASYNC_EXECUTOR_SIZE);
+    }
 }

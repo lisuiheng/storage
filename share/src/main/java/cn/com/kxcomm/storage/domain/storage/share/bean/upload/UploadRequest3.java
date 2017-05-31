@@ -12,6 +12,12 @@ public class UploadRequest3 extends Request {
     private String fileName;
     private byte[] data;
 
+    public UploadRequest3(String fileName, byte[] data, long headCorpId, long loginOperId, String sysCode) {
+        super(headCorpId, loginOperId, sysCode);
+        this.fileName = fileName;
+        this.data = data;
+    }
+
     public UploadRequest3(UploadRequest2 uploadRequest2) {
         super(uploadRequest2);
         this.fileName = uploadRequest2.getFileName();

@@ -1,9 +1,11 @@
 package cn.com.kxcomm.storage.domain.service.file.service;
 
+import cn.com.kxcomm.common.utils.SysSequenceUtil;
 import cn.com.kxcomm.storage.domain.service.Application;
 import cn.com.kxcomm.storage.domain.service.addr.model.FileAddrModel;
 import cn.com.kxcomm.storage.domain.service.addr.model.query.FileAddrQuery;
 import cn.com.kxcomm.storage.domain.service.addr.service.FileAddrService;
+import cn.com.kxcomm.storage.domain.service.common.constants.Constants;
 import cn.com.kxcomm.storage.domain.service.file.model.FileModel;
 import cn.com.kxcomm.storage.domain.service.file.model.query.FileQuery;
 import cn.com.kxcomm.storage.domain.service.view.model.FileViewModel;
@@ -79,8 +81,10 @@ public class FileServiceTest {
         long storageCount = 2;
         long storageId = 1;
         String fileViewName = "1.txt";
-        String fileViewCode = fileService.add(relativePath, size, md5, storageCount, storageId, fileViewName, headCorpId, loginOperId, sysCode);
+        String expectedFileViewCode = SysSequenceUtil.getSequenceId(Constants.SEQUENCE_ID_CODE_FILE_VIEW_CODE).toString();
+        String fileViewCode =  fileService.add(relativePath, size, md5, storageCount, storageId, fileViewName, expectedFileViewCode, headCorpId, loginOperId, sysCode);
         assertNotNull(fileViewCode);
+        assertEquals(expectedFileViewCode, fileViewCode);
         //TODO see file back up
 
         //if md5 exit not save

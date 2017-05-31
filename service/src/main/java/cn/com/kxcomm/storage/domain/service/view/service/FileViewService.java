@@ -34,10 +34,11 @@ public class FileViewService {
         }
     }
 
-    public FileViewModel add(long fileId, String fileName, long headCorpId, long loginOperId, String sysCode) {
+    public FileViewModel add(long fileId, String fileName, String fileViewCode, long headCorpId, long loginOperId, String sysCode) {
         FileViewModel fileViewModel = new FileViewModel();
         fileViewModel.setFileId(fileId);
         fileViewModel.setName(fileName);
+        fileViewModel.setCode(fileViewCode);
         return add(fileViewModel, headCorpId, loginOperId, sysCode);
     }
 
@@ -69,7 +70,9 @@ public class FileViewService {
 
     public FileViewModel add(FileViewModel model, long headCorpId, long loginOperId, String sysCode) {
         model.setId(SysSequenceUtil.getSequenceId(Constants.SEQUENCE_ID_CODE_FILE_VIEW));
-        model.setCode(SysSequenceUtil.getSequenceId(Constants.SEQUENCE_ID_CODE_FILE_VIEW_CODE).toString());
+        if(model.getCode() == null) {
+            model.setCode(SysSequenceUtil.getSequenceId(Constants.SEQUENCE_ID_CODE_FILE_VIEW_CODE).toString());
+        }
         model.setHeadCorpId(headCorpId);
         model.setSysCode(sysCode);
         model.setCreateTime(new Date());

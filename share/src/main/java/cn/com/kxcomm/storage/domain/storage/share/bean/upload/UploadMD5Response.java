@@ -11,13 +11,12 @@ import lombok.ToString;
 @ToString( callSuper = true)
 public class UploadMD5Response  extends Response {
     private Long fileViewCode;
+    private boolean FileExit;
 
-    public UploadMD5Response(Request request) {
-        this(null, request);
-    }
 
-    public UploadMD5Response(Long fileViewCode, Request request) {
+    public UploadMD5Response(Long fileViewCode,boolean FileExit, Request request) {
         super(request);
         this.fileViewCode = fileViewCode;
+        this.FileExit = FileExit;
     }
 }

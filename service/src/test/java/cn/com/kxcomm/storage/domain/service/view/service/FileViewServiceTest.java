@@ -40,7 +40,7 @@ public class FileViewServiceTest {
     public void addByFileIdAndName() throws Exception {
         long expectFileId = 1L;
         String expectFileName = "1.txt";
-        FileViewModel fileViewModel = fileViewService.add(expectFileId, expectFileName, headCorpId, loginOperId, sysCode);
+        FileViewModel fileViewModel = fileViewService.add(expectFileId, expectFileName, null , headCorpId, loginOperId, sysCode);
         assertNotNull(fileViewModel);
         assertEquals(java.util.Optional.of(expectFileId), java.util.Optional.of(fileViewModel.getFileId()));
         assertEquals(expectFileName, fileViewModel.getName());

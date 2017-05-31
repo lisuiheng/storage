@@ -9,11 +9,16 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode(callSuper = false)
 @ToString(callSuper = true)
-public class UploadResponse3 extends Response {
-    private String relativePath;
-
-    public UploadResponse3(String relativePath, Request request) {
+public class UploadInfoResponse extends Response {
+    public UploadInfoResponse(Request request) {
         super(request);
-        this.relativePath = relativePath;
+    }
+
+    public UploadInfoResponse(Response response) {
+        super(response);
+    }
+
+    public UploadInfoResponse(Throwable throwable, Request request) {
+        super(throwable, request);
     }
 }
