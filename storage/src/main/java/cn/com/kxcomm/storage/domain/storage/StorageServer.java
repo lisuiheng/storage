@@ -18,6 +18,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+/**
+ * @class Storage server
+ * @author 李穗恒
+ * @create Date 2017-06-02
+ * @modified By <修改人>
+ * @modified Date <修改日期，格式：YYYY-MM-DD>
+ * @why & what <修改原因描述>
+ * @since JDK1.8
+ * @version 002.00.00
+ * @description
+ */
 @Component
 public class StorageServer implements CommandLineRunner {
     private final Logger log = LoggerFactory.getLogger(StorageServer.class);
@@ -32,6 +43,18 @@ public class StorageServer implements CommandLineRunner {
     }
 
 
+    /**
+     * @method Run.
+     * @description
+     * @author 李穗恒
+     * @param strings the strings
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Override
     public void run(String... strings) throws Exception {
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);

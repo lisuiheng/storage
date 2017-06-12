@@ -8,6 +8,17 @@ import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @class Client handler
+ * @author 李穗恒
+ * @create Date 2017-06-02
+ * @modified By <修改人>
+ * @modified Date <修改日期，格式：YYYY-MM-DD>
+ * @why & what <修改原因描述>
+ * @since JDK1.7
+ * @version 002.00.00
+ * @description
+ */
 @ChannelHandler.Sharable
 public class ClientHandler extends ChannelInboundHandlerAdapter {
     private final Logger log = LoggerFactory.getLogger(ClientHandler.class);
@@ -20,12 +31,37 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
         this.client = client;
     }
 
+    /**
+     * @method Channel active.
+     * @description
+     * @author 李穗恒
+     * @param ctx the ctx
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
 
         this.channel = ctx.channel();
     }
 
+    /**
+     * @method Channel read.
+     * @description
+     * @author 李穗恒
+     * @param ctx the ctx
+     * @param msg the msg
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws InterruptedException {
         log.debug("{} {} receive", msg.getClass().getName(), msg);
@@ -36,12 +72,36 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
 
     }
 
+    /**
+     * @method Channel read complete.
+     * @description
+     * @author 李穗恒
+     * @param ctx the ctx
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) {
         ctx.flush();
 
     }
 
+    /**
+     * @method Channel inactive.
+     * @description
+     * @author 李穗恒
+     * @param ctx the ctx
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         log.error("channelInactive");
@@ -56,6 +116,19 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
         super.channelInactive(ctx);
     }
 
+    /**
+     * @method Exception caught.
+     * @description
+     * @author 李穗恒
+     * @param ctx the ctx
+     * @param cause the cause
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         // Close the connection when an exception is raised.
@@ -63,6 +136,18 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
         ctx.close();
     }
 
+    /**
+     * @method Write and flush.
+     * @description
+     * @author 李穗恒
+     * @param msg the msg
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     public void writeAndFlush(Object msg) {
         while(channel == null) {
             Thread.yield();
@@ -70,6 +155,18 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
         channel.writeAndFlush(msg);
     }
 
+    /**
+     * @method Channel is active boolean.
+     * @description
+     * @author 李穗恒
+     * @return the boolean
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     public boolean channelIsActive() {
         if(channel == null) {
             return false;

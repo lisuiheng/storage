@@ -24,6 +24,18 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
+
+/**
+ * @class Client
+ * @author 李穗恒
+ * @create Date 2017-06-02
+ * @modified By <修改人>
+ * @modified Date <修改日期，格式：YYYY-MM-DD>
+ * @why & what <修改原因描述>
+ * @since JDK1.7
+ * @version 002.00.00
+ * @description
+ */
 public class Client  {
     private static final Logger log = LoggerFactory.getLogger(Client.class);
 
@@ -36,16 +48,30 @@ public class Client  {
     private final int retryInterval = Config.getRetryInterval();
     private final SocketAddress address;
 
+
     public Client(String hostname, int port) {
         this.address = new InetSocketAddress(hostname, port);
         start();
     }
+
 
     public Client(SocketAddress address) {
         this.address = address;
         start();
     }
 
+
+    /**
+     * @method Start.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     void start()  {
         log.info("client start connect remote server {}", address);
         if(!handler.channelIsActive()) {
@@ -54,11 +80,36 @@ public class Client  {
     }
 
 
+    /**
+     * @method Is ready boolean.
+     * @description
+     * @author 李穗恒
+     * @return the boolean
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     public boolean isReady() {
         return handler.channelIsActive();
     }
 
-
+    /**
+     * @method Create bootstrap bootstrap.
+     * @description
+     * @author 李穗恒
+     * @return the bootstrap
+     * @param socketAddress the socket address
+     * @param bootstrap the bootstrap
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     public Bootstrap createBootstrap(SocketAddress socketAddress, Bootstrap bootstrap)  {
         if (bootstrap != null) {
             bootstrap.group(eventLoop);
@@ -80,11 +131,35 @@ public class Client  {
         return bootstrap;
     }
 
+    /**
+     * @method Put response.
+     * @description
+     * @author 李穗恒
+     * @param response the response
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     public void putResponse(Response response) throws InterruptedException {
         BlockingQueue<Response> queue = responseMap.get(response.getId());
         queue.offer(response, retryTimeout * retryInterval , TimeUnit.MILLISECONDS);
     }
 
+    /**
+     * @method Send.
+     * @description
+     * @author 李穗恒
+     * @param request the request
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     public void send(Request request) {
         responseMap.putIfAbsent(request.getId(), new LinkedBlockingQueue<Response>(1));
         try {
@@ -96,6 +171,19 @@ public class Client  {
         log.debug("{} {} send", request.getClass().getName(), request);
     }
 
+    /**
+     * @method Get response response.
+     * @description
+     * @author 李穗恒
+     * @return the response
+     * @param request the request
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     public Response getResponse(Request request) throws StorageException {
 //        if(isShutdown()) {
 //            String errMsg = "client is shutdown";
@@ -118,10 +206,33 @@ public class Client  {
         return result;
     }
 
+    /**
+     * @method Is shutdown boolean.
+     * @description
+     * @author 李穗恒
+     * @return the boolean
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     public boolean isShutdown() {
         return eventLoop.isShutdown();
     }
 
+    /**
+     * @method Wait channel active.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     private void waitChannelActive() throws InterruptedException {
         long startTime = System.currentTimeMillis();
         while(!handler.channelIsActive()) {
@@ -136,6 +247,18 @@ public class Client  {
         }
     }
 
+    /**
+     * @method Get connet adress socket address.
+     * @description
+     * @author 李穗恒
+     * @return the socket address
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     public SocketAddress getConnetAdress() {
         return address;
     }

@@ -24,6 +24,17 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 
+/**
+ * @class Api
+ * @author 李穗恒
+ * @create Date 2017-06-02
+ * @modified By <修改人>
+ * @modified Date <修改日期，格式：YYYY-MM-DD>
+ * @why & what <修改原因描述>
+ * @since JDK1.8
+ * @version 002.00.00
+ * @description
+ */
 @Component
 public class Api {
     private final FileAgent fileAgent;
@@ -36,6 +47,19 @@ public class Api {
         this.storageConfig = storageConfig;
     }
 
+    /**
+     * @method Upload upload response 3.
+     * @description
+     * @author 李穗恒
+     * @return the upload response 3
+     * @param request the request
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     UploadResponse3 upload(UploadRequest3 request) throws IOException {
         String fileName = request.getFileName();
         byte[] data = request.getData();
@@ -47,6 +71,19 @@ public class Api {
         return new UploadResponse3(path, request);
     }
 
+    /**
+     * @method Download download response 3.
+     * @description
+     * @author 李穗恒
+     * @return the download response 3
+     * @param request the request
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     DownloadResponse3 download(DownloadRequest3 request) throws IOException {
         byte[] data;
         String path = request.getPath();
@@ -54,12 +91,38 @@ public class Api {
         return new DownloadResponse3(data, request);
     }
 
+    /**
+     * @method Space space response.
+     * @description
+     * @author 李穗恒
+     * @return the space response
+     * @param request the request
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     SpaceResponse space(SpaceRequest request) {
         String relativePath = request.getRelativePath();
         File dir = new File(storageConfig.getPath().toString(), relativePath);
         return new SpaceResponse(dir.getFreeSpace(), dir.getUsableSpace(), dir.getTotalSpace(), request);
     }
 
+    /**
+     * @method List file list file response.
+     * @description
+     * @author 李穗恒
+     * @return the list file response
+     * @param request the request
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     ListFileResponse listFile(ListFileRequest request) {
         String relativePath = request.getRelativePath();
         FileTime formTime = FileTime.fromMillis(request.getLastModifiedTime());
@@ -109,6 +172,19 @@ public class Api {
     }
 
 
+    /**
+     * @method Remove remove response 3.
+     * @description
+     * @author 李穗恒
+     * @return the remove response 3
+     * @param removeRequest3 the remove request 3
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     RemoveResponse3 remove(RemoveRequest3 removeRequest3) {
         String relativePath = removeRequest3.getRelativePath();
         Path path = storageConfig.getPath(relativePath);

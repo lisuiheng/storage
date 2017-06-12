@@ -23,15 +23,48 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Stream;
 
+/**
+ * @class Storage test
+ * @author 李穗恒
+ * @create Date 2017-06-02
+ * @modified By <修改人>
+ * @modified Date <修改日期，格式：YYYY-MM-DD>
+ * @why & what <修改原因描述>
+ * @since JDK1.8
+ * @version 002.00.00
+ * @description
+ */
 public class StorageTest {
     private final Logger log = LoggerFactory.getLogger(StorageTest.class);
 
+    /**
+     * @method File name.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Test
     public void fileName() {
         Path path = Paths.get("/home/lee/Downloads/hello/hello.txt");
         log.info("file name is {}", path.toString());
     }
 
+    /**
+     * @method Md 5.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Test
     public void md5() throws IOException {
         Path path = Paths.get("/home/lee/Downloads/hello/hello.txt");
@@ -48,6 +81,17 @@ public class StorageTest {
         log.info("md5utils is {}, md5 is {}", md5utils, md5 );
     }
 
+    /**
+     * @method File size.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Test
     public void fileSize() throws IOException {
         Path path = Paths.get("/home/lee/Downloads/datagrip-2017.1.1.tar.gz");
@@ -57,6 +101,17 @@ public class StorageTest {
         log.info("length is {}, size is {}", length, size);
     }
 
+    /**
+     * @method Get file name.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Test
     public void getFileName() {
         Path path = Paths.get("/home/lee/Downloads/hello/hello.txt");
@@ -64,6 +119,17 @@ public class StorageTest {
         log.info(String.valueOf(fileName.toString().substring(fileName.toString().lastIndexOf(".")+1, fileName.toString().length())));
     }
 
+    /**
+     * @method String format.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Test
     public void StringFormat() {
         Path path = Paths.get("/home/lee/Downloads1");
@@ -71,6 +137,17 @@ public class StorageTest {
         log.info(format);
     }
 
+    /**
+     * @method Resolve path.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Test
     public void resolvePath() {
         Path path = Paths.get("/home/lee/Downloads1");
@@ -78,6 +155,17 @@ public class StorageTest {
         log.info(String.valueOf(resolve));
     }
 
+    /**
+     * @method Date format.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Test
     public void dateFormat() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
@@ -85,6 +173,17 @@ public class StorageTest {
         log.info(format);
     }
 
+    /**
+     * @method Size of directory.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Test
     public void sizeOfDirectory() {
         File dir = new File("/home/lee/Downloads");
@@ -94,6 +193,17 @@ public class StorageTest {
     }
 
 
+    /**
+     * @method Get space.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Test
     public void getSpace() {
         File dir = new File("/home/lee/Downloads/hello/hello.txt");
@@ -102,6 +212,17 @@ public class StorageTest {
         log.info("Total space is {}",  dir.getTotalSpace());
     }
 
+    /**
+     * @method Not zero.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Test
     public void notZero() {
         Long headCorpId = null;
@@ -109,11 +230,34 @@ public class StorageTest {
         new Request(headCorpId,loginOper,null);
     }
 
+    /**
+     * @method List file.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Test
     public void listFile() throws IOException {
         printAll(Paths.get("/home/lee/Downloads"));
     }
 
+    /**
+     * @method Print all.
+     * @description
+     * @author 李穗恒
+     * @param path the path
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     private void printAll(Path path) {
         try {
             Files.list(path)
@@ -129,6 +273,17 @@ public class StorageTest {
 
     }
 
+    /**
+     * @method Get size.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Test
     public void getSize() throws IOException {
         long size = size(Paths.get("/home/lee/Downloads/hello"));
@@ -136,6 +291,19 @@ public class StorageTest {
     }
 
 
+    /**
+     * @method Size long.
+     * @description
+     * @author 李穗恒
+     * @return the long
+     * @param path the path
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     private static long size(Path path) {
 
         final AtomicLong size = new AtomicLong(0);
@@ -171,6 +339,17 @@ public class StorageTest {
         return size.get();
     }
 
+    /**
+     * @method Get last modify time.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Test
     public void getLastModifyTime() throws IOException, InterruptedException {
 //        FileTime lastModifiedTime = Files.getLastModifiedTime(Paths.get("/home/lee/Downloads/hello"));
@@ -181,6 +360,17 @@ public class StorageTest {
         log.info("compare {}", i);
     }
 
+    /**
+     * @method Filename.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Test
     public void filename() {
         Path dir = Paths.get("/home/lee/Downloads");
@@ -189,6 +379,17 @@ public class StorageTest {
         log.info(substring);
     }
 
+    /**
+     * @method Substring file name.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Test
     public void substringFileName() {
         String relativeName = "20170515/20170515110559484461.txt";
@@ -198,6 +399,17 @@ public class StorageTest {
         log.info("dir:{}, name:{}", relativeDir, relativeName);
     }
 
+    /**
+     * @method List files.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Test
     public void listFiles() throws IOException, InterruptedException {
         FileTime formTime = FileTime.fromMillis(0);

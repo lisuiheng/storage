@@ -23,6 +23,17 @@ import java.util.concurrent.CompletableFuture;
 
 import static cn.com.kxcomm.storage.domain.storage.common.constants.ShareConstants.*;
 
+/**
+ * @class Manager server
+ * @author 李穗恒
+ * @create Date 2017-06-02
+ * @modified By <修改人>
+ * @modified Date <修改日期，格式：YYYY-MM-DD>
+ * @why & what <修改原因描述>
+ * @since JDK1.8
+ * @version 002.00.00
+ * @description
+ */
 @Component
 @ChannelHandler.Sharable
 public final class ManagerServer implements CommandLineRunner {
@@ -44,6 +55,18 @@ public final class ManagerServer implements CommandLineRunner {
     }
 
 
+    /**
+     * @method Run.
+     * @description
+     * @author 李穗恒
+     * @param strings the strings
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Override
     public void run(String... strings) throws Exception {
 

@@ -24,6 +24,17 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.CompletableFuture;
 
 
+/**
+ * @class Api
+ * @author 李穗恒
+ * @create Date 2017-06-02
+ * @modified By <修改人>
+ * @modified Date <修改日期，格式：YYYY-MM-DD>
+ * @why & what <修改原因描述>
+ * @since JDK1.8
+ * @version 002.00.00
+ * @description
+ */
 @Component
 public class Api {
     private final Logger log = LoggerFactory.getLogger(Api.class);
@@ -45,6 +56,19 @@ public class Api {
         this.connectPool = connectPool;
     }
 
+    /**
+     * @method Handel upload md 5 request upload md 5 response 1.
+     * @description
+     * @author 李穗恒
+     * @return the upload md 5 response 1
+     * @param uploadMD5Request1 the upload md 5 request 1
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     private UploadMD5Response1 handelUploadMD5Request(UploadMD5Request1 uploadMD5Request1) {
         String md5 = uploadMD5Request1.getMd5();
         Long headCorpId = uploadMD5Request1.getHeadCorpId();
@@ -62,10 +86,36 @@ public class Api {
         return new UploadMD5Response1(Long.parseLong(fileViewModel.getCode()), true, uploadMD5Request1);
     }
 
+    /**
+     * @method Handel pre upload request pre upload request 2.
+     * @description
+     * @author 李穗恒
+     * @return the pre upload request 2
+     * @param preUploadRequest1 the pre upload request 1
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     private PreUploadRequest2 handelPreUploadRequest(PreUploadRequest1 preUploadRequest1) {
         return new PreUploadRequest2(preUploadRequest1);
     }
 
+    /**
+     * @method Handel pre upload response pre upload response 1.
+     * @description
+     * @author 李穗恒
+     * @return the pre upload response 1
+     * @param preUploadResponse2 the pre upload response 2
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     private PreUploadResponse1 handelPreUploadResponse(PreUploadResponse2 preUploadResponse2) {
         long storageId = preUploadResponse2.getStorageId();
         int uploadPort = preUploadResponse2.getUploadPort();
@@ -73,6 +123,19 @@ public class Api {
         return new PreUploadResponse1(managerPort, storageId, preUploadResponse2);
     }
 
+    /**
+     * @method Handel upload info request upload info response 1.
+     * @description
+     * @author 李穗恒
+     * @return the upload info response 1
+     * @param uploadInfoRequest1 the upload info request 1
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     private UploadInfoResponse1 handelUploadInfoRequest(UploadInfoRequest1 uploadInfoRequest1) {
         String fileName = uploadInfoRequest1.getFileName();
         long size = uploadInfoRequest1.getSize();
@@ -85,6 +148,19 @@ public class Api {
         return new UploadInfoResponse1(uploadInfoRequest1);
     }
 
+    /**
+     * @method Handel pre download request pre download request 2.
+     * @description
+     * @author 李穗恒
+     * @return the pre download request 2
+     * @param preDownloadRequest1 the pre download request 1
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     private PreDownloadRequest2 handelPreDownloadRequest(PreDownloadRequest1 preDownloadRequest1) {
         Long headCorpId = preDownloadRequest1.getHeadCorpId();
         Long fileViewCode = preDownloadRequest1.getFileViewCode();
@@ -95,11 +171,37 @@ public class Api {
         return new PreDownloadRequest2(storagePositionId, path, preDownloadRequest1);
     }
 
+    /**
+     * @method Handel pre download response pre download response 1.
+     * @description
+     * @author 李穗恒
+     * @return the pre download response 1
+     * @param preDownloadResponse2 the pre download response 2
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     private PreDownloadResponse1 handelPreDownloadResponse(PreDownloadResponse2 preDownloadResponse2) {
         return new PreDownloadResponse1(preDownloadResponse2);
     }
 
 
+    /**
+     * @method Handel remove remove response 1.
+     * @description
+     * @author 李穗恒
+     * @return the remove response 1
+     * @param removeRequest1 the remove request 1
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     private RemoveResponse1 handelRemove(RemoveRequest1 removeRequest1) {
         long fileViewCode = removeRequest1.getFileViewCode();
         Long headCorpId = removeRequest1.getHeadCorpId();
@@ -108,6 +210,20 @@ public class Api {
         return new RemoveResponse1(removeRequest1);
     }
 
+    /**
+     * @method Handel.
+     * @description
+     * @author 李穗恒
+     * @param request the request
+     * @param outboundChannel the outbound channel
+     * @param inboundChannel the inbound channel
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     void handel(Request request, Channel outboundChannel, Channel inboundChannel) {
         log.debug("handel Request {}", request);
         CompletableFuture.supplyAsync(() -> {

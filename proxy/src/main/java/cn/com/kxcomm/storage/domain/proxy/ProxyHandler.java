@@ -15,6 +15,17 @@ import org.springframework.stereotype.Component;
 
 import java.util.concurrent.*;
 
+/**
+ * @class Proxy handler
+ * @author 李穗恒
+ * @create Date 2017-06-02
+ * @modified By <修改人>
+ * @modified Date <修改日期，格式：YYYY-MM-DD>
+ * @why & what <修改原因描述>
+ * @since JDK1.8
+ * @version 002.00.00
+ * @description
+ */
 @Component
 @ChannelHandler.Sharable
 public class ProxyHandler extends ChannelInboundHandlerAdapter {
@@ -27,6 +38,19 @@ public class ProxyHandler extends ChannelInboundHandlerAdapter {
     }
 
 
+    /**
+     * @method Channel read.
+     * @description
+     * @author 李穗恒
+     * @param ctx the ctx
+     * @param msg the msg
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg)  {
         log.debug("channel {} {} {} receive", ctx.channel().localAddress(), msg.getClass().getName(), msg);
@@ -56,11 +80,36 @@ public class ProxyHandler extends ChannelInboundHandlerAdapter {
     }
 
 
+    /**
+     * @method Channel read complete.
+     * @description
+     * @author 李穗恒
+     * @param ctx the ctx
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) {
         ctx.flush();
     }
 
+    /**
+     * @method Exception caught.
+     * @description
+     * @author 李穗恒
+     * @param ctx the ctx
+     * @param cause the cause
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         cause.printStackTrace();

@@ -10,6 +10,17 @@ import io.netty.handler.codec.serialization.ObjectEncoder;
 
 import java.net.SocketAddress;
 
+/**
+ * @class Frontend handler
+ * @author 李穗恒
+ * @create Date 2017-06-02
+ * @modified By <修改人>
+ * @modified Date <修改日期，格式：YYYY-MM-DD>
+ * @why & what <修改原因描述>
+ * @since JDK1.8
+ * @version 002.00.00
+ * @description
+ */
 public class FrontendHandler extends ChannelInboundHandlerAdapter {
 
 
@@ -24,7 +35,18 @@ public class FrontendHandler extends ChannelInboundHandlerAdapter {
     }
 
 
-
+    /**
+     * @method Channel active.
+     * @description
+     * @author 李穗恒
+     * @param ctx the ctx
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         final Channel inboundChannel = ctx.channel();
@@ -57,6 +79,19 @@ public class FrontendHandler extends ChannelInboundHandlerAdapter {
         });
     }
 
+    /**
+     * @method Channel read.
+     * @description
+     * @author 李穗恒
+     * @param ctx the ctx
+     * @param msg the msg
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Override
     public void channelRead(final ChannelHandlerContext ctx, Object msg) {
         if (outboundChannel.isActive()) {
@@ -74,6 +109,18 @@ public class FrontendHandler extends ChannelInboundHandlerAdapter {
         }
     }
 
+    /**
+     * @method Channel inactive.
+     * @description
+     * @author 李穗恒
+     * @param ctx the ctx
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Override
     public void channelInactive(ChannelHandlerContext ctx) {
         if (outboundChannel != null) {
@@ -81,6 +128,19 @@ public class FrontendHandler extends ChannelInboundHandlerAdapter {
         }
     }
 
+    /**
+     * @method Exception caught.
+     * @description
+     * @author 李穗恒
+     * @param ctx the ctx
+     * @param cause the cause
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         cause.printStackTrace();
@@ -88,7 +148,16 @@ public class FrontendHandler extends ChannelInboundHandlerAdapter {
     }
 
     /**
-     * Closes the specified channel after all queued write requests are flushed.
+     * @method Close on flush.
+     * @description
+     * @author 李穗恒
+     * @param ch the ch
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
      */
     static void closeOnFlush(Channel ch) {
         if (ch.isActive()) {

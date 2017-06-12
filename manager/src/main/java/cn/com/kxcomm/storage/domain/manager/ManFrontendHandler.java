@@ -18,6 +18,17 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
+/**
+ * @class Man frontend handler
+ * @author 李穗恒
+ * @create Date 2017-06-02
+ * @modified By <修改人>
+ * @modified Date <修改日期，格式：YYYY-MM-DD>
+ * @why & what <修改原因描述>
+ * @since JDK1.8
+ * @version 002.00.00
+ * @description
+ */
 @Component
 @ChannelHandler.Sharable
 @PropertySource(value = "classpath:manager.properties")
@@ -44,6 +55,18 @@ public class ManFrontendHandler extends ChannelInboundHandlerAdapter {
     }
 
 
+    /**
+     * @method Channel active.
+     * @description
+     * @author 李穗恒
+     * @param ctx the ctx
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         final Channel inboundChannel = ctx.channel();
@@ -78,6 +101,19 @@ public class ManFrontendHandler extends ChannelInboundHandlerAdapter {
         });
     }
 
+    /**
+     * @method Channel read.
+     * @description
+     * @author 李穗恒
+     * @param ctx the ctx
+     * @param msg the msg
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Override
     public void channelRead(final ChannelHandlerContext ctx, Object msg) {
         log.debug("frontendHandler receive {} {}", msg.getClass().getName(), msg);
@@ -245,12 +281,36 @@ public class ManFrontendHandler extends ChannelInboundHandlerAdapter {
 //        }
 //    }
 
+    /**
+     * @method Channel read complete.
+     * @description
+     * @author 李穗恒
+     * @param ctx the ctx
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
         log.info("channelReadComplete");
         ctx.fireChannelReadComplete();
     }
 
+    /**
+     * @method Channel inactive.
+     * @description
+     * @author 李穗恒
+     * @param ctx the ctx
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Override
     public void channelInactive(ChannelHandlerContext ctx) {
         if (outboundChannel != null) {
@@ -258,6 +318,19 @@ public class ManFrontendHandler extends ChannelInboundHandlerAdapter {
         }
     }
 
+    /**
+     * @method Exception caught.
+     * @description
+     * @author 李穗恒
+     * @param ctx the ctx
+     * @param cause the cause
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
+     */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         cause.printStackTrace();
@@ -265,7 +338,16 @@ public class ManFrontendHandler extends ChannelInboundHandlerAdapter {
     }
 
     /**
-     * Closes the specified channel after all queued write requests are flushed.
+     * @method Close on flush.
+     * @description
+     * @author 李穗恒
+     * @param ch the ch
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.8
+     * @version 002.00.00
      */
     static void closeOnFlush(Channel ch) {
         if (ch.isActive()) {

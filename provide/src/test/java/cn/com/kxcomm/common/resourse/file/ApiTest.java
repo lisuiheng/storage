@@ -25,9 +25,31 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
+/**
+ * @class Api test
+ * @author 李穗恒
+ * @create Date 2017-06-02
+ * @modified By <修改人>
+ * @modified Date <修改日期，格式：YYYY-MM-DD>
+ * @why & what <修改原因描述>
+ * @since JDK1.7
+ * @version 002.00.00
+ * @description
+ */
 public class ApiTest {
     private final Logger log = LoggerFactory.getLogger(ApiTest.class);
 
+    /**
+     * @method Md 5.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     @Test
     public void md5() throws NoSuchAlgorithmException, IOException {
         Path path = Paths.get("/home/lee/workspace/java/test/file/client/src/main/resources/1.txt");
@@ -43,6 +65,17 @@ public class ApiTest {
 
     }
 
+    /**
+     * @method Get suffix.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     @Test
     public void getSuffix() {
         Path path = Paths.get("/home/lee/workspace/java/test/file/client/src/main/resources/1.txt");
@@ -51,6 +84,17 @@ public class ApiTest {
         log.info(suffix);
     }
 
+    /**
+     * @method Get file name.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     @Test
     public void getFileName() {
         Path path = Paths.get("/home/lee/workspace/java/test/file/client/src/main/resources/1.txt");
@@ -88,6 +132,17 @@ public class ApiTest {
 //        Thread.sleep(100L);
 //    }
 
+    /**
+     * @method Random.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     @Test
     public void random() {
         Map<String, String> randomMap = new HashMap<>();
@@ -101,12 +156,36 @@ public class ApiTest {
         }
     }
 
+    /**
+     * @method Get folder size.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     @Test
     public void getFolderSize() throws IOException {
         long size = getFolderSize(new File("/home/lee/workspace/java/test/file/2"));
         log.info("size is {}", size);
     }
 
+    /**
+     * @method Get folder size long.
+     * @description
+     * @author 李穗恒
+     * @return the long
+     * @param dir the dir
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     private long getFolderSize(File dir) {
         long size = 0;
         File[] files = dir.listFiles();
@@ -120,6 +199,17 @@ public class ApiTest {
         return size;
     }
 
+    /**
+     * @method Remote adress.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     @Test
     public void remoteAdress() throws InterruptedException {
         Bootstrap bootstrap = new Bootstrap();
@@ -164,6 +254,17 @@ public class ApiTest {
 //        Thread.sleep(2000L);
 //    }
 
+    /**
+     * @method Read properties.
+     * @description
+     * @author 李穗恒
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
     @Test
     public void readProperties() throws IOException {
         Properties prop = new Properties();
