@@ -24,7 +24,7 @@ import org.springframework.stereotype.Component;
 public class ProxyConfig {
     private final Logger log = LoggerFactory.getLogger(ProxyConfig.class);
 
-
+    private String hostname;
     private int port;
     private int proxyStartPort;
     private long timeout;

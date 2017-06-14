@@ -6,6 +6,10 @@ import cn.com.kxcomm.storage.domain.storage.common.utils.MD5Util;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.*;
+import cn.com.kxcomm.storage.domain.storage.share.bean.manager.FileGetNameRequest;
+import cn.com.kxcomm.storage.domain.storage.share.bean.manager.FileGetNameResponse;
+import cn.com.kxcomm.storage.domain.storage.share.bean.manager.FileRenameRequest;
+import cn.com.kxcomm.storage.domain.storage.share.bean.manager.FileRenameResponse;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.*;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -25,7 +29,8 @@ public class ManagerTest {
     protected long loginOperId = 1L;
     protected String sysCode = "coms";
 
-    private ClientApi clientApi = new ClientApi(new InetSocketAddress("172.16.103.200", 8005));
+//    private ClientApi clientApi = new ClientApi(new InetSocketAddress("172.16.103.200", 8005));
+    private ClientApi clientApi = new ClientApi(new InetSocketAddress("testweb.dev.kxcomm.com", 8005));
 
     @Test(expected = StorageException.class)
     public void testConnet() throws StorageException {
@@ -99,5 +104,19 @@ public class ManagerTest {
         assertNotNull(downloadResponse3.getData());
     }
 
+    @Test
+    public void getFileName() throws StorageException {
+        FileGetNameRequest fileGetNameRequest = new FileGetNameRequest(1496048470202L, headCorpId, loginOperId, sysCode);
+        FileGetNameResponse fileGetNameResponse = (FileGetNameResponse) clientApi.send(fileGetNameRequest);
+        String fileName = fileGetNameResponse.getFileName();
+        assertNotNull(fileName);
+    }
+
+    @Test
+    public void fileRename() throws StorageException {
+        FileRenameRequest fileRenameRequest = new FileRenameRequest(1496048470202L, "2.txt", headCorpId, loginOperId, sysCode);
+        FileRenameResponse fileRenameResponse = (FileRenameResponse) clientApi.send(fileRenameRequest);
+        assertNull(fileRenameResponse.getThrowable());
+    }
 
 }

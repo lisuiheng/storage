@@ -53,8 +53,25 @@ public class FileViewServiceTest {
 
     private FileViewModel addReturn() {
         FileViewModel model = fileViewService.getByKey(id, headCorpId);
+        model.setCode(null);
         model = fileViewService.add(model, model.getHeadCorpId(), model.getCreateOper(), sysCode);
         return model;
     }
 
+    @Test
+    public void getByViewCode() {
+        FileViewModel viewModel = fileViewService.getByViewCode("1492833402557890" ,1L);
+        assertNotNull(viewModel);
+    }
+
+    @Test
+    @Rollback
+    public void renameByViewCode() {
+        FileViewModel fileViewModel = addReturn();
+        String code = fileViewModel.getCode();
+        String expectFileName = "2.txt";
+        fileViewService.renameByViewCode(code, expectFileName, headCorpId, loginOperId);
+        fileViewModel = fileViewService.getByViewCode(code, headCorpId);
+        assertEquals(expectFileName ,fileViewModel.getName());
+    }
 }

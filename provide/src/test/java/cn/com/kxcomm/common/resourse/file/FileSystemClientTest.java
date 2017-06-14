@@ -2,8 +2,8 @@
 //
 //import cn.com.kxcomm.test.file.share.Request;
 //import cn.com.kxcomm.test.file.share.Response;
-//import cn.com.kxcomm.test.file.share.upload.UploadRequest1;
-//import cn.com.kxcomm.test.file.share.upload.UploadRequest2;
+//import cn.com.kxcomm.test.file.share.uploadSyn.UploadRequest1;
+//import cn.com.kxcomm.test.file.share.uploadSyn.UploadRequest2;
 //import org.junit.Test;
 //import org.junit.runner.RunWith;
 //import org.slf4j.Logger;
@@ -55,11 +55,11 @@
 //    }
 //
 //    @Test
-//    public void upload() throws Exception {
+//    public void uploadSyn() throws Exception {
 //        startClient(managerPort);
 //
-//        api.upload(Paths.get("/home/lee/workspace/java/test/file/client/src/main/resources/1.txt"), headCorpId, loginOperId, sysCode);
-////        api.upload(Paths.get("/home/lee/workspace/java/test/file/client/src/main/resources/1.txt"), headCorpId, loginOperId, sysCode);
+//        api.uploadSyn(Paths.get("/home/lee/workspace/java/test/file/client/src/main/resources/1.txt"), headCorpId, loginOperId, sysCode);
+////        api.uploadSyn(Paths.get("/home/lee/workspace/java/test/file/client/src/main/resources/1.txt"), headCorpId, loginOperId, sysCode);
 //    }
 //
 //    @Test
@@ -96,7 +96,7 @@
 //    @Test
 //    public void uploadDownload() throws IOException, NoSuchAlgorithmException {
 //        startClient(managerPort);
-//        long fileViewCode = api.upload(Paths.get("/home/lee/workspace/java/test/file/client/src/main/resources/1.txt"), headCorpId, loginOperId, sysCode);
+//        long fileViewCode = api.uploadSyn(Paths.get("/home/lee/workspace/java/test/file/client/src/main/resources/1.txt"), headCorpId, loginOperId, sysCode);
 //        byte[] data = api.download(fileViewCode, headCorpId, loginOperId, sysCode);
 //        Files.write(Paths.get("/home/lee/workspace/java/test/file/client/src/main/resources/2.txt"), data);
 //    }

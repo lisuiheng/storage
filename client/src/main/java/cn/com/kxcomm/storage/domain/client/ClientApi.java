@@ -36,37 +36,6 @@ public class ClientApi {
         this.client = new Client(address);
     }
 
-//    public Long upload(File file, Long storageCount,
-//                              Long loginOperId, Long headCorpId, String platformCode,
-//                              String platformKey, String sysCode, String sysKey) throws IOException, NoSuchAlgorithmException, StorageException {
-//        Path path = Paths.get(file.getRelativePath());
-//        byte[] bytes = Files.readAllBytes(path);
-//        String fileName = path.getFileName().toString();
-//
-//        Long fileId = getFileIdByMD5(md5(bytes), headCorpId, loginOperId, sysCode);
-//        if(fileId == null) {
-//            UploadRequest1 uploadRequest1 = new UploadRequest1(fileName, bytes, headCorpId, loginOperId, sysCode);
-//            UploadResponse1 response = (UploadResponse1) send(uploadRequest1);
-//            fileId = response.getFileViewCode();
-//        }
-//        return fileId;
-//    }
-//
-//    public Long getFileIdByMD5(String md5, long headCorpId, long loginOperId, String sysCode) throws StorageException {
-//        CheckFileExistRequest request = new CheckFileExistRequest(md5, headCorpId, loginOperId, sysCode);
-//        CheckFileExistResponse response = (CheckFileExistResponse)send(request);
-//        return response.getFileViewCode();
-//    }
-//
-//    private String md5(byte[] bytes) throws  NoSuchAlgorithmException {
-//        MessageDigest md = MessageDigest.getInstance("MD5");
-//        md.update(bytes);
-//        byte[] digest = md.digest();
-//        String hash = DatatypeConverter
-//                .printHexBinary(digest).toLowerCase();
-//        return hash;
-//    }
-
 
     /**
      * @method Send response.
@@ -82,6 +51,7 @@ public class ClientApi {
      * @version 002.00.00
      */
     public Response send(Request request) throws StorageException {
+        // send request to server and wait response untill return
         client.send(request);
         Response response = client.getResponse(request);
         handleError(response);

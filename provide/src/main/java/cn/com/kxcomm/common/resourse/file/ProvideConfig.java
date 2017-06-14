@@ -1,10 +1,13 @@
-package cn.com.kxcomm.storage.domain.client;
+package cn.com.kxcomm.common.resourse.file;
+
 
 import java.io.IOException;
 import java.util.Properties;
 
+
+
 /**
- * @class Config
+ * @class ProvideConfig
  * @author 李穗恒
  * @create Date 2017-06-02
  * @modified By <修改人>
@@ -14,12 +17,12 @@ import java.util.Properties;
  * @version 002.00.00
  * @description
  */
-public class Config {
+public class ProvideConfig {
     private static Properties prop;
+    private static int UPLOAD_ASYNC_EXECUTOR_SIZE;
+    private static String DOWNLOAD_PATH;
 
-
-
-    private Config() {}
+    private ProvideConfig() {}
 
     public static void load() {
         load(Constants.CONFIG_PATH);
@@ -28,18 +31,12 @@ public class Config {
     public static void load(String path) {
         try {
             prop = new Properties();
-            prop.load(Config.class.getClassLoader().getResourceAsStream(path));
-            validate();
+            prop.load(ProvideConfig.class.getClassLoader().getResourceAsStream(path));
+            UPLOAD_ASYNC_EXECUTOR_SIZE = getInt(Constants.UPLOAD_ASYNC_EXECUTOR_SIZE);
+            DOWNLOAD_PATH = getString(Constants.DOWNLOAD_PATH);
         } catch (IOException e) {
             throw new RuntimeException(String.format("no config %s", path));
         }
-    }
-
-    private static void validate() {
-        getString(Constants.REMOTE_HOSTNAME);
-        getInt(Constants.REMOTE_PORT);
-        getInt(Constants.RETRY_INTERVAL);
-        getInt(Constants.RETRY_TIMEOUT);
     }
 
 
@@ -95,23 +92,7 @@ public class Config {
 
 
     /**
-     * @method Get remote hostname string.
-     * @description
-     * @author 李穗恒
-     * @return the string
-     * @create Date 2017-06-02
-     * @modified By <修改人>
-     * @modified Date <修改日期，格式：YYYY-MM-DD>
-     * @why & what <修改原因描述>
-     * @since JDK1.7
-     * @version 002.00.00
-     */
-    public static String getRemoteHostname() {
-        return getString(Constants.REMOTE_HOSTNAME);
-    }
-
-    /**
-     * @method Get remote port int.
+     * @method Get upload async executor size int.
      * @description
      * @author 李穗恒
      * @return the int
@@ -122,42 +103,12 @@ public class Config {
      * @since JDK1.7
      * @version 002.00.00
      */
-    public static int getRemotePort() {
-        return getInt(Constants.REMOTE_PORT);
+    public static int getUploadAsyncExecutorSize() {
+        return UPLOAD_ASYNC_EXECUTOR_SIZE;
     }
 
-    /**
-     * @method Get retry interval int.
-     * @description
-     * @author 李穗恒
-     * @return the int
-     * @create Date 2017-06-02
-     * @modified By <修改人>
-     * @modified Date <修改日期，格式：YYYY-MM-DD>
-     * @why & what <修改原因描述>
-     * @since JDK1.7
-     * @version 002.00.00
-     */
-    public static int getRetryInterval() {
-        return getInt(Constants.RETRY_INTERVAL);
+    public static String getDownloadPath() {
+        return DOWNLOAD_PATH;
     }
-
-    /**
-     * @method Get retry time out int.
-     * @description
-     * @author 李穗恒
-     * @return the int
-     * @create Date 2017-06-02
-     * @modified By <修改人>
-     * @modified Date <修改日期，格式：YYYY-MM-DD>
-     * @why & what <修改原因描述>
-     * @since JDK1.7
-     * @version 002.00.00
-     */
-    public static int getRetryTimeOut() {
-        return getInt(Constants.RETRY_TIMEOUT);
-    }
-
-
 
 }

@@ -20,14 +20,18 @@ public class FileViewService {
         this.fileViewDao = fileViewDao;
     }
 
-
+    public void renameByViewCode(String fileViewCode, String newName, long headCorpId, long loginOperId) {
+        FileViewModel fileViewModel = getByViewCode(fileViewCode, headCorpId);
+        fileViewModel.setName(newName);
+        updateByKey(fileViewModel, headCorpId, loginOperId);
+    }
 
     public FileViewModel getByViewCode(String fileViewCode, long headCorpId) {
         FileViewQuery fileViewQuery = new FileViewQuery();
         fileViewQuery.setCode(fileViewCode);
         List<FileViewModel> fileViewModels = getList(fileViewQuery, headCorpId);
         if(fileViewModels.size() != 1) {
-            throw new RuntimeException(String.format("fileViewCode %d get worng list %s", fileViewCode, fileViewModels));
+            throw new RuntimeException(String.format("fileViewCode %s get worng list %s", fileViewCode, fileViewModels));
         } else {
             return fileViewModels.get(0);
         }

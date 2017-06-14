@@ -38,6 +38,7 @@ public class FileServerService {
         fileServerModels.forEach((server) -> {
             FileStoragePrositionQuery storagePrositionQuery = new FileStoragePrositionQuery();
             storagePrositionQuery.setServerId(server.getId());
+            storagePrositionQuery.setAddrType(Constants.ADDR_TYPE_SOCKET);
             List<FileStoragePrositionModel> storagePrositionModels = storagePrositionService.getList(storagePrositionQuery, headCorpId);
             storagePrositionModels.forEach((storage) -> {
                 storageAddressMap.put(storage.getId(), new InetSocketAddress(server.getIp(), storage.getPort()));

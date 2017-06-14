@@ -7,6 +7,7 @@
     <groupId>cn.com.kxcomm.StorageManageSystem</groupId>
     <artifactId>storage</artifactId>
     <version>002.00.00</version>
+    <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -63,6 +64,7 @@
     </dependencies>
 
     <build>
+        <finalName>storage</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -1,4 +1,4 @@
-package cn.com.kxcomm.storage.domain.client;
+package cn.com.kxcomm.common.resourse.file;
 
 /**
  * @class Constants
@@ -12,11 +12,8 @@ package cn.com.kxcomm.storage.domain.client;
  * @description
  */
 public interface Constants {
-    String CONFIG_PATH = "client.properties";
-    String REMOTE_HOSTNAME = "hostname";
-    String REMOTE_PORT = "port";
-    String RETRY_TIMEOUT = "retry.timeout";
-    String RETRY_INTERVAL = "retry.interval";
+    String CONFIG_PATH = "cfg/file.conf";
+    String DOWNLOAD_PATH = "download.path";
     String UPLOAD_ASYNC_EXECUTOR_SIZE = "upload.async.executor.size";
 
 }

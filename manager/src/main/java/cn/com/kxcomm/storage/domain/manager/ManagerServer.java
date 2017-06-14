@@ -80,13 +80,14 @@ public final class ManagerServer implements CommandLineRunner {
         int proxyStartPort = managerConfig.getProxyStartPort();
         for (int proxyPort : ports) {
             int managerPort = proxyStartPort++;
-            final InetSocketAddress localhostAddress = new InetSocketAddress("localhost", managerPort);
+            final InetSocketAddress localhostAddress = new InetSocketAddress(managerConfig.getHostname(), managerPort);
             final InetSocketAddress remoteAdress = new InetSocketAddress(managerConfig.getProxyHost(), proxyPort);
             connectPool.putManagerProxyPort(managerPort, proxyPort);
 
             CompletableFuture.supplyAsync(() -> {
                 ServerBootstrap b = new ServerBootstrap();
                 try {
+                    log.info("listen {} for {}", localhostAddress, remoteAdress);
                     b.group(bossGroup, workerGroup)
                             .channel(NioServerSocketChannel.class)
                             .handler(new LoggingHandler(LogLevel.INFO))
@@ -102,7 +103,6 @@ public final class ManagerServer implements CommandLineRunner {
                             })
                             .childOption(ChannelOption.AUTO_READ, false)
                             .bind(localhostAddress).sync().channel().closeFuture().sync();
-                    log.info("listen {} for {}", localhostAddress, remoteAdress);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }

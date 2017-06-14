@@ -3,6 +3,11 @@ package cn.com.kxcomm.storage.domain.service.common.constants;
 import cn.com.kxcomm.common.constants.DataConstants;
 
 public interface Constants {
+    // 地址类型--socket
+    public final static Integer ADDR_TYPE_SOCKET = 1;
+    // 地址类型--webservice
+    public final static Integer ADDR_TYPE_WEBSERVICE = 2;
+
     Integer STATE_DELETE = DataConstants.STATE_DELETE_OF_DEFAULT_DATA;
     Integer STATE_NORMAL = DataConstants.STATE_NORMAL_OF_DEFAULT_DATA;
     String  SEQUENCE_ID_CODE_FILE_ADDR = "";

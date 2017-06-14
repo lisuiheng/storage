@@ -276,7 +276,7 @@ public class ApiTest {
 
 //    @Test
 //    public void getConfig() {
-//        int max = Config.getInt(ShareConstants.RETRY_TIMEOUT);
+//        int max = ProvideConfig.getInt(ShareConstants.RETRY_TIMEOUT);
 //        log.info("retry max is {}", max);
 //    }
 }

@@ -21,6 +21,7 @@ import java.net.InetSocketAddress;
 @Component
 @ConfigurationProperties(prefix = "manager.config")
 public class ManagerConfig {
+    private String hostname;
     private int port;
     private int proxyStartPort;
     private String proxyHost;

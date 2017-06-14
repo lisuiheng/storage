@@ -23,6 +23,7 @@ import org.springframework.stereotype.Component;
 
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -71,11 +72,16 @@ public class ProxyServer implements CommandLineRunner {
         EventLoopGroup bossGroup = new NioEventLoopGroup(2);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
-        connectPool.getStorageRemoteAddressMap().forEach((storageId, remoteAdress) -> {
+        Map<Long, InetSocketAddress> storageRemoteAddressMap = connectPool.getStorageRemoteAddressMap();
+        if(storageRemoteAddressMap.size() == 0) {
+            log.warn("storage remote address is 0");
+        }
+        storageRemoteAddressMap.forEach((storageId, remoteAdress) -> {
             CompletableFuture.supplyAsync(() -> {
                 SocketAddress localhostAddress = connectPool.getStorageLocalAddressMap().get(storageId);
                 ServerBootstrap b = new ServerBootstrap();
                 try {
+                    log.info("listen {} for {}", localhostAddress, remoteAdress);
                     b.group(bossGroup, workerGroup)
                             .channel(NioServerSocketChannel.class)
                             .handler(new LoggingHandler(LogLevel.INFO))
@@ -91,7 +97,6 @@ public class ProxyServer implements CommandLineRunner {
                             })
                             .childOption(ChannelOption.AUTO_READ, false)
                             .bind(localhostAddress).sync().channel().closeFuture().sync();
-                    log.info("listen {} for {}", localhostAddress, remoteAdress);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }

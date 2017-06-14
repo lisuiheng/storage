@@ -26,7 +26,8 @@ public class ProxyTest {
     protected long loginOperId = 1L;
     protected String sysCode = "coms";
 
-    private ClientApi clientApi = new ClientApi(new InetSocketAddress("172.16.103.200", 8006));
+//    private ClientApi clientApi = new ClientApi(new InetSocketAddress("172.16.103.200", 8006));
+    private ClientApi clientApi = new ClientApi(new InetSocketAddress("testweb.dev.kxcomm.com", 8300));
 
 
     @Test(expected = StorageException.class)
@@ -49,5 +50,12 @@ public class ProxyTest {
         PreUploadResponse2 preUploadResponse2 = (PreUploadResponse2) clientApi.send(preUploadRequest2);
         assertNotEquals(0, preUploadResponse2.getStorageId());
         assertNotEquals(0, preUploadResponse2.getUploadPort());
+    }
+
+    @Test
+    public void upload() throws StorageException, IOException {
+        UploadRequest3 uploadRequest3 = new UploadRequest3(name, Files.readAllBytes(Paths.get(dir, name)), headCorpId, loginOperId, sysCode);
+        UploadResponse3 uploadResponse3 = (UploadResponse3) clientApi.send(uploadRequest3);
+        assertNotNull(uploadRequest3.getFileName());
     }
 }

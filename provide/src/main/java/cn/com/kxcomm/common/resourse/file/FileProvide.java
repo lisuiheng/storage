@@ -24,9 +24,101 @@ import java.nio.file.Path;
  * @description
  */
 public interface FileProvide {
+    /**
+     * upload synchronized
+     */
+    /**
+     * @method Upload long.
+     * @description
+     * @author 李穗恒
+     * @return the long
+     * @param file the file
+     * @param loginOperId the login oper id
+     * @param headCorpId the head corp id
+     * @param platformCode the platform code
+     * @param platformKey the platform key
+     * @param sysCode the sys code
+     * @param sysKey the sys key
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
+    Long uploadSyn(File file, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
 
     /**
      * @method Upload long.
+     * @description
+     * @author 李穗恒
+     * @return the long
+     * @param path the path
+     * @param loginOperId the login oper id
+     * @param headCorpId the head corp id
+     * @param platformCode the platform code
+     * @param platformKey the platform key
+     * @param sysCode the sys code
+     * @param sysKey the sys key
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
+    Long uploadSyn(Path path, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
+
+    /**
+     * @method Upload long.
+     * @description
+     * @author 李穗恒
+     * @return the long
+     * @param file the file
+     * @param storageCount the storage count
+     * @param loginOperId the login oper id
+     * @param headCorpId the head corp id
+     * @param platformCode the platform code
+     * @param platformKey the platform key
+     * @param sysCode the sys code
+     * @param sysKey the sys key
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
+    Long uploadSyn(File file, Long storageCount, Long loginOperId, Long headCorpId, String platformCode, String platformKey,
+                   String sysCode, String sysKey) throws IOException, StorageException;
+
+    /**
+     * @method Upload long.
+     * @description
+     * @author 李穗恒
+     * @return the long
+     * @param path the path
+     * @param storageCount the storage count
+     * @param loginOperId the login oper id
+     * @param headCorpId the head corp id
+     * @param platformCode the platform code
+     * @param platformKey the platform key
+     * @param sysCode the sys code
+     * @param sysKey the sys key
+     * @create Date 2017-06-02
+     * @modified By <修改人>
+     * @modified Date <修改日期，格式：YYYY-MM-DD>
+     * @why & what <修改原因描述>
+     * @since JDK1.7
+     * @version 002.00.00
+     */
+    Long uploadSyn(Path path, Long storageCount, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
+
+    /**
+     * upload asynchronous
+     */
+    /**
+     * @method Upload async long.
      * @description
      * @author 李穗恒
      * @return the long
@@ -47,7 +139,7 @@ public interface FileProvide {
     Long upload(File file, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
 
     /**
-     * @method Upload long.
+     * @method Upload async long.
      * @description
      * @author 李穗恒
      * @return the long
@@ -68,94 +160,6 @@ public interface FileProvide {
     Long upload(Path path, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
 
     /**
-     * @method Upload long.
-     * @description
-     * @author 李穗恒
-     * @return the long
-     * @param file the file
-     * @param storageCount the storage count
-     * @param loginOperId the login oper id
-     * @param headCorpId the head corp id
-     * @param platformCode the platform code
-     * @param platformKey the platform key
-     * @param sysCode the sys code
-     * @param sysKey the sys key
-     * @create Date 2017-06-02
-     * @modified By <修改人>
-     * @modified Date <修改日期，格式：YYYY-MM-DD>
-     * @why & what <修改原因描述>
-     * @since JDK1.7
-     * @version 002.00.00
-     */
-    Long upload(File file,Long storageCount, Long loginOperId, Long headCorpId, String platformCode, String platformKey,
-                String sysCode, String sysKey) throws IOException, StorageException;
-
-
-    /**
-     * @method Upload long.
-     * @description
-     * @author 李穗恒
-     * @return the long
-     * @param path the path
-     * @param storageCount the storage count
-     * @param loginOperId the login oper id
-     * @param headCorpId the head corp id
-     * @param platformCode the platform code
-     * @param platformKey the platform key
-     * @param sysCode the sys code
-     * @param sysKey the sys key
-     * @create Date 2017-06-02
-     * @modified By <修改人>
-     * @modified Date <修改日期，格式：YYYY-MM-DD>
-     * @why & what <修改原因描述>
-     * @since JDK1.7
-     * @version 002.00.00
-     */
-    Long upload(Path path, Long storageCount, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
-
-    /**
-     * @method Upload async long.
-     * @description
-     * @author 李穗恒
-     * @return the long
-     * @param file the file
-     * @param loginOperId the login oper id
-     * @param headCorpId the head corp id
-     * @param platformCode the platform code
-     * @param platformKey the platform key
-     * @param sysCode the sys code
-     * @param sysKey the sys key
-     * @create Date 2017-06-02
-     * @modified By <修改人>
-     * @modified Date <修改日期，格式：YYYY-MM-DD>
-     * @why & what <修改原因描述>
-     * @since JDK1.7
-     * @version 002.00.00
-     */
-    Long uploadAsync(File file, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
-
-    /**
-     * @method Upload async long.
-     * @description
-     * @author 李穗恒
-     * @return the long
-     * @param path the path
-     * @param loginOperId the login oper id
-     * @param headCorpId the head corp id
-     * @param platformCode the platform code
-     * @param platformKey the platform key
-     * @param sysCode the sys code
-     * @param sysKey the sys key
-     * @create Date 2017-06-02
-     * @modified By <修改人>
-     * @modified Date <修改日期，格式：YYYY-MM-DD>
-     * @why & what <修改原因描述>
-     * @since JDK1.7
-     * @version 002.00.00
-     */
-    Long uploadAsync(Path path, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
-
-    /**
      * @method Upload async long.
      * @description
      * @author 李穗恒
@@ -175,7 +179,7 @@ public interface FileProvide {
      * @since JDK1.7
      * @version 002.00.00
      */
-    Long uploadAsync(File file, Long storageCount, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
+    Long upload(File file, Long storageCount, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
 
     /**
      * @method Upload async long.
@@ -197,7 +201,7 @@ public interface FileProvide {
      * @since JDK1.7
      * @version 002.00.00
      */
-    Long uploadAsync(Path path, Long storageCount, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
+    Long upload(Path path, Long storageCount, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws IOException, StorageException;
 
     /**
      * @method Upload by md 5 long.
@@ -221,10 +225,23 @@ public interface FileProvide {
      */
     Long uploadByMD5(String fileName, String md5, Long loginOperId, Long headCorpId, String platformCode, String platformKey, String sysCode, String sysKey) throws StorageException;
 
-    String downLoad(Long fileCode, Long headCorpId, Long loginOperId, String platformCode, String platformKey, String sysCode, String sysKey) throws StorageException;
+    /**
+     * download
+     */
 
-
-    byte[] downLoadByte(Long fileCode, Long headCorpId, Long loginOperId, String platformCode, String platformKey, String sysCode, String sysKey) throws StorageException;
+    /**
+     *
+     * @param fileCode
+     * @param headCorpId
+     * @param loginOperId
+     * @param platformCode
+     * @param platformKey
+     * @param sysCode
+     * @param sysKey
+     * @return
+     * @throws StorageException
+     */
+    String downLoad(Long fileCode, Long headCorpId, Long loginOperId, String platformCode, String platformKey, String sysCode, String sysKey) throws StorageException, IOException;
 
     /**
      * @method Down load.
@@ -247,6 +264,29 @@ public interface FileProvide {
      */
     void downLoad(Long fileCode, Path targetPath, Long headCorpId, Long loginOperId, String platformCode, String platformKey, String sysCode, String sysKey) throws StorageException, IOException;
 
+    void downLoadRename(Long fileCode, Path targetDir, String targetFileName, Long headCorpId, Long loginOperId, String platformCode, String platformKey, String sysCode, String sysKey) throws StorageException, IOException;
+
+    void downLoadRename(Long fileCode, Path targetPath, Long headCorpId, Long loginOperId, String platformCode, String platformKey, String sysCode, String sysKey) throws StorageException, IOException;
+
+    /**
+     *
+     * @param fileCode
+     * @param headCorpId
+     * @param loginOperId
+     * @param platformCode
+     * @param platformKey
+     * @param sysCode
+     * @param sysKey
+     * @return
+     * @throws StorageException
+     */
+    byte[] downLoadByte(Long fileCode, Long headCorpId, Long loginOperId, String platformCode, String platformKey, String sysCode, String sysKey) throws StorageException;
+
+
+    /**
+     * d delete
+     */
+
     /**
      * @method Delete file by code.
      * @description
@@ -268,4 +308,15 @@ public interface FileProvide {
     void deleteFileByCode(Long fileViewCode, Long loginOperId, Long headCorpId,
                              String platformCode, String platformKey, String sysCode,
                              String sysKey) throws StorageException;
+
+    /**
+     * other
+     */
+    String getFileNameByCode(Long fileViewCode, Long loginOperId, Long headCorpId,
+                             String platformCode, String platformKey, String sysCode,
+                             String sysKey) throws StorageException;
+
+    void renameByCode(Long fileViewCode, String newFileName, Long loginOperId, Long headCorpId,
+                      String platformCode, String platformKey, String sysCode,
+                      String sysKey) throws StorageException;
 }

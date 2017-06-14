@@ -4,7 +4,10 @@ package cn.com.kxcomm.client;
 import cn.com.kxcomm.storage.domain.client.ClientApi;
 import cn.com.kxcomm.storage.domain.client.common.StorageException;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
+import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadRequest3;
+import cn.com.kxcomm.storage.domain.storage.share.bean.download.DownloadResponse3;
 import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveRequest3;
+import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveResponse3;
 import cn.com.kxcomm.storage.domain.storage.share.bean.storage.SpaceRequest;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.*;
 import org.junit.Test;
@@ -29,7 +32,16 @@ public class StorageTest {
     protected String sysCode = "coms";
 
 
-    private ClientApi clientApi = new ClientApi(new InetSocketAddress("127.0.0.1", 8007));
+    private ClientApi clientApi = new ClientApi(new InetSocketAddress("testweb.dev.kxcomm.com", 8007));
+
+    @Test
+    public void upload() throws StorageException, IOException {
+        Path filePath = Paths.get(dir).resolve(name);
+        UploadRequest3 uploadRequest3 = new UploadRequest3(name, Files.readAllBytes(filePath), headCorpId, loginOperId, sysCode);
+        Response response = clientApi.send(uploadRequest3);
+        assertNull(response.getThrowable() );
+    }
+
 
     @Test
     public void remove() throws StorageException {
@@ -39,5 +51,32 @@ public class StorageTest {
         assertTrue(Files.exists(basePath.resolve(relativePath)));
         clientApi.send(removeRequest3);
         assertFalse(Files.exists(basePath.resolve(relativePath)));
+    }
+
+    @Test
+    public void uploadDownloadRemove() throws IOException, StorageException {
+        //upload
+        Path filePath = Paths.get(dir).resolve(name);
+        byte[] data = Files.readAllBytes(filePath);
+        UploadRequest3 uploadRequest3 = new UploadRequest3(name, data, headCorpId, loginOperId, sysCode);
+        UploadResponse3 uploadResponse3 = (UploadResponse3)clientApi.send(uploadRequest3);
+        assertNull(uploadResponse3.getThrowable() );
+
+        //Download
+        DownloadRequest3 downloadRequest3 = new DownloadRequest3(uploadResponse3.getRelativePath(), uploadRequest3);
+        DownloadResponse3 downloadResponse3 = (DownloadResponse3) clientApi.send(downloadRequest3);
+        assertArrayEquals(data, downloadResponse3.getData());
+
+        //Remove
+        RemoveRequest3 removeRequest3 = new RemoveRequest3(uploadResponse3.getRelativePath(), headCorpId, loginOperId, sysCode);
+        RemoveResponse3 removeResponse3 = (RemoveResponse3) clientApi.send(removeRequest3);
+        assertNull(removeResponse3.getThrowable());
+
+        //Download check
+        downloadRequest3 = new DownloadRequest3(uploadResponse3.getRelativePath(), uploadRequest3);
+        try {
+            downloadResponse3 = (DownloadResponse3) clientApi.send(downloadRequest3);
+        } catch (StorageException e) {
+        }
     }
 }

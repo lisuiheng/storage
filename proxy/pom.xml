@@ -7,6 +7,7 @@
     <groupId>cn.com.kxcomm.StorageManageSystem</groupId>
     <artifactId>proxy</artifactId>
     <version>002.00.00</version>
+    <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -57,6 +58,7 @@
     </dependencies>
 
     <build>
+        <finalName>proxy</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

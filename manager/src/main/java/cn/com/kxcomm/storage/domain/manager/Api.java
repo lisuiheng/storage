@@ -12,6 +12,10 @@ import cn.com.kxcomm.storage.domain.service.view.service.FileViewService;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
 import cn.com.kxcomm.storage.domain.storage.share.bean.download.*;
+import cn.com.kxcomm.storage.domain.storage.share.bean.manager.FileGetNameRequest;
+import cn.com.kxcomm.storage.domain.storage.share.bean.manager.FileGetNameResponse;
+import cn.com.kxcomm.storage.domain.storage.share.bean.manager.FileRenameRequest;
+import cn.com.kxcomm.storage.domain.storage.share.bean.manager.FileRenameResponse;
 import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveRequest1;
 import cn.com.kxcomm.storage.domain.storage.share.bean.remove.RemoveResponse1;
 import cn.com.kxcomm.storage.domain.storage.share.bean.upload.*;
@@ -210,6 +214,24 @@ public class Api {
         return new RemoveResponse1(removeRequest1);
     }
 
+    private FileGetNameResponse handelFileGetName(FileGetNameRequest fileGetNameRequest) {
+        long fileViewCode = fileGetNameRequest.getFileViewCode();
+        Long headCorpId = fileGetNameRequest.getHeadCorpId();
+        FileViewModel fileViewModel = fileViewService.getByViewCode(String.valueOf(fileViewCode), headCorpId);
+        String name = fileViewModel.getName();
+        return new FileGetNameResponse(name, fileGetNameRequest);
+    }
+
+    private FileRenameResponse handelFileRename(FileRenameRequest fileRenameRequest) {
+        long fileViewCode = fileRenameRequest.getFileViewCode();
+        String newFileName = fileRenameRequest.getNewFileName();
+        Long headCorpId = fileRenameRequest.getHeadCorpId();
+        Long loginOperId = fileRenameRequest.getLoginOperId();
+        fileViewService.renameByViewCode(String.valueOf(fileViewCode), newFileName, headCorpId, loginOperId);
+        return new FileRenameResponse(fileRenameRequest);
+    }
+
+
     /**
      * @method Handel.
      * @description
@@ -240,6 +262,10 @@ public class Api {
                     outboundRequest = handelPreDownloadRequest((PreDownloadRequest1) request);
                 } else if(request instanceof RemoveRequest1) {
                     inboundResponse = handelRemove((RemoveRequest1) request);
+                } else if(request instanceof FileGetNameRequest) {
+                    inboundResponse = handelFileGetName((FileGetNameRequest) request);
+                } else if(request instanceof FileRenameRequest) {
+                    inboundResponse = handelFileRename((FileRenameRequest) request);
                 }
                 else {
                     outboundRequest = request;

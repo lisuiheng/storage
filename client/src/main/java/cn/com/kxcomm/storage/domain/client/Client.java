@@ -44,19 +44,20 @@ public class Client  {
     private final EventLoopGroup eventLoop = new NioEventLoopGroup();
 
     private int retryCount = 0;
-    private final int retryTimeout = Config.getRetryTimeOut();
-    private final int retryInterval = Config.getRetryInterval();
+    private final int retryTimeout;
+    private final int retryInterval;
     private final SocketAddress address;
 
 
     public Client(String hostname, int port) {
-        this.address = new InetSocketAddress(hostname, port);
-        start();
+        this(new InetSocketAddress(hostname, port));
     }
 
 
-    public Client(SocketAddress address) {
+    Client(SocketAddress address) {
         this.address = address;
+        this.retryTimeout = Config.getRetryTimeOut();
+        this.retryInterval = Config.getRetryInterval();
         start();
     }
 
@@ -110,7 +111,7 @@ public class Client  {
      * @since JDK1.7
      * @version 002.00.00
      */
-    public Bootstrap createBootstrap(SocketAddress socketAddress, Bootstrap bootstrap)  {
+    Bootstrap createBootstrap(SocketAddress socketAddress, Bootstrap bootstrap)  {
         if (bootstrap != null) {
             bootstrap.group(eventLoop);
             bootstrap.channel(NioSocketChannel.class);
@@ -143,7 +144,7 @@ public class Client  {
      * @since JDK1.7
      * @version 002.00.00
      */
-    public void putResponse(Response response) throws InterruptedException {
+    void putResponse(Response response) throws InterruptedException {
         BlockingQueue<Response> queue = responseMap.get(response.getId());
         queue.offer(response, retryTimeout * retryInterval , TimeUnit.MILLISECONDS);
     }
@@ -160,7 +161,7 @@ public class Client  {
      * @since JDK1.7
      * @version 002.00.00
      */
-    public void send(Request request) {
+    void send(Request request) {
         responseMap.putIfAbsent(request.getId(), new LinkedBlockingQueue<Response>(1));
         try {
             waitChannelActive();
@@ -184,12 +185,7 @@ public class Client  {
      * @since JDK1.7
      * @version 002.00.00
      */
-    public Response getResponse(Request request) throws StorageException {
-//        if(isShutdown()) {
-//            String errMsg = "client is shutdown";
-//            log.error(errMsg);
-//            throw new RuntimeException(errMsg);
-//        }
+    Response getResponse(Request request) throws StorageException {
         Response result;
         responseMap.putIfAbsent(request.getId(), new LinkedBlockingQueue<Response>(1));
         try {

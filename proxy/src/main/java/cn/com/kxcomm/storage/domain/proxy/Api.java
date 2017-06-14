@@ -79,9 +79,12 @@ public class Api {
      * @since JDK1.8
      * @version 002.00.00
      */
-    PreDownloadResponse2 preDownload(PreDownloadRequest2 preDownloadRequest2) {
+    PreDownloadResponse2 preDownload(PreDownloadRequest2 preDownloadRequest2) throws StorageException {
         long storageId = preDownloadRequest2.getStorageId();
         InetSocketAddress address = connectPool.getStorageLocalAddressMap().get(storageId);
+        if(address == null) {
+            throw new StorageException(String.format("storage id:{} address is null", storageId));
+        }
         return new PreDownloadResponse2(address.getPort(), preDownloadRequest2);
     }
 

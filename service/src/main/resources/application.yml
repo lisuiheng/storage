@@ -1,7 +1,8 @@
 spring:
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://172.16.103.200:3306/122_StorageManageSystem?useUnicode=true&characterEncoding=utf8
+#        url: jdbc:mysql://172.16.103.200:3306/122_StorageManageSystem?useUnicode=true&characterEncoding=utf8
+        url: jdbc:mysql://192.168.153.125:3306/122_StorageManageSystem?useUnicode=true&characterEncoding=utf8
         username: root
         password: root
         driver-class-name: com.mysql.jdbc.Driver
