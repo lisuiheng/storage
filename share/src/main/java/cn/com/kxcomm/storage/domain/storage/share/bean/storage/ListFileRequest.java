@@ -1,11 +1,6 @@
 package cn.com.kxcomm.storage.domain.storage.share.bean.storage;
 
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
-
-import java.net.SocketAddress;
 
 /**
  * @class List file request
@@ -18,9 +13,6 @@ import java.net.SocketAddress;
  * @version 002.00.00
  * @description
  */
-@Getter
-@EqualsAndHashCode(callSuper = false)
-@ToString
 public class ListFileRequest  extends Request {
     private String relativePath;
     private long lastModifiedTime;
@@ -39,6 +31,19 @@ public class ListFileRequest  extends Request {
         this.lastModifiedTime = lastModifiedTime;
     }
 
+    public String getRelativePath() {
+        return relativePath;
+    }
 
+    public void setRelativePath(String relativePath) {
+        this.relativePath = relativePath;
+    }
 
+    public long getLastModifiedTime() {
+        return lastModifiedTime;
+    }
+
+    public void setLastModifiedTime(long lastModifiedTime) {
+        this.lastModifiedTime = lastModifiedTime;
+    }
 }

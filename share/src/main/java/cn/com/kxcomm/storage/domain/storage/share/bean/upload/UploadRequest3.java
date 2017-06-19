@@ -1,9 +1,6 @@
 package cn.com.kxcomm.storage.domain.storage.share.bean.upload;
 
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
 
 /**
  * @class Upload request 3
@@ -16,9 +13,6 @@ import lombok.ToString;
  * @version 002.00.00
  * @description
  */
-@Getter
-@EqualsAndHashCode(callSuper = false)
-@ToString(exclude = "data", callSuper = true)
 public class UploadRequest3 extends Request {
     private String fileName;
     private byte[] data;
@@ -29,4 +23,19 @@ public class UploadRequest3 extends Request {
         this.data = data;
     }
 
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
 }

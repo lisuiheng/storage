@@ -2,9 +2,6 @@ package cn.com.kxcomm.storage.domain.storage.share.bean.download;
 
 
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
 
 /**
  * @class Download request 3
@@ -17,14 +14,19 @@ import lombok.ToString;
  * @version 002.00.00
  * @description
  */
-@Getter
-@EqualsAndHashCode(callSuper = false)
-@ToString(callSuper = true)
 public class DownloadRequest3 extends Request {
     private String path;
 
     public DownloadRequest3(String path, Request request) {
         super(request);
+        this.path = path;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
         this.path = path;
     }
 

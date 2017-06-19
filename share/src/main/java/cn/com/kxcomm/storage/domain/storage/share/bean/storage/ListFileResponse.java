@@ -2,16 +2,9 @@ package cn.com.kxcomm.storage.domain.storage.share.bean.storage;
 
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
 
 import java.io.Serializable;
-import java.nio.file.attribute.FileTime;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -25,9 +18,6 @@ import java.util.Set;
  * @version 002.00.00
  * @description
  */
-@Getter
-@EqualsAndHashCode(callSuper = false)
-@ToString
 public class ListFileResponse extends Response {
     private final Set<File> files = new HashSet<>();
 
@@ -74,6 +64,9 @@ public class ListFileResponse extends Response {
         files.add(file);
     }
 
+    public Set<File> getFiles() {
+        return files;
+    }
 
     /**
      * @class File
@@ -86,9 +79,6 @@ public class ListFileResponse extends Response {
      * @version 002.00.00
      * @description
      */
-    @ToString
-    @EqualsAndHashCode
-    @Getter
     public class File implements Serializable {
         private String relativeName;
         private long size;
@@ -109,6 +99,52 @@ public class ListFileResponse extends Response {
             fileName = relativeName.substring(lastIndexOf, relativeName.length());
         }
 
+        public String getRelativeName() {
+            return relativeName;
+        }
 
+        public void setRelativeName(String relativeName) {
+            this.relativeName = relativeName;
+        }
+
+        public long getSize() {
+            return size;
+        }
+
+        public void setSize(long size) {
+            this.size = size;
+        }
+
+        public String getMd5() {
+            return md5;
+        }
+
+        public void setMd5(String md5) {
+            this.md5 = md5;
+        }
+
+        public long getLastModifiedTime() {
+            return lastModifiedTime;
+        }
+
+        public void setLastModifiedTime(long lastModifiedTime) {
+            this.lastModifiedTime = lastModifiedTime;
+        }
+
+        public String getRelativeDir() {
+            return relativeDir;
+        }
+
+        public void setRelativeDir(String relativeDir) {
+            this.relativeDir = relativeDir;
+        }
+
+        public String getFileName() {
+            return fileName;
+        }
+
+        public void setFileName(String fileName) {
+            this.fileName = fileName;
+        }
     }
 }

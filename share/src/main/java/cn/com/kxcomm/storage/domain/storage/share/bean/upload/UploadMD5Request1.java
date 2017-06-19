@@ -2,9 +2,6 @@ package cn.com.kxcomm.storage.domain.storage.share.bean.upload;
 
 import cn.com.kxcomm.storage.domain.storage.common.constants.ShareConstants;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
 
 /**
  * @class Upload md 5 request 1
@@ -17,9 +14,6 @@ import lombok.ToString;
  * @version 002.00.00
  * @description
  */
-@Getter
-@EqualsAndHashCode(callSuper = false)
-@ToString(callSuper = true)
 public class UploadMD5Request1 extends Request {
     private String fileName;
     private long storageCount;
@@ -34,5 +28,29 @@ public class UploadMD5Request1 extends Request {
         this.md5 = md5;
         this.storageCount = storageCount;
         this.sysCode = sysCode;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public long getStorageCount() {
+        return storageCount;
+    }
+
+    public void setStorageCount(long storageCount) {
+        this.storageCount = storageCount;
+    }
+
+    public String getMd5() {
+        return md5;
+    }
+
+    public void setMd5(String md5) {
+        this.md5 = md5;
     }
 }

@@ -1,9 +1,6 @@
 package cn.com.kxcomm.storage.domain.storage.share.bean.remove;
 
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
 
 /**
  * @class Remove request 3
@@ -16,14 +13,19 @@ import lombok.ToString;
  * @version 002.00.00
  * @description
  */
-@Getter
-@EqualsAndHashCode(callSuper = false)
-@ToString(callSuper = true)
 public class RemoveRequest3 extends Request {
     private String relativePath;
 
     public RemoveRequest3(String relativePath, long headCorpId, long loginOperId, String sysCode) {
         super(headCorpId, loginOperId, sysCode);
+        this.relativePath = relativePath;
+    }
+
+    public String getRelativePath() {
+        return relativePath;
+    }
+
+    public void setRelativePath(String relativePath) {
         this.relativePath = relativePath;
     }
 }

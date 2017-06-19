@@ -2,9 +2,6 @@ package cn.com.kxcomm.storage.domain.storage.share.bean.upload;
 
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
 
 /**
  * @class Pre upload response 1
@@ -17,9 +14,6 @@ import lombok.ToString;
  * @version 002.00.00
  * @description
  */
-@Getter
-@EqualsAndHashCode(callSuper = false)
-@ToString(callSuper = true)
 public class PreUploadResponse1 extends Response {
     private int uploadPort;
     private long storageId;
@@ -33,5 +27,21 @@ public class PreUploadResponse1 extends Response {
 
     public PreUploadResponse1(Throwable throwable, Request request) {
         super(throwable, request);
+    }
+
+    public int getUploadPort() {
+        return uploadPort;
+    }
+
+    public void setUploadPort(int uploadPort) {
+        this.uploadPort = uploadPort;
+    }
+
+    public long getStorageId() {
+        return storageId;
+    }
+
+    public void setStorageId(long storageId) {
+        this.storageId = storageId;
     }
 }

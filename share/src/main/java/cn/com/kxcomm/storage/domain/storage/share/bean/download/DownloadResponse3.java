@@ -2,9 +2,6 @@ package cn.com.kxcomm.storage.domain.storage.share.bean.download;
 
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
 
 
 /**
@@ -18,9 +15,6 @@ import lombok.ToString;
  * @version 002.00.00
  * @description
  */
-@Getter
-@EqualsAndHashCode(callSuper = false)
-@ToString(exclude = "data", callSuper = true)
 public class DownloadResponse3 extends Response {
     private byte[] data;
 
@@ -29,5 +23,12 @@ public class DownloadResponse3 extends Response {
         this.data = data;
     }
 
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
 
 }

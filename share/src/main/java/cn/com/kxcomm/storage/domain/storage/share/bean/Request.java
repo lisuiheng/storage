@@ -1,9 +1,5 @@
 package cn.com.kxcomm.storage.domain.storage.share.bean;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
-
 import java.io.Serializable;
 
 /**
@@ -17,9 +13,6 @@ import java.io.Serializable;
  * @version 002.00.00
  * @description
  */
-@Getter
-@EqualsAndHashCode
-@ToString
 public class Request implements Serializable {
     private static final long serialVersionUID = 2750646443189480771L;
     protected final long id;
@@ -42,4 +35,35 @@ public class Request implements Serializable {
         this.sysCode = request.getSysCode();
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public Long getHeadCorpId() {
+        return headCorpId;
+    }
+
+    public void setHeadCorpId(Long headCorpId) {
+        this.headCorpId = headCorpId;
+    }
+
+    public Long getLoginOperId() {
+        return loginOperId;
+    }
+
+    public void setLoginOperId(Long loginOperId) {
+        this.loginOperId = loginOperId;
+    }
+
+    public String getSysCode() {
+        return sysCode;
+    }
+
+    public void setSysCode(String sysCode) {
+        this.sysCode = sysCode;
+    }
 }

@@ -2,9 +2,6 @@ package cn.com.kxcomm.storage.domain.storage.share.bean.upload;
 
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
 import cn.com.kxcomm.storage.domain.storage.share.bean.Response;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
 
 /**
  * @class Upload md 5 response 1
@@ -17,9 +14,6 @@ import lombok.ToString;
  * @version 002.00.00
  * @description
  */
-@Getter
-@EqualsAndHashCode(callSuper = false)
-@ToString( callSuper = true)
 public class UploadMD5Response1 extends Response {
     private Long fileViewCode;
     private boolean FileExit;
@@ -29,5 +23,21 @@ public class UploadMD5Response1 extends Response {
         super(request);
         this.fileViewCode = fileViewCode;
         this.FileExit = FileExit;
+    }
+
+    public Long getFileViewCode() {
+        return fileViewCode;
+    }
+
+    public void setFileViewCode(Long fileViewCode) {
+        this.fileViewCode = fileViewCode;
+    }
+
+    public boolean isFileExit() {
+        return FileExit;
+    }
+
+    public void setFileExit(boolean fileExit) {
+        FileExit = fileExit;
     }
 }

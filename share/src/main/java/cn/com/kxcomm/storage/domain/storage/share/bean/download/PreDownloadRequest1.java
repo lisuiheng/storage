@@ -1,9 +1,6 @@
 package cn.com.kxcomm.storage.domain.storage.share.bean.download;
 
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
 
 /**
  * @class Pre download request 1
@@ -16,9 +13,6 @@ import lombok.ToString;
  * @version 002.00.00
  * @description
  */
-@Getter
-@EqualsAndHashCode(callSuper = false)
-@ToString(callSuper = true)
 public class PreDownloadRequest1 extends Request {
     private long fileViewCode;
 
@@ -29,5 +23,13 @@ public class PreDownloadRequest1 extends Request {
 
     public PreDownloadRequest1(Request request) {
         super(request);
+    }
+
+    public long getFileViewCode() {
+        return fileViewCode;
+    }
+
+    public void setFileViewCode(long fileViewCode) {
+        this.fileViewCode = fileViewCode;
     }
 }

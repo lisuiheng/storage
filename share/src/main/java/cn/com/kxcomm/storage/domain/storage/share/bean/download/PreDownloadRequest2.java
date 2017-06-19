@@ -1,9 +1,6 @@
 package cn.com.kxcomm.storage.domain.storage.share.bean.download;
 
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
 
 /**
  * @class Pre download request 2
@@ -16,9 +13,6 @@ import lombok.ToString;
  * @version 002.00.00
  * @description
  */
-@Getter
-@EqualsAndHashCode(callSuper = false)
-@ToString(callSuper = true)
 public class PreDownloadRequest2 extends Request {
     private long storageId;
     private String path;
@@ -26,6 +20,22 @@ public class PreDownloadRequest2 extends Request {
     public PreDownloadRequest2(long storageId, String path, Request request) {
         super(request);
         this.storageId = storageId;
+        this.path = path;
+    }
+
+    public long getStorageId() {
+        return storageId;
+    }
+
+    public void setStorageId(long storageId) {
+        this.storageId = storageId;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
         this.path = path;
     }
 }

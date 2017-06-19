@@ -1,13 +1,8 @@
 package cn.com.kxcomm.storage.domain.storage.share.bean.manager;
 
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
 
-@Getter
-@EqualsAndHashCode(callSuper = false)
-@ToString(callSuper = true)
+
 public class FileGetNameRequest extends Request {
     private long fileViewCode;
 
@@ -16,4 +11,11 @@ public class FileGetNameRequest extends Request {
         this.fileViewCode = fileViewCode;
     }
 
+    public long getFileViewCode() {
+        return fileViewCode;
+    }
+
+    public void setFileViewCode(long fileViewCode) {
+        this.fileViewCode = fileViewCode;
+    }
 }

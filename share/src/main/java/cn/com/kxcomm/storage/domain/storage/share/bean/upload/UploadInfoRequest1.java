@@ -1,9 +1,6 @@
 package cn.com.kxcomm.storage.domain.storage.share.bean.upload;
 
 import cn.com.kxcomm.storage.domain.storage.share.bean.Request;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
 
 /**
  * @class Upload info request 1
@@ -16,9 +13,6 @@ import lombok.ToString;
  * @version 002.00.00
  * @description
  */
-@Getter
-@EqualsAndHashCode(callSuper = false)
-@ToString(callSuper = true)
 public class UploadInfoRequest1 extends Request {
     private String fileName;
     private long size;
@@ -37,6 +31,62 @@ public class UploadInfoRequest1 extends Request {
         this.storageCount = storageCount;
         this.fileViewCode = fileViewCode;
         this.storageId = storageId;
+        this.path = path;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public long getSize() {
+        return size;
+    }
+
+    public void setSize(long size) {
+        this.size = size;
+    }
+
+    public String getMd5() {
+        return md5;
+    }
+
+    public void setMd5(String md5) {
+        this.md5 = md5;
+    }
+
+    public long getStorageCount() {
+        return storageCount;
+    }
+
+    public void setStorageCount(long storageCount) {
+        this.storageCount = storageCount;
+    }
+
+    public long getFileViewCode() {
+        return fileViewCode;
+    }
+
+    public void setFileViewCode(long fileViewCode) {
+        this.fileViewCode = fileViewCode;
+    }
+
+    public long getStorageId() {
+        return storageId;
+    }
+
+    public void setStorageId(long storageId) {
+        this.storageId = storageId;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
         this.path = path;
     }
 }

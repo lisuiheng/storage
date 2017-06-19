@@ -1,7 +1,5 @@
 package cn.com.kxcomm.storage.domain.storage.share.bean;
 
-import lombok.*;
-
 import java.io.Serializable;
 
 /**
@@ -15,9 +13,6 @@ import java.io.Serializable;
  * @version 002.00.00
  * @description
  */
-@Getter
-@EqualsAndHashCode
-@ToString
 public class Response implements Serializable {
     private static final long serialVersionUID = 5887232731148682128L;
 
@@ -37,5 +32,24 @@ public class Response implements Serializable {
         this.throwable = throwable;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Throwable getThrowable() {
+        return throwable;
+    }
+
+    public void setThrowable(Throwable throwable) {
+        this.throwable = throwable;
+    }
 }
 
